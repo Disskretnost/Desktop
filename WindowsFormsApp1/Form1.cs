@@ -16,9 +16,15 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-           // this.PasswordField.AutoSize = false;
+            this.PasswordField.AutoSize = false;
+            this.LoginField.AutoSize = false;
             //this.PasswordField.Size = new Size(this.PasswordField.Size.Width, 40);
             
+            LoginField.Text = "Ваше имя";
+            LoginField.ForeColor = Color.White;
+            //this.Width = 380;
+            //this.Height = 430;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -40,7 +46,9 @@ namespace WindowsFormsApp1
 
         private void registerlabel_Click(object sender, EventArgs e)
         {
-
+            RegisterForm f = new RegisterForm();
+            f.Show();
+            Hide();
         }
 
         private void Close_Click(object sender, EventArgs e)
@@ -56,13 +64,12 @@ namespace WindowsFormsApp1
 
         private void PasswordField_TextChanged(object sender, EventArgs e)
         {
-            
+         
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            
+
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -94,6 +101,8 @@ namespace WindowsFormsApp1
         {
             coordinate = new Point(e.X, e. Y); // устанавливаем изначальное место
         }
+
+        
         ///////////////////////////////////////////////////////
     }
 }
