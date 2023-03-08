@@ -63,10 +63,10 @@ namespace WindowsFormsApp1
             this.LoginField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LoginField.Font = new System.Drawing.Font("Bell MT", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginField.ForeColor = System.Drawing.Color.White;
-            this.LoginField.Location = new System.Drawing.Point(125, 234);
+            this.LoginField.Location = new System.Drawing.Point(111, 234);
             this.LoginField.Multiline = true;
             this.LoginField.Name = "LoginField";
-            this.LoginField.Size = new System.Drawing.Size(283, 43);
+            this.LoginField.Size = new System.Drawing.Size(283, 40);
             this.LoginField.TabIndex = 2;
             this.LoginField.TextChanged += new System.EventHandler(this.LoginField_TextChanged);
             // 
@@ -76,7 +76,7 @@ namespace WindowsFormsApp1
             this.PasswordField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PasswordField.Font = new System.Drawing.Font("Bell MT", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordField.ForeColor = System.Drawing.Color.White;
-            this.PasswordField.Location = new System.Drawing.Point(125, 298);
+            this.PasswordField.Location = new System.Drawing.Point(111, 298);
             this.PasswordField.Name = "PasswordField";
             this.PasswordField.Size = new System.Drawing.Size(283, 33);
             this.PasswordField.TabIndex = 4;
@@ -89,7 +89,6 @@ namespace WindowsFormsApp1
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
             this.button1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Bell MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
@@ -155,7 +154,7 @@ namespace WindowsFormsApp1
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(62, 234);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(44, 45);
+            this.pictureBox2.Size = new System.Drawing.Size(43, 43);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
@@ -165,7 +164,7 @@ namespace WindowsFormsApp1
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(62, 298);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(46, 45);
+            this.pictureBox1.Size = new System.Drawing.Size(43, 43);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;

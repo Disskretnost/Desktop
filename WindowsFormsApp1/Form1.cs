@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
             this.LoginField.AutoSize = false;
             //this.PasswordField.Size = new Size(this.PasswordField.Size.Width, 40);
             
-            LoginField.Text = "Ваше имя";
+            
             LoginField.ForeColor = Color.White;
             //this.Width = 380;
             //this.Height = 430;
