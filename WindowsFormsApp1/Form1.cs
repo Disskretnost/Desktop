@@ -16,34 +16,9 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            this.PasswordField.AutoSize = false;
-            this.LoginField.AutoSize = false;
-            //this.PasswordField.Size = new Size(this.PasswordField.Size.Width, 40);
-            
-            LoginField.Text = "Ваше имя";
-            LoginField.ForeColor = Color.White;
-            //this.Width = 380;
-            //this.Height = 430;
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
 
         
-
         private void registerlabel_Click(object sender, EventArgs e)
         {
             RegisterForm f = new RegisterForm();
@@ -53,29 +28,10 @@ namespace WindowsFormsApp1
 
         private void Close_Click(object sender, EventArgs e)
         {
-            this.Close(); // закрываем приложение
-            Close.ForeColor = Color.Green;
+            Application.Exit();
         }
 
-        private void LoginField_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void PasswordField_TextChanged(object sender, EventArgs e)
-        {
-         
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void Close_MouseLeave(object sender, EventArgs e)
         {
@@ -103,6 +59,58 @@ namespace WindowsFormsApp1
         }
 
         
-        ///////////////////////////////////////////////////////
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            bunifuButton2.AllowAnimations = false;
+            //bunifuButton1.BackColor = Color.FromArgb(1, 147, 147);
+
+         
+        }
+
+        private void PasswordAuto_TextChange(object sender, EventArgs e)
+        {
+            PasswordAuto.UseSystemPasswordChar = true;
+        }
+
+        private void bunifuLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PasswordAuto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginAuto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void registerlabel_MouseMove(object sender, MouseEventArgs e)
+        {
+            registerlabel.ForeColor = Color.FromArgb(1,147,147);
+        }
+
+        private void registerlabel_MouseLeave(object sender, EventArgs e)
+        {
+            registerlabel.ForeColor = Color.White;
+        }
+
+        private void resetLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

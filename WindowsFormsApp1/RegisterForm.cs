@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
         public RegisterForm()
         {
             InitializeComponent();
+   
         }
 
         
@@ -33,7 +34,7 @@ namespace WindowsFormsApp1
 
         private void email_TextChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void PssswordCon_TextChanged(object sender, EventArgs e)
@@ -58,9 +59,7 @@ namespace WindowsFormsApp1
 
         private void label1_Click(object sender, EventArgs e)
         {
-            
-            this.Close();
-            
+            Application.Exit();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -70,6 +69,16 @@ namespace WindowsFormsApp1
             Hide();
         }
 
-       
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+            RegReg.AllowAnimations = false;
+            AutorReg.AllowAnimations = false;
+
+        }
+
+        private void AutorReg_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
