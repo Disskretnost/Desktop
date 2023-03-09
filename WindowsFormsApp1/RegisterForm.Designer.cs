@@ -268,7 +268,9 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.Register);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RegisterForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegisterForm";
+            this.Load += new System.EventHandler(this.RegisterForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RegisterForm_MouseDown_1);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.RegisterForm_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();

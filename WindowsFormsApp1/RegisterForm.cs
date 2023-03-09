@@ -58,8 +58,8 @@ namespace WindowsFormsApp1
 
         private void label1_Click(object sender, EventArgs e)
         {
-            
-            this.Close();
+
+            Application.Exit();
             
         }
 
@@ -70,6 +70,9 @@ namespace WindowsFormsApp1
             Hide();
         }
 
-       
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

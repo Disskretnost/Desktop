@@ -17,14 +17,8 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             this.PasswordField.AutoSize = false;
-            this.LoginField.AutoSize = false;
-            //this.PasswordField.Size = new Size(this.PasswordField.Size.Width, 40);
-            
-            
+            this.LoginField.AutoSize = false;    
             LoginField.ForeColor = Color.White;
-            //this.Width = 380;
-            //this.Height = 430;
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -53,7 +47,7 @@ namespace WindowsFormsApp1
 
         private void Close_Click(object sender, EventArgs e)
         {
-            this.Close(); // закрываем приложение
+            Application.Exit(); // закрываем приложение
             Close.ForeColor = Color.Green;
         }
 
@@ -103,6 +97,8 @@ namespace WindowsFormsApp1
         }
 
         
+
+
         ///////////////////////////////////////////////////////
     }
 }
