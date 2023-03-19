@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Http;
+using System.Net.Http.Json;
+using Newtonsoft.Json;
+
 
 namespace WindowsFormsApp1
 {
@@ -18,10 +22,6 @@ namespace WindowsFormsApp1
             InitializeComponent();
    
         }
-
-        
-        
-
         private void LoginField_TextChanged(object sender, EventArgs e)
         {
 
@@ -80,5 +80,37 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private async void RegReg_Click(object sender, EventArgs e)
+        {
+            var data = new
+            {
+                uxer = LoginRegist.Text,
+                password = bunifuTextBox1.Text,
+                email = bunifuTextBox2.Text
+            };
+
+        var response = await RegisterUserAsync(data);
+        Console.WriteLine(response);
+        }
+
+        public static async Task<string> RegisterUserAsync(object data)
+        {
+            var httpClient = new HttpClient();
+            var url = "https://example.com/register";
+
+            var content = JsonContent.Create(data);
+            var response = await httpClient.PostAsync(url, content);
+
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
+
 }

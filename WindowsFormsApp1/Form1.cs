@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Http;
+
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
         Point coordinate;
+        string url = "176.99.11.107:1000";
+        private readonly HttpClient _httpClient = new HttpClient();
         public Form1()
         {
             InitializeComponent();
@@ -24,6 +28,7 @@ namespace WindowsFormsApp1
             RegisterForm f = new RegisterForm();
             f.Show();
             Hide();
+            
         }
 
         private void Close_Click(object sender, EventArgs e)
@@ -62,17 +67,11 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            bunifuButton2.AllowAnimations = false;
+            LogIn.AllowAnimations = false;
             //bunifuButton1.BackColor = Color.FromArgb(1, 147, 147);
 
          
         }
-
-        private void PasswordAuto_TextChange(object sender, EventArgs e)
-        {
-            PasswordAuto.UseSystemPasswordChar = true;
-        }
-
         private void bunifuLabel1_Click(object sender, EventArgs e)
         {
 
@@ -80,18 +79,16 @@ namespace WindowsFormsApp1
 
         private void PasswordAuto_TextChanged(object sender, EventArgs e)
         {
-
+            //Console.WriteLine($"{LoginAuto.Text}");
         }
 
         private void LoginAuto_TextChanged(object sender, EventArgs e)
         {
-
+           
         }
 
-        private void bunifuButton2_Click(object sender, EventArgs e)
-        {
-
-        }
+   
+        
 
         private void registerlabel_MouseMove(object sender, MouseEventArgs e)
         {
@@ -108,9 +105,30 @@ namespace WindowsFormsApp1
 
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("fdfd");
+        }
 
+        private async void LogIn_Click(object sender, EventArgs e)
+        {
+            
+            var content = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("email", LoginAuto.Text),
+                new KeyValuePair<string, string>("password", PasswordAuto.Text),
+            });
+            var responce = await _httpClient.PostAsync(url, content);//передаём контент
+                                                                        
+            if (responce.IsSuccessStatusCode)
+            {
+                var responceContent = await responce.Content.ReadAsStringAsync();
+                Console.WriteLine($"{responce}");
+            }
+            else
+            {
+                Console.WriteLine("Ошибка");
+            }
         }
     }
 }

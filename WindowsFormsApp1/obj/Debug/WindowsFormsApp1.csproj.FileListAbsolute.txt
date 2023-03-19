@@ -9,3 +9,8 @@ D:\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCo
 D:\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 D:\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.RegisterForm.resources
+D:\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe.licenses
+D:\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
+D:\console-application\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
+D:\console-application\WindowsFormsApp1\bin\Debug\System.Numerics.Vectors.dll
+D:\console-application\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
