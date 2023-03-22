@@ -133,10 +133,5 @@ namespace WindowsFormsApp1
         }
 
 
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
-        {
-            coordinate = new Point(e.X, e. Y); // устанавливаем изначальное место
-        }
-
     }
 }

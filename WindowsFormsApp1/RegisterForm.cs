@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
-
+using System.Threading;
 
 
 
@@ -92,24 +92,26 @@ namespace WindowsFormsApp1
             var data = new
             {
                 name = LoginRegist.Text,
-                email = bunifuTextBox2.Text,
-                password = bunifuTextBox1.Text,
+                email = bunifuTextBox1.Text,
+                password = bunifuTextBox2.Text,
                 confirmPassword = bunifuTextBox3.Text
             };
             var response = await RegisterUserAsync(data);
-            MessageBox.Show(response);
+            //MessageBox.Show(response);
         }
 
         public static async Task<string> RegisterUserAsync(object data)
         {
             var httpClient = new HttpClient();
-            var url = "http://176.99.11.107/api/user/signup";
-            var content = JsonContent.Create(data);
-            Console.WriteLine(content.Value);
+            httpClient.BaseAddress = new Uri("http://176.99.11.107/api/user/");
+            var json = JsonSerializer.Serialize(data);
+            Console.WriteLine(json);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
             try
             {
-                var response = await httpClient.PostAsync(url, content);
-                Console.WriteLine(response);
+                var response = httpClient.PostAsync("signup", content).Result;
+                //Thread.Sleep(10000);
+                Console.WriteLine(response.Content.ReadAsStringAsync().Result);
                 //response.EnsureSuccessStatusCode();
                 //return await response.Content.ReadAsStringAsync();
             }
