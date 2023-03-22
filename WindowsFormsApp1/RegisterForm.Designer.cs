@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsFormsApp1
+namespace CrimeaCloud
 {
     partial class RegisterForm
     {
@@ -107,17 +107,17 @@ namespace WindowsFormsApp1
             // Register
             // 
             this.Register.AutoSize = true;
-            this.Register.Font = new System.Drawing.Font("Bell MT", 18F);
+            this.Register.Font = new System.Drawing.Font("Microsoft Tai Le", 18F);
             this.Register.ForeColor = System.Drawing.Color.White;
             this.Register.Location = new System.Drawing.Point(151, 156);
             this.Register.Name = "Register";
-            this.Register.Size = new System.Drawing.Size(168, 34);
+            this.Register.Size = new System.Drawing.Size(176, 38);
             this.Register.TabIndex = 12;
             this.Register.Text = "Registration";
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::WindowsFormsApp1.Properties.Resources.email_3;
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.Location = new System.Drawing.Point(73, 271);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(43, 40);
@@ -144,7 +144,6 @@ namespace WindowsFormsApp1
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 17;
             this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // pictureBox2
             // 
@@ -252,7 +251,6 @@ namespace WindowsFormsApp1
             this.LoginRegist.TextPlaceholder = "Username";
             this.LoginRegist.UseSystemPasswordChar = false;
             this.LoginRegist.WordWrap = true;
-            this.LoginRegist.TextChanged += new System.EventHandler(this.LoginRegist_TextChanged);
             // 
             // bunifuTextBox1
             // 
