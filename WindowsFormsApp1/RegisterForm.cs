@@ -61,7 +61,9 @@ namespace WindowsFormsApp1
 
         private void label1_Click(object sender, EventArgs e)
         {
+
             Application.Exit();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -73,6 +75,7 @@ namespace WindowsFormsApp1
 
         private void RegisterForm_Load(object sender, EventArgs e)
         {
+
             RegReg.AllowAnimations = false;
             AutorReg.AllowAnimations = false;
 

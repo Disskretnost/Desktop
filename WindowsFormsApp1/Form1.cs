@@ -78,7 +78,9 @@ namespace WindowsFormsApp1
 
         private void PasswordAuto_TextChanged(object sender, EventArgs e)
         {
+
             //Console.WriteLine($"{LoginAuto.Text}");
+
         }
 
         private void LoginAuto_TextChanged(object sender, EventArgs e)
@@ -129,5 +131,12 @@ namespace WindowsFormsApp1
                 Console.WriteLine("Ошибка");
             }
         }
+
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            coordinate = new Point(e.X, e. Y); // устанавливаем изначальное место
+        }
+
     }
 }
