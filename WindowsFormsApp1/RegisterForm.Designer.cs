@@ -252,6 +252,7 @@ namespace WindowsFormsApp1
             this.LoginRegist.TextPlaceholder = "Username";
             this.LoginRegist.UseSystemPasswordChar = false;
             this.LoginRegist.WordWrap = true;
+            this.LoginRegist.TextChanged += new System.EventHandler(this.LoginRegist_TextChanged);
             // 
             // bunifuTextBox1
             // 
