@@ -67,7 +67,6 @@ C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\bin\Debug\S
 C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\bin\Debug\System.ValueTuple.xml
 C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
-C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
 C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.RegisterForm.resources
 C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
@@ -76,3 +75,4 @@ C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\obj\Debug\W
 C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
 C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.LoginForm.resources

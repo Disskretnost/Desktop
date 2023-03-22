@@ -1,7 +1,7 @@
 ﻿
-namespace WindowsFormsApp1
+namespace CrimeaCloud
 {
-    partial class Form1
+    partial class LoginForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -30,7 +30,7 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -55,7 +55,7 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            //
+            // 
             // registerlabel
             // 
             this.registerlabel.AutoSize = true;
@@ -79,9 +79,9 @@ namespace WindowsFormsApp1
             this.resetLabel.ForeColor = System.Drawing.Color.White;
             this.resetLabel.Location = new System.Drawing.Point(225, 470);
             this.resetLabel.Name = "resetLabel";
-            this.resetLabel.Size = new System.Drawing.Size(195, 29);
+            this.resetLabel.Size = new System.Drawing.Size(186, 29);
             this.resetLabel.TabIndex = 10;
-            this.resetLabel.Text = "Restore password?";
+            this.resetLabel.Text = "Forgot password?";
             this.resetLabel.Click += new System.EventHandler(this.resetLabel_Click);
             // 
             // Close
@@ -113,9 +113,7 @@ namespace WindowsFormsApp1
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(69, 234);
             this.pictureBox2.Name = "pictureBox2";
-
             this.pictureBox2.Size = new System.Drawing.Size(43, 43);
-
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
@@ -125,9 +123,7 @@ namespace WindowsFormsApp1
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(69, 298);
             this.pictureBox1.Name = "pictureBox1";
-
             this.pictureBox1.Size = new System.Drawing.Size(43, 43);
-
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
@@ -194,7 +190,7 @@ namespace WindowsFormsApp1
             this.LoginAuto.Padding = new System.Windows.Forms.Padding(3);
             this.LoginAuto.PasswordChar = '\0';
             this.LoginAuto.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.LoginAuto.PlaceholderText = "Login";
+            this.LoginAuto.PlaceholderText = "Email";
             this.LoginAuto.ReadOnly = false;
             this.LoginAuto.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.LoginAuto.SelectedText = "";
@@ -208,10 +204,9 @@ namespace WindowsFormsApp1
             this.LoginAuto.TextMarginBottom = 0;
             this.LoginAuto.TextMarginLeft = 3;
             this.LoginAuto.TextMarginTop = 0;
-            this.LoginAuto.TextPlaceholder = "Login";
+            this.LoginAuto.TextPlaceholder = "Email";
             this.LoginAuto.UseSystemPasswordChar = false;
             this.LoginAuto.WordWrap = true;
-            this.LoginAuto.TextChanged += new System.EventHandler(this.LoginAuto_TextChanged);
             // 
             // PasswordAuto
             // 
@@ -287,7 +282,6 @@ namespace WindowsFormsApp1
             this.PasswordAuto.TextPlaceholder = "Password";
             this.PasswordAuto.UseSystemPasswordChar = false;
             this.PasswordAuto.WordWrap = true;
-            this.PasswordAuto.TextChanged += new System.EventHandler(this.PasswordAuto_TextChanged);
             // 
             // LogIn
             // 
@@ -389,9 +383,8 @@ namespace WindowsFormsApp1
             this.label1.Size = new System.Drawing.Size(167, 38);
             this.label1.TabIndex = 17;
             this.label1.Text = "Apps Login";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // Form1
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -408,11 +401,11 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            //this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
