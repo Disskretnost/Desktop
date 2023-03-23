@@ -36,3 +36,4 @@ C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\obj\Debug\C
 C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\obj\Debug\CrimeaCloud.csproj.CopyComplete
 C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\black\Documents\GitHub\console-application\WindowsFormsApp1\obj\Debug\CrimeaCloud.csproj.AssemblyReference.cache

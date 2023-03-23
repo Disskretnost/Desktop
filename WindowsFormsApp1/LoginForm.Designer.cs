@@ -282,6 +282,7 @@ namespace CrimeaCloud
             this.PasswordAuto.TextPlaceholder = "Password";
             this.PasswordAuto.UseSystemPasswordChar = false;
             this.PasswordAuto.WordWrap = true;
+            this.PasswordAuto.TextChange += new System.EventHandler(this.PasswordAuto_TextChange);
             // 
             // LogIn
             // 

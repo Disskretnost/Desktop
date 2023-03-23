@@ -401,6 +401,7 @@ namespace CrimeaCloud
             this.bunifuTextBox2.TextPlaceholder = "Password";
             this.bunifuTextBox2.UseSystemPasswordChar = false;
             this.bunifuTextBox2.WordWrap = true;
+            this.bunifuTextBox2.TextChange += new System.EventHandler(this.bunifuTextBox2_TextChange);
             // 
             // bunifuTextBox3
             // 
@@ -476,6 +477,7 @@ namespace CrimeaCloud
             this.bunifuTextBox3.TextPlaceholder = "Repeat password";
             this.bunifuTextBox3.UseSystemPasswordChar = false;
             this.bunifuTextBox3.WordWrap = true;
+            this.bunifuTextBox3.TextChange += new System.EventHandler(this.bunifuTextBox3_TextChange);
             // 
             // AutorReg
             // 

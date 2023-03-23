@@ -63,8 +63,21 @@ namespace CrimeaCloud
             Console.WriteLine(response.Content.ReadAsStringAsync().Result);
         }
 
-        
+        private void bunifuTextBox2_TextChange(object sender, EventArgs e)
+        {
+            if (bunifuTextBox2.Text.Length == 0)
+                this.bunifuTextBox2.PasswordChar = '\0';
+            else
+                this.bunifuTextBox2.PasswordChar = '*';
+        }
 
+        private void bunifuTextBox3_TextChange(object sender, EventArgs e)
+        {
+            if (bunifuTextBox3.Text.Length == 0)
+                this.bunifuTextBox3.PasswordChar = '\0';
+            else
+                this.bunifuTextBox3.PasswordChar = '*';
+        }
     }
 
 }
