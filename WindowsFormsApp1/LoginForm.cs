@@ -17,14 +17,12 @@ namespace CrimeaCloud
         {
             Hide();
             RegisterForm registerForm = new RegisterForm();
+            registerForm.StartPosition = FormStartPosition.Manual;
+            registerForm.Location = Location;
             registerForm.Show();
-            //Close();
+           
         }
 
-        private void Close_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
         private void Close_MouseLeave(object sender, EventArgs e)
         {
@@ -93,6 +91,15 @@ namespace CrimeaCloud
             coordinate = new Point(e.X, e.Y);
         }
 
+        private void Close_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
         private void PasswordAuto_TextChange(object sender, EventArgs e)
         {
             if (PasswordAuto.Text.Length == 0)

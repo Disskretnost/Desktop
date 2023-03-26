@@ -46,6 +46,8 @@ namespace CrimeaCloud
         {
             Hide();
             LoginForm loginform = new LoginForm();
+            loginform.StartPosition = FormStartPosition.Manual;
+            loginform.Location = Location;
             loginform.Show();
         }
 
@@ -61,6 +63,12 @@ namespace CrimeaCloud
             };
             var response = await ConnectHttp.RegisterUserAsync(data);
             Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+        }
+
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
 
         private void bunifuTextBox2_TextChange(object sender, EventArgs e)
