@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
+using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
 
@@ -73,16 +75,22 @@ namespace CrimeaCloud
                 password = PasswordAuto.Text
             };
             var response = await ConnectHttp.LoginUserAsync(data);
-            //var info = response.Content.ReadAsStringAsync().Result;
-            Console.WriteLine("Status code: " + response.StatusCode);
-            Console.WriteLine("Phrase: " + response.ReasonPhrase);
-            if (response.IsSuccessStatusCode)
+            if (response.StatusCode == System.Net.HttpStatusCode.OK) //записываем токен, переходим на форму с облаком
             {
-                UserData dataServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
-                Console.WriteLine("Token: " + dataServ.token);
+                UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
+                Console.WriteLine($"{dataFromServ.user.id} Token ({dataFromServ.user.name}){dataFromServ.token}");
+                Console.WriteLine($"Email: {dataFromServ.user.email}");
+                using (FileStream fstream = new FileStream("secrets.txt", FileMode.Create))
+                {
+                    byte[] buffer = Encoding.Default.GetBytes(dataFromServ.token);
+                    await fstream.WriteAsync(buffer, 0, buffer.Length);
+                }
             }
             else
-                Console.WriteLine("Ошибка входа: " + response.StatusCode);
+            {
+                ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
+                Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
+            }
         }
 
 

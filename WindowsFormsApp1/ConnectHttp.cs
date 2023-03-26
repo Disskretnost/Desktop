@@ -17,7 +17,6 @@ namespace CrimeaCloud
             try
             {
                 var response = await httpClient.PostAsync("signin", content);
-                //Console.WriteLine(response.Content.ReadAsStringAsync().Result);
                 return response;
             }
             catch (HttpRequestException ex)

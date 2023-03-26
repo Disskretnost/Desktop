@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
+using System.Text;
+using System.Text.Json;
 using System.Windows.Forms;
 
 
@@ -62,7 +65,22 @@ namespace CrimeaCloud
                 confirmPassword = bunifuTextBox3.Text
             };
             var response = await ConnectHttp.RegisterUserAsync(data);
-            Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK) //записываем токен, переходим на форму с облаком
+            {
+                UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
+                Console.WriteLine($"Id: {dataFromServ.user.id}. Token: ({dataFromServ.user.name}) {dataFromServ.token}");
+                Console.WriteLine($"Email: {dataFromServ.user.email}");
+                using (FileStream fstream = new FileStream("secrets.txt", FileMode.Create))
+                {
+                    byte[] buffer = Encoding.Default.GetBytes(dataFromServ.token);
+                    await fstream.WriteAsync(buffer, 0, buffer.Length);
+                }
+            }
+            else
+            {
+                ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
+                Console.WriteLine($"Ошибка: {errorInfo.message} {errorInfo.status}");
+            }
         }
 
 
