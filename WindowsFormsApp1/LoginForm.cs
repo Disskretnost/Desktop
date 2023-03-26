@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Text.Json;
 using System.Windows.Forms;
 
 namespace CrimeaCloud
@@ -72,7 +73,16 @@ namespace CrimeaCloud
                 password = PasswordAuto.Text
             };
             var response = await ConnectHttp.LoginUserAsync(data);
-            Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+            //var info = response.Content.ReadAsStringAsync().Result;
+            Console.WriteLine("Status code: " + response.StatusCode);
+            Console.WriteLine("Phrase: " + response.ReasonPhrase);
+            if (response.IsSuccessStatusCode)
+            {
+                UserData dataServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
+                Console.WriteLine("Token: " + dataServ.token);
+            }
+            else
+                Console.WriteLine("Ошибка входа: " + response.StatusCode);
         }
 
 
@@ -89,6 +99,13 @@ namespace CrimeaCloud
         private void pictureBox6_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+        private void PasswordAuto_TextChange(object sender, EventArgs e)
+        {
+            if (PasswordAuto.Text.Length == 0)
+                this.PasswordAuto.PasswordChar = '\0';
+            else
+                this.PasswordAuto.PasswordChar = '*';
         }
     }
 }
