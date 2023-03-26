@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+
+namespace CrimeaCloud
 {
     public partial class RegisterForm : Form
     {
@@ -16,32 +11,8 @@ namespace WindowsFormsApp1
         public RegisterForm()
         {
             InitializeComponent();
-        }
-
-        
-        
-
-        private void LoginField_TextChanged(object sender, EventArgs e)
-        {
 
         }
-
-        private void PasswordField_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void email_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PssswordCon_TextChanged(object sender, EventArgs e)
-        {
-
-        }
- 
-
         private void RegisterForm_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -60,19 +31,44 @@ namespace WindowsFormsApp1
         {
 
             Application.Exit();
-            
-        }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Form1 f1 = new Form1();
-            f1.Show();
-            Hide();
         }
 
         private void RegisterForm_Load(object sender, EventArgs e)
         {
 
+            RegReg.AllowAnimations = false;
+            AutorReg.AllowAnimations = false;
+
+        }
+
+        private void AutorReg_Click(object sender, EventArgs e)
+        {
+            Hide();
+            LoginForm loginform = new LoginForm();
+            loginform.StartPosition = FormStartPosition.Manual;
+            loginform.Location = Location;
+            loginform.Show();
+        }
+
+        private async void RegReg_Click(object sender, EventArgs e)
+        {
+            
+            var data = new
+            {
+                name = LoginRegist.Text,
+                email = bunifuTextBox1.Text,
+                password = bunifuTextBox2.Text,
+                confirmPassword = bunifuTextBox3.Text
+            };
+            var response = await ConnectHttp.RegisterUserAsync(data);
+            Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
+
 }
