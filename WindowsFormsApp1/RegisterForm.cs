@@ -56,7 +56,6 @@ namespace CrimeaCloud
 
         private async void RegReg_Click(object sender, EventArgs e)
         {
-            
             var data = new
             {
                 name = LoginRegist.Text,
@@ -64,23 +63,18 @@ namespace CrimeaCloud
                 password = bunifuTextBox2.Text,
                 confirmPassword = bunifuTextBox3.Text
             };
-            var response = await ConnectHttp.RegisterUserAsync(data);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK) //записываем токен, переходим на форму с облаком
-            {
-                UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
-                Console.WriteLine($"Id: {dataFromServ.user.id}. Token: ({dataFromServ.user.name}) {dataFromServ.token}");
-                Console.WriteLine($"Email: {dataFromServ.user.email}");
-                using (FileStream fstream = new FileStream("secrets.txt", FileMode.Create))
-                {
-                    byte[] buffer = Encoding.Default.GetBytes(dataFromServ.token);
-                    await fstream.WriteAsync(buffer, 0, buffer.Length);
-                }
-            }
-            else
+            var response = await ConnectHttp.PostData(data, "http://176.99.11.107/api/user/", "signup");
+            if (!(response.StatusCode == System.Net.HttpStatusCode.OK))
             {
                 ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
-                Console.WriteLine($"Ошибка: {errorInfo.message} {errorInfo.status}");
+                Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
+                errorInfo.PrintError(errorInfo.message);
+                return;
             }
+            UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
+            Console.WriteLine($"{dataFromServ.user.id} Token ({dataFromServ.user.name}){dataFromServ.token}");
+            Console.WriteLine($"Email: {dataFromServ.user.email}");
+            UserData.SaveToken(dataFromServ.token);
         }
 
 
