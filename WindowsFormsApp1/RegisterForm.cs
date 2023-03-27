@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
+using System.Text;
+using System.Text.Json;
 using System.Windows.Forms;
 
 
@@ -53,7 +56,6 @@ namespace CrimeaCloud
 
         private async void RegReg_Click(object sender, EventArgs e)
         {
-            
             var data = new
             {
                 name = LoginRegist.Text,
@@ -61,8 +63,18 @@ namespace CrimeaCloud
                 password = bunifuTextBox2.Text,
                 confirmPassword = bunifuTextBox3.Text
             };
-            var response = await ConnectHttp.RegisterUserAsync(data);
-            Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+            var response = await ConnectHttp.PostData(data, "http://176.99.11.107/api/user/", "signup");
+            if (!(response.StatusCode == System.Net.HttpStatusCode.OK))
+            {
+                ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
+                Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
+                errorInfo.PrintError(errorInfo.message);
+                return;
+            }
+            UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
+            Console.WriteLine($"{dataFromServ.user.id} Token ({dataFromServ.user.name}){dataFromServ.token}");
+            Console.WriteLine($"Email: {dataFromServ.user.email}");
+            UserData.SaveToken(dataFromServ.token);
         }
 
 

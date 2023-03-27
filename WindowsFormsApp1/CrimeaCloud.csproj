@@ -49,6 +49,12 @@
     <Reference Include="Bunifu.UI.WinForms.BunifuLabel">
       <HintPath>frem\Bunifu.UI.WinForms.BunifuLabel.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuPanel">
+      <HintPath>frem\Bunifu.UI.WinForms.BunifuPanel.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuSeparator">
+      <HintPath>frem\Bunifu.UI.WinForms.BunifuSeparator.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuTextbox">
       <HintPath>frem\Bunifu.UI.WinForms.BunifuTextbox.dll</HintPath>
     </Reference>
