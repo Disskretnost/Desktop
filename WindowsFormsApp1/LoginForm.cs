@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
+using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
 
@@ -72,22 +74,23 @@ namespace CrimeaCloud
                 email = LoginAuto.Text,
                 password = PasswordAuto.Text
             };
-            var response = await ConnectHttp.LoginUserAsync(data);
-            //var info = response.Content.ReadAsStringAsync().Result;
-            Console.WriteLine("Status code: " + response.StatusCode);
-            Console.WriteLine("Phrase: " + response.ReasonPhrase);
-            if (response.IsSuccessStatusCode)
+            var response = await ConnectHttp.PostData(data, "http://176.99.11.107/api/user/", "signin");
+            if (!(response.StatusCode == System.Net.HttpStatusCode.OK))
             {
-                Hide();
-                MainForm mainForm = new MainForm();
-                mainForm.StartPosition = FormStartPosition.Manual;
-                mainForm.Location = Location;
-                mainForm.Show();
-                UserData dataServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
-                Console.WriteLine("Token: " + dataServ.token);
+                ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
+                Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
+                errorInfo.PrintError(errorInfo.message);
+                return;
             }
-            else
-                Console.WriteLine("Ошибка входа: " + response.StatusCode);
+            UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
+            Console.WriteLine($"{dataFromServ.user.id} Token ({dataFromServ.user.name}){dataFromServ.token}");
+            Console.WriteLine($"Email: {dataFromServ.user.email}");
+            UserData.SaveToken(dataFromServ.token);
+            Hide();
+            MainForm mainForm = new MainForm();
+            mainForm.StartPosition = FormStartPosition.Manual;
+            mainForm.Location = Location;
+            mainForm.Show();
         }
 
 
