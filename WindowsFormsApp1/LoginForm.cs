@@ -86,6 +86,11 @@ namespace CrimeaCloud
             Console.WriteLine($"{dataFromServ.user.id} Token ({dataFromServ.user.name}){dataFromServ.token}");
             Console.WriteLine($"Email: {dataFromServ.user.email}");
             UserData.SaveToken(dataFromServ.token);
+            Hide();
+            MainForm mainForm = new MainForm();
+            mainForm.StartPosition = FormStartPosition.Manual;
+            mainForm.Location = Location;
+            mainForm.Show();
         }
 
 
