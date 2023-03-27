@@ -78,6 +78,11 @@ namespace CrimeaCloud
             Console.WriteLine("Phrase: " + response.ReasonPhrase);
             if (response.IsSuccessStatusCode)
             {
+                Hide();
+                MainForm mainForm = new MainForm();
+                mainForm.StartPosition = FormStartPosition.Manual;
+                mainForm.Location = Location;
+                mainForm.Show();
                 UserData dataServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
                 Console.WriteLine("Token: " + dataServ.token);
             }
