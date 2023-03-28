@@ -67,8 +67,13 @@ namespace CrimeaCloud
             if (!(response.StatusCode == System.Net.HttpStatusCode.OK))
             {
                 ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
-                Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
-                errorInfo.PrintError(errorInfo.message);
+                ErrorMessage errorMessage = new ErrorMessage();
+                errorMessage.SetMessageText(errorInfo.message.ToString()); //без ToString тоже ошибка с кодировкой 
+                errorMessage.Show();
+                //MessageForm messageForm = new MessageForm();
+                //messageForm.SetMessageText("Новое сообщение от сервера");
+                //Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
+                //errorInfo.PrintError(errorInfo.message);
                 return;
             }
             UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
