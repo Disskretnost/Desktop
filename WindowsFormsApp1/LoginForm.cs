@@ -83,9 +83,10 @@ namespace CrimeaCloud
                 return;
             }
             UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result); //в экземпляр класса передаем информация с сервера
+            //распаковали данные 
             Console.WriteLine($"{dataFromServ.user.id} Token ({dataFromServ.user.name}){dataFromServ.token}");
-            Console.WriteLine($"Email: {dataFromServ.user.email}");
-            UserData.SaveToken(dataFromServ.token);
+            Console.WriteLine($"Email: {dataFromServ.user.email}"); 
+            UserData.SaveToken(dataFromServ.token); //записали токен в файл
             Hide();
             MainForm mainForm = new MainForm();
             mainForm.StartPosition = FormStartPosition.Manual;
