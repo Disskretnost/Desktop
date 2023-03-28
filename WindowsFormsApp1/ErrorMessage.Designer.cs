@@ -61,7 +61,7 @@ namespace CrimeaCloud
             this.bunifuPanel1.ShowBorders = true;
             this.bunifuPanel1.Size = new System.Drawing.Size(405, 110);
             this.bunifuPanel1.TabIndex = 0;
-            this.bunifuPanel1.Click += new System.EventHandler(this.bunifuPanel1_Click);
+            
             // 
             // bunifuLabel1
             // 
@@ -112,7 +112,7 @@ namespace CrimeaCloud
             this.bunifuPanel2.ShowBorders = true;
             this.bunifuPanel2.Size = new System.Drawing.Size(25, 33);
             this.bunifuPanel2.TabIndex = 38;
-            this.bunifuPanel2.Click += new System.EventHandler(this.bunifuPanel2_Click);
+            
             // 
             // ErrorMessage
             // 

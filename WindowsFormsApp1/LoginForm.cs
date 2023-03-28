@@ -78,8 +78,10 @@ namespace CrimeaCloud
             if (!(response.StatusCode == System.Net.HttpStatusCode.OK)) // если статус не 200
             {
                 ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
-                // Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
-                errorInfo.PrintError(errorInfo.message);
+                ErrorMessage errorMessage = new ErrorMessage();
+                errorMessage.SetMessageText(errorInfo.message.ToString()); //без ToString тоже ошибка с кодировкой 
+                errorMessage.Show();
+                //Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
                 return;
             }
             UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result); //в экземпляр класса передаем информация с сервера

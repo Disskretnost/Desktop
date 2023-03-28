@@ -70,15 +70,12 @@ namespace CrimeaCloud
                 ErrorMessage errorMessage = new ErrorMessage();
                 errorMessage.SetMessageText(errorInfo.message.ToString()); //без ToString тоже ошибка с кодировкой 
                 errorMessage.Show();
-                //MessageForm messageForm = new MessageForm();
-                //messageForm.SetMessageText("Новое сообщение от сервера");
                 //Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
-                //errorInfo.PrintError(errorInfo.message);
                 return;
             }
             UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
-            Console.WriteLine($"{dataFromServ.user.id} Token ({dataFromServ.user.name}){dataFromServ.token}");
-            Console.WriteLine($"Email: {dataFromServ.user.email}");
+            //Console.WriteLine($"{dataFromServ.user.id} Token ({dataFromServ.user.name}){dataFromServ.token}");
+            //Console.WriteLine($"Email: {dataFromServ.user.email}");
             UserData.SaveToken(dataFromServ.token);
         }
 
