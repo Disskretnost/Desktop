@@ -75,14 +75,14 @@ namespace CrimeaCloud
                 password = PasswordAuto.Text
             };
             var response = await ConnectHttp.PostData(data, "http://176.99.11.107/api/user/", "signin");
-            if (!(response.StatusCode == System.Net.HttpStatusCode.OK))
+            if (!(response.StatusCode == System.Net.HttpStatusCode.OK)) // если статус не 200
             {
                 ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
                 Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
                 errorInfo.PrintError(errorInfo.message);
                 return;
             }
-            UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
+            UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result); //в экземпляр класса передаем информация с сервера
             Console.WriteLine($"{dataFromServ.user.id} Token ({dataFromServ.user.name}){dataFromServ.token}");
             Console.WriteLine($"Email: {dataFromServ.user.email}");
             UserData.SaveToken(dataFromServ.token);
