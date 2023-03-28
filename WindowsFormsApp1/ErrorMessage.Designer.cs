@@ -75,6 +75,7 @@ namespace CrimeaCloud
             this.bunifuLabel1.ForeColor = System.Drawing.Color.White;
             this.bunifuLabel1.Location = new System.Drawing.Point(0, 0);
             this.bunifuLabel1.Name = "bunifuLabel1";
+            this.bunifuLabel1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 0);
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(405, 110);
             this.bunifuLabel1.TabIndex = 0;

@@ -30,11 +30,6 @@ namespace CrimeaCloud
             this.Close();
         }
 
-        private void bunifuPanel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void bunifuLabel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -52,11 +47,6 @@ namespace CrimeaCloud
         private void Close_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void bunifuPanel2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
