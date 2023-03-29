@@ -75,16 +75,10 @@ namespace CrimeaCloud
                 password = PasswordAuto.Text
             };
             var response = await ConnectHttp.PostData(data, "http://176.99.11.107/api/user/", "signin");
-            ErrorMessage errorMessage = new ErrorMessage();
-            if (response == null)
-            {
-                errorMessage.SetMessageText("No netconnection"); //без ToString тоже ошибка с кодировкой  
-                errorMessage.Show();
-                return;
-            }
             if (!(response.StatusCode == System.Net.HttpStatusCode.OK)) // если статус не 200
             {
                 ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
+                ErrorMessage errorMessage = new ErrorMessage();
                 errorMessage.SetMessageText(errorInfo.message.ToString()); //без ToString тоже ошибка с кодировкой 
                 errorMessage.Show();
                 //Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");

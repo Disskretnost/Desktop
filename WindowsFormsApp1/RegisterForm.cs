@@ -64,27 +64,20 @@ namespace CrimeaCloud
                 confirmPassword = bunifuTextBox3.Text
             };
             var response = await ConnectHttp.PostData(data, "http://176.99.11.107/api/user/", "signup");
-            ErrorMessage errorMessage = new ErrorMessage();
-            if (response == null)
+            if (!(response.StatusCode == System.Net.HttpStatusCode.OK))
             {
-                errorMessage.SetMessageText("No netconnection"); //без ToString тоже ошибка с кодировкой  
+                ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
+                ErrorMessage errorMessage = new ErrorMessage();
+                errorMessage.SetMessageText(errorInfo.message.ToString()); //без ToString тоже ошибка с кодировкой 
                 errorMessage.Show();
+                //Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
                 return;
             }
-                if (!(response.StatusCode == System.Net.HttpStatusCode.OK))
-                {
-                    ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
-                    errorMessage.SetMessageText(errorInfo.message.ToString()); //без ToString тоже ошибка с кодировкой 
-                    errorMessage.Show();
-                    //Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
-                    return;
-                }
-                UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
-                //Console.WriteLine($"{dataFromServ.user.id} Token ({dataFromServ.user.name}){dataFromServ.token}");
-                //Console.WriteLine($"Email: {dataFromServ.user.email}");
-                UserData.SaveToken(dataFromServ.token);
-            }
-        
+            UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
+            //Console.WriteLine($"{dataFromServ.user.id} Token ({dataFromServ.user.name}){dataFromServ.token}");
+            //Console.WriteLine($"Email: {dataFromServ.user.email}");
+            UserData.SaveToken(dataFromServ.token);
+        }
 
 
         private void pictureBox6_Click(object sender, EventArgs e)
