@@ -75,17 +75,26 @@ namespace CrimeaCloud
                 password = PasswordAuto.Text
             };
             var response = await ConnectHttp.PostData(data, "http://176.99.11.107/api/user/", "signin");
-            if (!(response.StatusCode == System.Net.HttpStatusCode.OK))
+            ErrorMessage errorMessage = new ErrorMessage();
+            if (response == null)
             {
-                ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
-                Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
-                errorInfo.PrintError(errorInfo.message);
+                errorMessage.SetMessageText("No netconnection"); //без ToString тоже ошибка с кодировкой 
+                errorMessage.Show();
                 return;
             }
-            UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
+            if (!(response.StatusCode == System.Net.HttpStatusCode.OK)) // если статус не 200
+            {
+                ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
+                errorMessage.SetMessageText(errorInfo.message.ToString()); //без ToString тоже ошибка с кодировкой 
+                errorMessage.Show();
+                //Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
+                return;
+            }
+            UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result); //в экземпляр класса передаем информация с сервера
+            //распаковали данные 
             Console.WriteLine($"{dataFromServ.user.id} Token ({dataFromServ.user.name}){dataFromServ.token}");
-            Console.WriteLine($"Email: {dataFromServ.user.email}");
-            UserData.SaveToken(dataFromServ.token);
+            Console.WriteLine($"Email: {dataFromServ.user.email}"); 
+            UserData.SaveToken(dataFromServ.token); //записали токен в файл
             Hide();
             MainForm mainForm = new MainForm();
             mainForm.StartPosition = FormStartPosition.Manual;
