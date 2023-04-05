@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
@@ -9,16 +10,32 @@ namespace CrimeaCloud
     /// </summary>
     class UserData
     {
+        private static readonly byte[] entropy = { 0x15, 0x30, 0x23, 0x14, 0x4, 0xAB, 0xCD, 0xEF };
         public string token { get; set; }
         public User user { get; set; }
         public async static void SaveToken(string token)
         {
-            using (FileStream fstream = new FileStream("secrets.txt", FileMode.Create))
-            {
-                byte[] buffer = Encoding.Default.GetBytes(token);
-                await fstream.WriteAsync(buffer, 0, buffer.Length);
-            }
+            byte[] data = Encoding.Unicode.GetBytes(token);
+            byte[] encryptedData = ProtectedData.Protect(data, entropy, DataProtectionScope.CurrentUser);
+            File.WriteAllBytes("secrets.bin", encryptedData);
         }
+        public static string ReadToken()
+        {
+            if (File.Exists("secrets.bin"))
+            {
+                byte[] encryptedData = File.ReadAllBytes("secrets.bin");
+                byte[] data = ProtectedData.Unprotect(encryptedData, entropy, DataProtectionScope.CurrentUser);
+                return Encoding.Unicode.GetString(data);
+            }
+            return null;
+        }
+        public async static void ClearToken()
+        {
+            byte[] data = Encoding.Unicode.GetBytes("");
+            byte[] encryptedData = ProtectedData.Protect(data, entropy, DataProtectionScope.CurrentUser);
+            File.WriteAllBytes("secrets.bin", encryptedData);
+        }
+        
     }
     class User
     {
@@ -33,26 +50,6 @@ namespace CrimeaCloud
     {
         public int status { get; set; }
         public string message { get; set; }
-        public void PrintError(string message)
-        {
-            switch (message) //В кейсы поместить месседж боксы, чтоб пользователь знал что не так.
-            {
-                case "Неверный пароль!":
-                    //MessageBox.Show("Неверный пароль!");
-                    break;
-                case "Пользователь с такой почтой не найден.":
-                    //MessageBox.Show("Пользователь с такой почтой не найден.");
-                    break;
-                case "Пароли не совпадают":
-                    //MessageBox.Show("Пароли не совпадают");
-                    break;
-                case "Пользователь с такой электронной почтой уже существует":
-                    //MessageBox.Show("Пользователь с такой электронной почтой уже существует");
-                    break;
-                default:
-                    MessageBox.Show($"Не знаю что это: {message}");
-                    break;
-            }
-        }
+       
     }
 }

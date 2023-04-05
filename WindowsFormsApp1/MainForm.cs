@@ -51,7 +51,7 @@ namespace CrimeaCloud
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Minimized;
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -97,6 +97,16 @@ namespace CrimeaCloud
         private void button4_MouseLeave(object sender, EventArgs e)
         {
             button4.BackColor = Color.FromArgb(40, 40, 40);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            UserData.ClearToken();
+            Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.StartPosition = FormStartPosition.Manual;
+            loginForm.Location = Location;
+            loginForm.Show();
         }
     }
 }
