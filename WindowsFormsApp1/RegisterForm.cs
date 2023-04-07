@@ -51,7 +51,8 @@ namespace CrimeaCloud
             LoginForm loginform = new LoginForm();
             loginform.StartPosition = FormStartPosition.Manual;
             loginform.Location = Location;
-            loginform.Show();
+            loginform.ShowDialog();
+            Close();
         }
 
         private async void RegReg_Click(object sender, EventArgs e)

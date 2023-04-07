@@ -18,6 +18,7 @@ namespace CrimeaCloud
         public MainForm()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
         }
 
         private void bunifuPanel1_Click(object sender, EventArgs e)
@@ -56,7 +57,7 @@ namespace CrimeaCloud
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-         
+            
         }
 
         private void button1_MouseLeave(object sender, EventArgs e)
@@ -105,8 +106,25 @@ namespace CrimeaCloud
             Hide();
             LoginForm loginForm = new LoginForm();
             loginForm.StartPosition = FormStartPosition.Manual;
-            loginForm.Location = Location;
-            loginForm.Show();
+            loginForm.Location = new Point(Location.X + 400, Location.Y + 165);
+            loginForm.ShowDialog();
+            Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Visible = true;
+            //Controls["imgPnl1"].Text = "It's working.txt";
+            //flowLayoutPanel1.Controls["imgPnl2"].Text = "It's working.txt";
+            flowLayoutPanel1.Controls["imgPnl20"].Text = "It's workingx.txt";
+            for(int i = 1; i < 21; i++)
+            {
+                flowLayoutPanel1.Controls[$"imgPnl{i}"].Visible = true;
+            }
+            //Controls["imgPnl1"].Text
+            //TESTControl.ImgPnl img = new TESTControl.ImgPnl() { Size = new Size(100, 100), Location = new Point(200, 200), Text = "New" };
+            //Controls.Add(img);
+
         }
     }
 }

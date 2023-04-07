@@ -267,6 +267,12 @@
     <Compile Include="ErrorMessage.Designer.cs">
       <DependentUpon>ErrorMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImgPnl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ImgPnl.designer.cs">
+      <DependentUpon>ImgPnl.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +296,9 @@
     <Compile Include="UserData.cs" />
     <EmbeddedResource Include="ErrorMessage.resx">
       <DependentUpon>ErrorMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImgPnl.resx">
+      <DependentUpon>ImgPnl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
