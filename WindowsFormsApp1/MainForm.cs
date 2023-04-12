@@ -160,11 +160,6 @@ namespace CrimeaCloud
             // Добавляем обработчик события прокрутки
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             ErrorMessage err = new ErrorMessage();

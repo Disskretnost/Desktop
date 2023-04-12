@@ -127,7 +127,7 @@ namespace TESTControl
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
-
+            Console.WriteLine("dfdfdf");
         }
 
         private void pictureBox1_Layout(object sender, LayoutEventArgs e)

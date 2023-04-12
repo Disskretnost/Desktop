@@ -33,9 +33,9 @@ namespace CrimeaCloud
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ErrorMessage));
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
-            this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.Close = new System.Windows.Forms.Label();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.Close = new System.Windows.Forms.Label();
+            this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel1.SuspendLayout();
             this.bunifuPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +61,34 @@ namespace CrimeaCloud
             this.bunifuPanel1.ShowBorders = true;
             this.bunifuPanel1.Size = new System.Drawing.Size(405, 110);
             this.bunifuPanel1.TabIndex = 0;
-            
+            // 
+            // bunifuPanel2
+            // 
+            this.bunifuPanel2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuPanel2.BackgroundImage")));
+            this.bunifuPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuPanel2.BorderRadius = 0;
+            this.bunifuPanel2.BorderThickness = 0;
+            this.bunifuPanel2.Controls.Add(this.Close);
+            this.bunifuPanel2.Location = new System.Drawing.Point(368, 3);
+            this.bunifuPanel2.Name = "bunifuPanel2";
+            this.bunifuPanel2.ShowBorders = true;
+            this.bunifuPanel2.Size = new System.Drawing.Size(25, 33);
+            this.bunifuPanel2.TabIndex = 38;
+            // 
+            // Close
+            // 
+            this.Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.Close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Close.Font = new System.Drawing.Font("Berlin Sans FB", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Close.ForeColor = System.Drawing.Color.MintCream;
+            this.Close.Location = new System.Drawing.Point(3, 6);
+            this.Close.Name = "Close";
+            this.Close.Size = new System.Drawing.Size(22, 30);
+            this.Close.TabIndex = 37;
+            this.Close.Text = "X";
+            this.Close.Click += new System.EventHandler(this.Close_Click);
             // 
             // bunifuLabel1
             // 
@@ -84,35 +111,6 @@ namespace CrimeaCloud
             this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.bunifuLabel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bunifuLabel1_MouseDown);
             this.bunifuLabel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.bunifuLabel1_MouseMove);
-            // 
-            // Close
-            // 
-            this.Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.Close.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Close.Font = new System.Drawing.Font("Berlin Sans FB", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Close.ForeColor = System.Drawing.Color.MintCream;
-            this.Close.Location = new System.Drawing.Point(3, 6);
-            this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(22, 30);
-            this.Close.TabIndex = 37;
-            this.Close.Text = "X";
-            this.Close.Click += new System.EventHandler(this.Close_Click);
-            // 
-            // bunifuPanel2
-            // 
-            this.bunifuPanel2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.bunifuPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuPanel2.BackgroundImage")));
-            this.bunifuPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.bunifuPanel2.BorderRadius = 0;
-            this.bunifuPanel2.BorderThickness = 0;
-            this.bunifuPanel2.Controls.Add(this.Close);
-            this.bunifuPanel2.Location = new System.Drawing.Point(368, 3);
-            this.bunifuPanel2.Name = "bunifuPanel2";
-            this.bunifuPanel2.ShowBorders = true;
-            this.bunifuPanel2.Size = new System.Drawing.Size(25, 33);
-            this.bunifuPanel2.TabIndex = 38;
-            
             // 
             // ErrorMessage
             // 
