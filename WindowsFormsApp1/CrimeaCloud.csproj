@@ -73,6 +73,9 @@
     <Reference Include="Bunifu.UI.WinForms.BunifuPanel">
       <HintPath>frem\Bunifu.UI.WinForms.BunifuPanel.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuPictureBox">
+      <HintPath>frem\Bunifu.UI.WinForms.BunifuPictureBox.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuScrollBar">
       <HintPath>frem\Bunifu.UI.WinForms.BunifuScrollBar.dll</HintPath>
     </Reference>

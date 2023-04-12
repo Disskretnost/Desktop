@@ -77,7 +77,6 @@ namespace CrimeaCloud
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
         }
 
         private void button1_MouseLeave(object sender, EventArgs e)

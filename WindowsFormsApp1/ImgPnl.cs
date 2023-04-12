@@ -126,7 +126,8 @@ namespace TESTControl
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            CrimeaCloud.OpenFile openfile = new CrimeaCloud.OpenFile();
+            openfile.ShowDialog();
             Console.WriteLine("dfdfdf");
         }
 
