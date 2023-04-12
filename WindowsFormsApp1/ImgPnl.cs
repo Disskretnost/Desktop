@@ -89,8 +89,14 @@ namespace TESTControl
             if (File.Exists(pathPict))
             {
                 pathPict = $@"{pathPict}";
-                Console.WriteLine("гружу" + pathPict);
-                Task.Run(() => LoadPictureAsync(pathPict));
+                try
+                {
+                    Task.Run(() => LoadPictureAsync(pathPict));
+                }
+                catch(OutOfMemoryException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
             else
             {
@@ -99,13 +105,6 @@ namespace TESTControl
         }
         private async Task LoadPictureAsync(string filePath)
         {
-            /*Console.WriteLine("size");
-            if (imageCache.ContainsKey(filePath))
-            {
-                pictureBox1.Image = imageCache[filePath];
-                Console.WriteLine("уже в кэшж");
-                return;
-            } */
             try
             {
                 Image img = await Task.Run(() => Image.FromFile(filePath));
@@ -129,11 +128,6 @@ namespace TESTControl
             CrimeaCloud.OpenFile openfile = new CrimeaCloud.OpenFile();
             openfile.ShowDialog();
             Console.WriteLine("dfdfdf");
-        }
-
-        private void pictureBox1_Layout(object sender, LayoutEventArgs e)
-        {
-            Console.WriteLine("LAyoit");
         }
     }
 }

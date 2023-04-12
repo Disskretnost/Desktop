@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
@@ -42,6 +43,21 @@ namespace CrimeaCloud
         public int id { get; set; }
         public string name { get; set; }
         public string email { get; set; }
+    }
+    class FilesInfo
+    {
+        public int status { get; set; }
+        public int count { get; set; }
+        public List<Files> files {get;set;}
+
+    }
+    class Files
+    {
+        public int id { get; set; }
+        public int owner_id { get; set; }
+        public string original_name { get; set; }
+        public string code_name { get; set; }
+        public string extension { get; set; }
     }
     /// <summary>
     /// Класс для десериализации ошибки.

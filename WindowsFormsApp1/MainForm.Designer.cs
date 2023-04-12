@@ -46,8 +46,10 @@ namespace CrimeaCloud
             this.bunifuVScrollBar1 = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.flowLayCust1 = new CrimeaCloud.FlowLayCust();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.bunifuPanel1.SuspendLayout();
+            this.bunifuPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // Close
@@ -229,6 +231,7 @@ namespace CrimeaCloud
             this.bunifuPanel2.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuPanel2.BorderRadius = 0;
             this.bunifuPanel2.BorderThickness = 0;
+            this.bunifuPanel2.Controls.Add(this.button5);
             this.bunifuPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuPanel2.Location = new System.Drawing.Point(0, 0);
             this.bunifuPanel2.Name = "bunifuPanel2";
@@ -257,7 +260,7 @@ namespace CrimeaCloud
             this.bunifuVScrollBar1.BorderThickness = 1;
             this.bunifuVScrollBar1.DurationBeforeShrink = 2000;
             this.bunifuVScrollBar1.LargeChange = 10;
-            this.bunifuVScrollBar1.Location = new System.Drawing.Point(1459, 40);
+            this.bunifuVScrollBar1.Location = new System.Drawing.Point(1459, 25);
             this.bunifuVScrollBar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bunifuVScrollBar1.Maximum = 300;
             this.bunifuVScrollBar1.Minimum = 0;
@@ -269,11 +272,11 @@ namespace CrimeaCloud
             this.bunifuVScrollBar1.ScrollBarBorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuVScrollBar1.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuVScrollBar1.ShrinkSizeLimit = 3;
-            this.bunifuVScrollBar1.Size = new System.Drawing.Size(33, 833);
+            this.bunifuVScrollBar1.Size = new System.Drawing.Size(33, 856);
             this.bunifuVScrollBar1.SmallChange = 1;
             this.bunifuVScrollBar1.TabIndex = 39;
             this.bunifuVScrollBar1.ThumbColor = System.Drawing.Color.DimGray;
-            this.bunifuVScrollBar1.ThumbLength = 27;
+            this.bunifuVScrollBar1.ThumbLength = 28;
             this.bunifuVScrollBar1.ThumbMargin = 1;
             this.bunifuVScrollBar1.ThumbStyle = Bunifu.UI.WinForms.BunifuVScrollBar.ThumbStyles.Inset;
             this.bunifuVScrollBar1.Value = 0;
@@ -290,6 +293,16 @@ namespace CrimeaCloud
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(36, 27);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(122, 36);
+            this.button5.TabIndex = 0;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // MainForm
             // 
@@ -313,6 +326,7 @@ namespace CrimeaCloud
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.bunifuPanel1.ResumeLayout(false);
+            this.bunifuPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -334,5 +348,6 @@ namespace CrimeaCloud
         private Bunifu.UI.WinForms.BunifuVScrollBar bunifuVScrollBar1;
         private FlowLayCust flowLayCust1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button button5;
     }
 }
