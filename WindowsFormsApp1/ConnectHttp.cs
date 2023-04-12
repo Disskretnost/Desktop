@@ -99,6 +99,7 @@ namespace CrimeaCloud
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 Console.WriteLine(response.Content); // поймать токен и перезаписать
+                //UserData.SaveToken(resp)
                 Application.Run(new MainForm());
             }
             else

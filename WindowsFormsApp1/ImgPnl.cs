@@ -17,16 +17,28 @@ namespace TESTControl
         //private Dictionary<string, Image> imageCache = new Dictionary<string, Image>();
         public string adress;
         public string text = "undefine";
-        public string textWithInfo;
-        public string TexWithInfo
+        public string TextWithInfo;
+        public string textWithInfo
         {
             get
             {
-                return textWithInfo;
+                return TextWithInfo;
             }
             set
             {
-                textWithInfo = value;
+                TextWithInfo = value;
+            }
+        }
+        public string numberFromServ;
+        public string NumberFromServ
+        {
+            get
+            {
+                return numberFromServ;
+            }
+            set
+            {
+                numberFromServ = value;
             }
         }
         public string Adress
@@ -51,6 +63,8 @@ namespace TESTControl
                 text = value;
             }
         }
+
+        public object TexWithInfo { get; internal set; }
 
         public ImgPnl()
         {
@@ -126,6 +140,8 @@ namespace TESTControl
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             CrimeaCloud.OpenFile openfile = new CrimeaCloud.OpenFile();
+            openfile.NumberFromServ = numberFromServ;
+            openfile.nameFile = textWithInfo;
             openfile.ShowDialog();
             Console.WriteLine("dfdfdf");
         }

@@ -19,7 +19,7 @@ namespace CrimeaCloud
     {
         Point coordinate;
         public static int filesCount = 22;
-        string[] fileNames = new string[filesCount]; //массив имён для файлов;
+        string[] fileNames = new string[filesCount]; 
         public MainForm()
         {
             InitializeComponent();
@@ -145,12 +145,11 @@ namespace CrimeaCloud
 
             for (int i = 0; i < filesCount; i++)
             {
-
-                flowLayCust1.RealizeImgPnls(i+1, filesFromServ.files[i].original_name);
+                flowLayCust1.RealizeImgPnls(i+1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
             } 
         }
 
-        private FilesInfo GetFilesFromServer()
+        public static FilesInfo GetFilesFromServer()
         {
             string token = UserData.ReadToken();
             var response = ConnectHttp.PostDataHeader(token, "http://176.99.11.107/api/file/", "getfiles");
@@ -207,7 +206,7 @@ namespace CrimeaCloud
                 }
 
                 AddNewFileToServ(nameNewFile, pathNewFile);
-                AddNewFileToForm(pathNewFile, nameNewFile); //добавление файла на форму
+                AddNewFileToForm(pathNewFile, nameNewFile, fileExtension); //добавление файла на форму
 
             }
         }
@@ -225,7 +224,7 @@ namespace CrimeaCloud
             filesCount++;
             //Array.Resize<string>(ref fileNames, filesCount);
             fileNames[filesCount-1] = nameFile;
-            flowLayCust1.RealizeImgPnls(filesCount, nameFile);
+            flowLayCust1.RealizeImgPnls(filesCount, 0, nameFile);
             Console.WriteLine(nameFile);
             if (imgExtensions.Contains(extensionFile))
             {
