@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Text;
 
 namespace CrimeaCloud
 {
@@ -16,7 +18,9 @@ namespace CrimeaCloud
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm()); 
+            //Application.Run(new testform());
+            ConnectHttp.CheckTokenStartApp();
+
         }
     }
 }

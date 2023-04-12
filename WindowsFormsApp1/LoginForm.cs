@@ -4,7 +4,6 @@ using System.IO;
 using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
-
 namespace CrimeaCloud
 {
     public partial class LoginForm : Form
@@ -21,7 +20,8 @@ namespace CrimeaCloud
             RegisterForm registerForm = new RegisterForm();
             registerForm.StartPosition = FormStartPosition.Manual;
             registerForm.Location = Location;
-            registerForm.Show();
+            registerForm.ShowDialog();
+            Close();
            
         }
 
@@ -97,9 +97,10 @@ namespace CrimeaCloud
             UserData.SaveToken(dataFromServ.token); //записали токен в файл
             Hide();
             MainForm mainForm = new MainForm();
-            mainForm.StartPosition = FormStartPosition.Manual;
-            mainForm.Location = Location;
-            mainForm.Show();
+            //mainForm.StartPosition = FormStartPosition.Manual;
+            //mainForm.Location = new Point(Location.X - 100, Location.Y - 100);
+            mainForm.ShowDialog();
+            Close();
         }
 
 
@@ -124,5 +125,6 @@ namespace CrimeaCloud
             else
                 this.PasswordAuto.PasswordChar = '*';
         }
+
     }
 }
