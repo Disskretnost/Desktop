@@ -44,14 +44,14 @@ namespace CrimeaCloud
         public string name { get; set; }
         public string email { get; set; }
     }
-    class FilesInfo
+    public class FilesInfo
     {
         public int status { get; set; }
         public int count { get; set; }
         public List<Files> files {get;set;}
 
     }
-    class Files
+    public class Files
     {
         public int id { get; set; }
         public int owner_id { get; set; }

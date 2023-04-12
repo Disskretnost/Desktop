@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,19 @@ namespace CrimeaCloud
 {
     public partial class OpenFile : Form
     {
+        public string numberFromServ;
+        public string nameFile;
+        public string NumberFromServ
+        {
+            get
+            {
+                return numberFromServ;
+            }
+            set
+            {
+                numberFromServ = value;
+            }
+        }
         public OpenFile()
         {
             InitializeComponent();
@@ -31,7 +45,6 @@ namespace CrimeaCloud
         {
             _mouseDownLocation = e.Location;
         }
-
         private void bunifuPanel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -49,6 +62,35 @@ namespace CrimeaCloud
         private void bunifuPanel1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void bunifuButton2_Click_1(object sender, EventArgs e)
+        {
+            DownloadThisFile();
+            
+        }
+        public async void DownloadThisFile()
+        {
+            string token = UserData.ReadToken();
+            var data = new
+            {
+                fileId = numberFromServ
+            };
+            var response = await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107/api/file/", "getfile");
+            SaveFile(nameFile, response.RawBytes);
+            Console.WriteLine("гтова");
+            
+        }
+        public void SaveFile(string fileName, byte[] fileData)
+        {
+            string appPath = Application.StartupPath;
+            string filePathApp = Path.Combine(appPath, fileName);
+            File.WriteAllBytes(filePathApp, fileData);
+        }
+
+        private void bunifuPanel1_Layout(object sender, LayoutEventArgs e)
+        {
+            label1.Text = nameFile;
         }
     }
 }

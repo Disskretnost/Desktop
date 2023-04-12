@@ -80,11 +80,12 @@ namespace CrimeaCloud
             Console.WriteLine($"////////////////// {flowLayoutPanel1.PreferredSize} ///////////////////////");
             //flowLayoutPanel1.VerticalScroll.Value = scrollValue;
         }
-        public void RealizeImgPnls(int num, string text = "undefine")
+        public void RealizeImgPnls(int num, int numberFromServ, string text = "undefine" )
         {
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Visible = true;
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Text = text;
-            //flowLayoutPanel1.Visible = true;
+            ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;
+            ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
         }
         public void ChangeImg(int num, string imagePath)
         {

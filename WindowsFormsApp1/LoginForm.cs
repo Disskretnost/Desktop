@@ -98,8 +98,6 @@ namespace CrimeaCloud
             UserData.SaveToken(dataFromServ.token); //записали токен в файл
             Hide();
             MainForm mainForm = new MainForm();
-            //mainForm.StartPosition = FormStartPosition.Manual;
-            //mainForm.Location = new Point(Location.X - 100, Location.Y - 100);
             mainForm.ShowDialog();
             Close();
         }

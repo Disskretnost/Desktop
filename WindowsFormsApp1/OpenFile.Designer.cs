@@ -69,6 +69,7 @@
             this.bunifuPanel1.Size = new System.Drawing.Size(408, 472);
             this.bunifuPanel1.TabIndex = 0;
             this.bunifuPanel1.Click += new System.EventHandler(this.bunifuPanel1_Click);
+            this.bunifuPanel1.Layout += new System.Windows.Forms.LayoutEventHandler(this.bunifuPanel1_Layout);
             this.bunifuPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bunifuPanel1_MouseDown);
             this.bunifuPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.bunifuPanel1_MouseMove);
             // 
@@ -271,6 +272,7 @@
             this.bunifuButton2.TextMarginLeft = 0;
             this.bunifuButton2.TextPadding = new System.Windows.Forms.Padding(0);
             this.bunifuButton2.UseDefaultRadiusAndThickness = true;
+            this.bunifuButton2.Click += new System.EventHandler(this.bunifuButton2_Click_1);
             // 
             // bunifuButton1
             // 
