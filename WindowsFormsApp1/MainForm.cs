@@ -145,7 +145,6 @@ namespace CrimeaCloud
                 Console.WriteLine(fileNames[i]);
                 flowLayCust1.RealizeImgPnls(i+1, fileNames[i]);
             } 
-
         }
 
         private void bunifuVScrollBar1_Scroll(object sender, Bunifu.UI.WinForms.BunifuVScrollBar.ScrollEventArgs e)
@@ -161,31 +160,33 @@ namespace CrimeaCloud
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ErrorMessage err = new ErrorMessage();
-            if (!flowLayCust1.Visible)
+            OpenFileDialog openFileDialog1 = new OpenFileDialog(); //файловый диалог
+            ErrorMessage err = new ErrorMessage(); //для ошибок
+            if (!flowLayCust1.Visible) //если не отображён flowLayCust1
             {
                 err.SetMessageText("Please, open drive firstly");
                 err.ShowDialog();
                 return;
             }
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            if(openFileDialog1.ShowDialog() == DialogResult.OK) //если файловый диалог открылся
             {
-                string pathNewFile = openFileDialog1.FileName;
-                string nameNewFile = openFileDialog1.SafeFileName;
-                var size = new FileInfo(pathNewFile).Length;
+                string pathNewFile = openFileDialog1.FileName; //полный пусть
+                string nameNewFile = openFileDialog1.SafeFileName; //только имя
+                var size = new FileInfo(pathNewFile).Length; //размер файла
                 if (size > 5242880) // 5 mb
                 {
                     err.SetMessageText("The file is too large. Size limit 5 MB.");
                     err.ShowDialog();
+                    //вызов метода
                     return;
                 }
-                AddNewFileToForm(pathNewFile, nameNewFile);
+                AddNewFileToForm(pathNewFile, nameNewFile); //добавление файла на форму
             }
         }
         public void AddNewFileToForm(string pathFile, string nameFile)
         {
             filesCount++;
-            Array.Resize<string>(ref fileNames, filesCount);
+            //Array.Resize<string>(ref fileNames, filesCount);
             fileNames[filesCount-1] = nameFile;
             flowLayCust1.RealizeImgPnls(filesCount, nameFile);
             Thread.Sleep(1000);

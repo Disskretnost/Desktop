@@ -17,6 +17,7 @@ namespace CrimeaCloud
             InitializeComponent();
             bunifuButton1.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton2.TextAlign = ContentAlignment.MiddleCenter;
+            bunifuButton3.TextAlign = ContentAlignment.MiddleCenter;
             StartPosition = FormStartPosition.CenterScreen;
         }
         private Point _mouseDownLocation;
@@ -38,6 +39,16 @@ namespace CrimeaCloud
                 this.Left += e.X - _mouseDownLocation.X;
                 this.Top += e.Y - _mouseDownLocation.Y;
             }
+        }
+
+        private void bunifuButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuPanel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
