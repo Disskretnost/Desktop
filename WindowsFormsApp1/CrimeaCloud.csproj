@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F7152B2A-F5C6-4719-B356-F06D1A507D39}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WindowsFormsApp1</RootNamespace>
+    <RootNamespace>CrimeaCloud</RootNamespace>
     <AssemblyName>WindowsFormsApp1</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -16,6 +16,21 @@
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +51,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>clouds-outlined-weather-symbol_icon-icons.com_54695.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b, processorArchitecture=MSIL">
       <HintPath>packages\Bunifu.Licensing.5.0.0\lib\net40\Bunifu.Licensing.dll</HintPath>
@@ -54,6 +72,9 @@
     </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuPanel">
       <HintPath>frem\Bunifu.UI.WinForms.BunifuPanel.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuScrollBar">
+      <HintPath>frem\Bunifu.UI.WinForms.BunifuScrollBar.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuSeparator">
       <HintPath>frem\Bunifu.UI.WinForms.BunifuSeparator.dll</HintPath>
@@ -124,6 +145,7 @@
     <Reference Include="System.Drawing.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Drawing.Common.6.0.0\lib\net461\System.Drawing.Common.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
@@ -267,6 +289,18 @@
     <Compile Include="ErrorMessage.Designer.cs">
       <DependentUpon>ErrorMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="FlowLayCust.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FlowLayCust.Designer.cs">
+      <DependentUpon>FlowLayCust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FlowLayoutCustomPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlowLayoutCustomPanel.Designer.cs">
+      <DependentUpon>FlowLayoutCustomPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImgPnl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -293,9 +327,21 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="testform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="testform.Designer.cs">
+      <DependentUpon>testform.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserData.cs" />
     <EmbeddedResource Include="ErrorMessage.resx">
       <DependentUpon>ErrorMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FlowLayCust.resx">
+      <DependentUpon>FlowLayCust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FlowLayoutCustomPanel.resx">
+      <DependentUpon>FlowLayoutCustomPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImgPnl.resx">
       <DependentUpon>ImgPnl.cs</DependentUpon>
@@ -314,6 +360,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="testform.resx">
+      <DependentUpon>testform.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -345,6 +394,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="img\email 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="clouds-outlined-weather-symbol_icon-icons.com_54695.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('packages\Fody.4.0.2\build\Fody.targets')" />

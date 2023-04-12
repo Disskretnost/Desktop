@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
 
 namespace TESTControl
 {
     public partial class ImgPnl : UserControl
     {
+        //private Dictionary<string, Image> imageCache = new Dictionary<string, Image>();
         public string adress;
-        public string text = "test.file";
+        public string text = "undefine";
         public string textWithInfo;
         public string TexWithInfo
         {
@@ -64,7 +66,7 @@ namespace TESTControl
             pictureBox1.Image = null;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.Size = Size;
-            label1.Font = new Font("Microsoft Tai Le", 11, FontStyle.Regular);
+            label1.Font = new Font("Microsoft Tai Le", 10, FontStyle.Regular);
             label1.ForeColor = System.Drawing.Color.White;
             label1.BackColor = System.Drawing.Color.FromArgb(64, 64, 64);
             label1.Size = new System.Drawing.Size(Size.Width, Size.Height - 119);
@@ -74,35 +76,45 @@ namespace TESTControl
         }
         protected async override void OnLoad(EventArgs e)
         {
-            label1.Text = "OnLoad";
-            Console.WriteLine("лоад");
-            if (adress == null)
-            {
-                await LoadPictureAsync("xdd_cut-photo.ru.jpg");
-            }
-            else
-            {
-                pictureBox1.ImageLocation = adress;
-                pictureBox1.LoadAsync();
-            }
+            text = "undefined";
+            await LoadPictureAsync("xdd_cut-photo.ru.jpg");
         }
-
-        //Image img = Image.FromFile("anime.png");//if file exist;
-        //pictureBox1.Image = img;
-        //pictureBox1.LoadAsync();
 
         protected override void OnTextChanged(EventArgs e)
         {
-
             label1.Text = Text;
+        }
+        public void ChangePict(string pathPict)
+        {
+            if (File.Exists(pathPict))
+            {
+                pathPict = $@"{pathPict}";
+                Console.WriteLine("гружу" + pathPict);
+                Task.Run(() => LoadPictureAsync(pathPict));
+            }
+            else
+            {
+                MessageBox.Show("Net");
+            }
         }
         private async Task LoadPictureAsync(string filePath)
         {
-            Console.WriteLine("size");
+            /*Console.WriteLine("size");
+            if (imageCache.ContainsKey(filePath))
+            {
+                pictureBox1.Image = imageCache[filePath];
+                Console.WriteLine("уже в кэшж");
+                return;
+            } */
             try
             {
                 Image img = await Task.Run(() => Image.FromFile(filePath));
+                //imageCache[filePath] = img;
                 pictureBox1.Image = img;
+            }
+            catch (System.OutOfMemoryException ex)
+            {
+                Console.WriteLine(ex.Message);
             }
             catch (Exception ex)
             {
@@ -117,6 +129,10 @@ namespace TESTControl
 
 
         }
-        
+
+        private void pictureBox1_Layout(object sender, LayoutEventArgs e)
+        {
+            Console.WriteLine("LAyoit");
+        }
     }
 }

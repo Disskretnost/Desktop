@@ -43,30 +43,11 @@ namespace CrimeaCloud
             this.bunifuPanel6 = new Bunifu.UI.WinForms.BunifuPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.imgPnl20 = new TESTControl.ImgPnl();
-            this.imgPnl19 = new TESTControl.ImgPnl();
-            this.imgPnl18 = new TESTControl.ImgPnl();
-            this.imgPnl17 = new TESTControl.ImgPnl();
-            this.imgPnl16 = new TESTControl.ImgPnl();
-            this.imgPnl15 = new TESTControl.ImgPnl();
-            this.imgPnl14 = new TESTControl.ImgPnl();
-            this.imgPnl13 = new TESTControl.ImgPnl();
-            this.imgPnl12 = new TESTControl.ImgPnl();
-            this.imgPnl11 = new TESTControl.ImgPnl();
-            this.imgPnl10 = new TESTControl.ImgPnl();
-            this.imgPnl9 = new TESTControl.ImgPnl();
-            this.imgPnl8 = new TESTControl.ImgPnl();
-            this.imgPnl7 = new TESTControl.ImgPnl();
-            this.imgPnl6 = new TESTControl.ImgPnl();
-            this.imgPnl5 = new TESTControl.ImgPnl();
-            this.imgPnl4 = new TESTControl.ImgPnl();
-            this.imgPnl3 = new TESTControl.ImgPnl();
-            this.imgPnl2 = new TESTControl.ImgPnl();
-            this.imgPnl1 = new TESTControl.ImgPnl();
+            this.bunifuVScrollBar1 = new Bunifu.UI.WinForms.BunifuVScrollBar();
+            this.flowLayCust1 = new CrimeaCloud.FlowLayCust();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.bunifuPanel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Close
@@ -75,7 +56,7 @@ namespace CrimeaCloud
             this.Close.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Close.Font = new System.Drawing.Font("Berlin Sans FB", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Close.ForeColor = System.Drawing.Color.MintCream;
-            this.Close.Location = new System.Drawing.Point(1503, 21);
+            this.Close.Location = new System.Drawing.Point(1512, 9);
             this.Close.Name = "Close";
             this.Close.Size = new System.Drawing.Size(27, 30);
             this.Close.TabIndex = 37;
@@ -92,7 +73,7 @@ namespace CrimeaCloud
             this.pictureBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.No;
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(1476, 24);
+            this.pictureBox6.Location = new System.Drawing.Point(1485, 12);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(21, 21);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -171,6 +152,7 @@ namespace CrimeaCloud
             this.button3.TabIndex = 19;
             this.button3.Text = "Load Files";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             this.button3.MouseEnter += new System.EventHandler(this.button3_MouseEnter);
             this.button3.MouseLeave += new System.EventHandler(this.button3_MouseLeave);
             // 
@@ -203,6 +185,7 @@ namespace CrimeaCloud
             this.button2.TabIndex = 17;
             this.button2.Text = "History";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             this.button2.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
             this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
             // 
@@ -254,273 +237,60 @@ namespace CrimeaCloud
             this.bunifuPanel2.Size = new System.Drawing.Size(273, 170);
             this.bunifuPanel2.TabIndex = 1;
             // 
-            // flowLayoutPanel1
+            // bunifuVScrollBar1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl20);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl19);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl18);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl17);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl16);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl15);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl14);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl13);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl12);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl11);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl10);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl9);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl8);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl7);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl6);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl5);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl4);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl3);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl2);
-            this.flowLayoutPanel1.Controls.Add(this.imgPnl1);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(308, 56);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1167, 826);
-            this.flowLayoutPanel1.TabIndex = 38;
-            this.flowLayoutPanel1.Visible = false;
+            this.bunifuVScrollBar1.AllowCursorChanges = true;
+            this.bunifuVScrollBar1.AllowHomeEndKeysDetection = false;
+            this.bunifuVScrollBar1.AllowIncrementalClickMoves = true;
+            this.bunifuVScrollBar1.AllowMouseDownEffects = true;
+            this.bunifuVScrollBar1.AllowMouseHoverEffects = true;
+            this.bunifuVScrollBar1.AllowScrollingAnimations = true;
+            this.bunifuVScrollBar1.AllowScrollKeysDetection = true;
+            this.bunifuVScrollBar1.AllowScrollOptionsMenu = true;
+            this.bunifuVScrollBar1.AllowShrinkingOnFocusLost = false;
+            this.bunifuVScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bunifuVScrollBar1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.bunifuVScrollBar1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuVScrollBar1.BackgroundImage")));
+            this.bunifuVScrollBar1.BindingContainer = null;
+            this.bunifuVScrollBar1.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bunifuVScrollBar1.BorderRadius = 0;
+            this.bunifuVScrollBar1.BorderThickness = 1;
+            this.bunifuVScrollBar1.DurationBeforeShrink = 2000;
+            this.bunifuVScrollBar1.LargeChange = 10;
+            this.bunifuVScrollBar1.Location = new System.Drawing.Point(1459, 40);
+            this.bunifuVScrollBar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuVScrollBar1.Maximum = 300;
+            this.bunifuVScrollBar1.Minimum = 0;
+            this.bunifuVScrollBar1.MinimumThumbLength = 18;
+            this.bunifuVScrollBar1.Name = "bunifuVScrollBar1";
+            this.bunifuVScrollBar1.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
+            this.bunifuVScrollBar1.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
+            this.bunifuVScrollBar1.OnDisable.ThumbColor = System.Drawing.Color.Silver;
+            this.bunifuVScrollBar1.ScrollBarBorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bunifuVScrollBar1.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.bunifuVScrollBar1.ShrinkSizeLimit = 3;
+            this.bunifuVScrollBar1.Size = new System.Drawing.Size(33, 833);
+            this.bunifuVScrollBar1.SmallChange = 1;
+            this.bunifuVScrollBar1.TabIndex = 39;
+            this.bunifuVScrollBar1.ThumbColor = System.Drawing.Color.DimGray;
+            this.bunifuVScrollBar1.ThumbLength = 27;
+            this.bunifuVScrollBar1.ThumbMargin = 1;
+            this.bunifuVScrollBar1.ThumbStyle = Bunifu.UI.WinForms.BunifuVScrollBar.ThumbStyles.Inset;
+            this.bunifuVScrollBar1.Value = 0;
+            this.bunifuVScrollBar1.Scroll += new System.EventHandler<Bunifu.UI.WinForms.BunifuVScrollBar.ScrollEventArgs>(this.bunifuVScrollBar1_Scroll);
             // 
-            // imgPnl20
+            // flowLayCust1
             // 
-            this.imgPnl20.Adress = null;
-            this.imgPnl20.Location = new System.Drawing.Point(30, 10);
-            this.imgPnl20.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl20.Name = "imgPnl20";
-            this.imgPnl20.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl20.TabIndex = 77;
-            this.imgPnl20.TextL = "Text";
-            this.imgPnl20.TexWithInfo = null;
-            this.imgPnl20.Visible = false;
+            this.flowLayCust1.Location = new System.Drawing.Point(330, 25);
+            this.flowLayCust1.Name = "flowLayCust1";
+            this.flowLayCust1.Size = new System.Drawing.Size(1122, 856);
+            this.flowLayCust1.TabIndex = 40;
+            this.flowLayCust1.Visible = false;
             // 
-            // imgPnl19
+            // openFileDialog1
             // 
-            this.imgPnl19.Adress = null;
-            this.imgPnl19.Location = new System.Drawing.Point(240, 10);
-            this.imgPnl19.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl19.Name = "imgPnl19";
-            this.imgPnl19.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl19.TabIndex = 76;
-            this.imgPnl19.TextL = "Text1";
-            this.imgPnl19.TexWithInfo = null;
-            this.imgPnl19.Visible = false;
-            // 
-            // imgPnl18
-            // 
-            this.imgPnl18.Adress = null;
-            this.imgPnl18.Location = new System.Drawing.Point(450, 10);
-            this.imgPnl18.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl18.Name = "imgPnl18";
-            this.imgPnl18.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl18.TabIndex = 75;
-            this.imgPnl18.TextL = "Text";
-            this.imgPnl18.TexWithInfo = null;
-            this.imgPnl18.Visible = false;
-            // 
-            // imgPnl17
-            // 
-            this.imgPnl17.Adress = null;
-            this.imgPnl17.Location = new System.Drawing.Point(660, 10);
-            this.imgPnl17.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl17.Name = "imgPnl17";
-            this.imgPnl17.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl17.TabIndex = 74;
-            this.imgPnl17.TextL = "Text";
-            this.imgPnl17.TexWithInfo = null;
-            this.imgPnl17.Visible = false;
-            // 
-            // imgPnl16
-            // 
-            this.imgPnl16.Adress = null;
-            this.imgPnl16.Location = new System.Drawing.Point(870, 10);
-            this.imgPnl16.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl16.Name = "imgPnl16";
-            this.imgPnl16.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl16.TabIndex = 73;
-            this.imgPnl16.TextL = "Text";
-            this.imgPnl16.TexWithInfo = null;
-            this.imgPnl16.Visible = false;
-            // 
-            // imgPnl15
-            // 
-            this.imgPnl15.Adress = null;
-            this.imgPnl15.Location = new System.Drawing.Point(30, 200);
-            this.imgPnl15.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl15.Name = "imgPnl15";
-            this.imgPnl15.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl15.TabIndex = 72;
-            this.imgPnl15.TextL = "Text";
-            this.imgPnl15.TexWithInfo = null;
-            this.imgPnl15.Visible = false;
-            // 
-            // imgPnl14
-            // 
-            this.imgPnl14.Adress = null;
-            this.imgPnl14.Location = new System.Drawing.Point(240, 200);
-            this.imgPnl14.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl14.Name = "imgPnl14";
-            this.imgPnl14.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl14.TabIndex = 71;
-            this.imgPnl14.TextL = "Text";
-            this.imgPnl14.TexWithInfo = null;
-            this.imgPnl14.Visible = false;
-            // 
-            // imgPnl13
-            // 
-            this.imgPnl13.Adress = null;
-            this.imgPnl13.Location = new System.Drawing.Point(450, 200);
-            this.imgPnl13.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl13.Name = "imgPnl13";
-            this.imgPnl13.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl13.TabIndex = 70;
-            this.imgPnl13.TextL = "Text";
-            this.imgPnl13.TexWithInfo = null;
-            this.imgPnl13.Visible = false;
-            // 
-            // imgPnl12
-            // 
-            this.imgPnl12.Adress = null;
-            this.imgPnl12.Location = new System.Drawing.Point(660, 200);
-            this.imgPnl12.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl12.Name = "imgPnl12";
-            this.imgPnl12.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl12.TabIndex = 69;
-            this.imgPnl12.TextL = "Text";
-            this.imgPnl12.TexWithInfo = null;
-            this.imgPnl12.Visible = false;
-            // 
-            // imgPnl11
-            // 
-            this.imgPnl11.Adress = null;
-            this.imgPnl11.Location = new System.Drawing.Point(870, 200);
-            this.imgPnl11.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl11.Name = "imgPnl11";
-            this.imgPnl11.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl11.TabIndex = 68;
-            this.imgPnl11.TextL = "Text";
-            this.imgPnl11.TexWithInfo = null;
-            this.imgPnl11.Visible = false;
-            // 
-            // imgPnl10
-            // 
-            this.imgPnl10.Adress = null;
-            this.imgPnl10.Location = new System.Drawing.Point(30, 390);
-            this.imgPnl10.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl10.Name = "imgPnl10";
-            this.imgPnl10.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl10.TabIndex = 67;
-            this.imgPnl10.TextL = "Text";
-            this.imgPnl10.TexWithInfo = null;
-            this.imgPnl10.Visible = false;
-            // 
-            // imgPnl9
-            // 
-            this.imgPnl9.Adress = null;
-            this.imgPnl9.Location = new System.Drawing.Point(240, 390);
-            this.imgPnl9.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl9.Name = "imgPnl9";
-            this.imgPnl9.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl9.TabIndex = 66;
-            this.imgPnl9.TextL = "Text";
-            this.imgPnl9.TexWithInfo = null;
-            this.imgPnl9.Visible = false;
-            // 
-            // imgPnl8
-            // 
-            this.imgPnl8.Adress = null;
-            this.imgPnl8.Location = new System.Drawing.Point(450, 390);
-            this.imgPnl8.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl8.Name = "imgPnl8";
-            this.imgPnl8.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl8.TabIndex = 65;
-            this.imgPnl8.TextL = "Text";
-            this.imgPnl8.TexWithInfo = null;
-            this.imgPnl8.Visible = false;
-            // 
-            // imgPnl7
-            // 
-            this.imgPnl7.Adress = null;
-            this.imgPnl7.Location = new System.Drawing.Point(660, 390);
-            this.imgPnl7.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl7.Name = "imgPnl7";
-            this.imgPnl7.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl7.TabIndex = 64;
-            this.imgPnl7.TextL = "Text";
-            this.imgPnl7.TexWithInfo = null;
-            this.imgPnl7.Visible = false;
-            // 
-            // imgPnl6
-            // 
-            this.imgPnl6.Adress = null;
-            this.imgPnl6.Location = new System.Drawing.Point(870, 390);
-            this.imgPnl6.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl6.Name = "imgPnl6";
-            this.imgPnl6.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl6.TabIndex = 63;
-            this.imgPnl6.TextL = "Text";
-            this.imgPnl6.TexWithInfo = null;
-            this.imgPnl6.Visible = false;
-            // 
-            // imgPnl5
-            // 
-            this.imgPnl5.Adress = null;
-            this.imgPnl5.Location = new System.Drawing.Point(30, 580);
-            this.imgPnl5.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl5.Name = "imgPnl5";
-            this.imgPnl5.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl5.TabIndex = 62;
-            this.imgPnl5.TextL = "Text";
-            this.imgPnl5.TexWithInfo = null;
-            this.imgPnl5.Visible = false;
-            // 
-            // imgPnl4
-            // 
-            this.imgPnl4.Adress = null;
-            this.imgPnl4.Location = new System.Drawing.Point(240, 580);
-            this.imgPnl4.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl4.Name = "imgPnl4";
-            this.imgPnl4.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl4.TabIndex = 61;
-            this.imgPnl4.TextL = "Text";
-            this.imgPnl4.TexWithInfo = null;
-            this.imgPnl4.Visible = false;
-            // 
-            // imgPnl3
-            // 
-            this.imgPnl3.Adress = null;
-            this.imgPnl3.Location = new System.Drawing.Point(450, 580);
-            this.imgPnl3.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl3.Name = "imgPnl3";
-            this.imgPnl3.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl3.TabIndex = 60;
-            this.imgPnl3.TextL = "Text";
-            this.imgPnl3.TexWithInfo = null;
-            this.imgPnl3.Visible = false;
-            // 
-            // imgPnl2
-            // 
-            this.imgPnl2.Adress = null;
-            this.imgPnl2.Location = new System.Drawing.Point(660, 580);
-            this.imgPnl2.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl2.Name = "imgPnl2";
-            this.imgPnl2.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl2.TabIndex = 59;
-            this.imgPnl2.TextL = "Text";
-            this.imgPnl2.TexWithInfo = null;
-            this.imgPnl2.Visible = false;
-            // 
-            // imgPnl1
-            // 
-            this.imgPnl1.Adress = null;
-            this.imgPnl1.Location = new System.Drawing.Point(870, 580);
-            this.imgPnl1.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
-            this.imgPnl1.Name = "imgPnl1";
-            this.imgPnl1.Size = new System.Drawing.Size(150, 170);
-            this.imgPnl1.TabIndex = 58;
-            this.imgPnl1.TextL = "Text";
-            this.imgPnl1.TexWithInfo = null;
-            this.imgPnl1.Visible = false;
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // MainForm
             // 
@@ -529,11 +299,13 @@ namespace CrimeaCloud
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1551, 894);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flowLayCust1);
             this.Controls.Add(this.Close);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.bunifuPanel1);
+            this.Controls.Add(this.bunifuVScrollBar1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
@@ -542,7 +314,6 @@ namespace CrimeaCloud
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.bunifuPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -561,26 +332,8 @@ namespace CrimeaCloud
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel6;
         private System.Windows.Forms.Button button1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private TESTControl.ImgPnl imgPnl20;
-        private TESTControl.ImgPnl imgPnl19;
-        private TESTControl.ImgPnl imgPnl18;
-        private TESTControl.ImgPnl imgPnl17;
-        private TESTControl.ImgPnl imgPnl16;
-        private TESTControl.ImgPnl imgPnl15;
-        private TESTControl.ImgPnl imgPnl14;
-        private TESTControl.ImgPnl imgPnl13;
-        private TESTControl.ImgPnl imgPnl12;
-        private TESTControl.ImgPnl imgPnl11;
-        private TESTControl.ImgPnl imgPnl10;
-        private TESTControl.ImgPnl imgPnl9;
-        private TESTControl.ImgPnl imgPnl8;
-        private TESTControl.ImgPnl imgPnl7;
-        private TESTControl.ImgPnl imgPnl6;
-        private TESTControl.ImgPnl imgPnl5;
-        private TESTControl.ImgPnl imgPnl4;
-        private TESTControl.ImgPnl imgPnl3;
-        private TESTControl.ImgPnl imgPnl2;
-        private TESTControl.ImgPnl imgPnl1;
+        private Bunifu.UI.WinForms.BunifuVScrollBar bunifuVScrollBar1;
+        private FlowLayCust flowLayCust1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
