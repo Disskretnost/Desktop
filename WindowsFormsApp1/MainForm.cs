@@ -78,7 +78,6 @@ namespace CrimeaCloud
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
         }
 
         private void button1_MouseLeave(object sender, EventArgs e)
@@ -149,7 +148,6 @@ namespace CrimeaCloud
 
                 flowLayCust1.RealizeImgPnls(i+1, filesFromServ.files[i].original_name);
             } 
-
         }
 
         private FilesInfo GetFilesFromServer()
@@ -183,35 +181,34 @@ namespace CrimeaCloud
             // Добавляем обработчик события прокрутки
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
-            ErrorMessage err = new ErrorMessage();
-            if (!flowLayCust1.Visible)
+            OpenFileDialog openFileDialog1 = new OpenFileDialog(); //файловый диалог
+            ErrorMessage err = new ErrorMessage(); //для ошибок
+            if (!flowLayCust1.Visible) //если не отображён flowLayCust1
             {
                 err.SetMessageText("Please, open drive firstly");
                 err.ShowDialog();
                 return;
             }
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            if(openFileDialog1.ShowDialog() == DialogResult.OK) //если файловый диалог открылся
             {
-                string pathNewFile = openFileDialog1.FileName;
-                string nameNewFile = openFileDialog1.SafeFileName;
+                string pathNewFile = openFileDialog1.FileName; //полный пусть
+                string nameNewFile = openFileDialog1.SafeFileName; //только имя
                 string fileExtension = Path.GetExtension(pathNewFile);
-                var size = new FileInfo(pathNewFile).Length;
+                var size = new FileInfo(pathNewFile).Length; //размер файла
+
                 if (size > 5242880) // 5 mb
                 {
                     err.SetMessageText("The file is too large. Size limit 5 MB.");
                     err.ShowDialog();
+                    //вызов метода
                     return;
                 }
+
                 AddNewFileToServ(nameNewFile, pathNewFile);
-                AddNewFileToForm(pathNewFile, nameNewFile, fileExtension);
-                
+                AddNewFileToForm(pathNewFile, nameNewFile); //добавление файла на форму
+
             }
         }
         private async void AddNewFileToServ(string fileName, string filePath)
@@ -226,7 +223,7 @@ namespace CrimeaCloud
         {
             List<string> imgExtensions = new List<string> { ".jpg", ".jpeg", ".jpe", ".jfif", ".png", ".ico", ".gif", ".svg" };
             filesCount++;
-            Array.Resize<string>(ref fileNames, filesCount);
+            //Array.Resize<string>(ref fileNames, filesCount);
             fileNames[filesCount-1] = nameFile;
             flowLayCust1.RealizeImgPnls(filesCount, nameFile);
             Console.WriteLine(nameFile);
