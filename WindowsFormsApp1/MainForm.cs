@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using Bunifu;
 using System.Threading;
+using System.Text.Json;
 
 namespace CrimeaCloud
 {
@@ -17,7 +18,7 @@ namespace CrimeaCloud
     public partial class MainForm : Form
     {
         Point coordinate;
-        public static int filesCount = 10;
+        public static int filesCount = 22;
         string[] fileNames = new string[filesCount]; //массив имён для файлов;
         public MainForm()
         {
@@ -133,20 +134,42 @@ namespace CrimeaCloud
 
         private void button1_Click(object sender, EventArgs e)
         {
+            FilesInfo filesFromServ = GetFilesFromServer();
             flowLayCust1.Visible = true;
             Console.WriteLine(filesCount);
-            Console.WriteLine(fileNames.Length);
+            //Console.WriteLine(fileNames.Length);
             if (filesCount > 20)
             {
                 //Вызываем метод для установки ползунка по нужным размерам
                 bunifuVScrollBar1.Visible = true;
             }
-            for(int i = 0; i < filesCount; i++)
+
+            for (int i = 0; i < filesCount; i++)
             {
-                Console.WriteLine(fileNames[i]);
-                flowLayCust1.RealizeImgPnls(i+1, fileNames[i]);
+
+                flowLayCust1.RealizeImgPnls(i+1, filesFromServ.files[i].original_name);
             } 
 
+        }
+
+        private FilesInfo GetFilesFromServer()
+        {
+            string token = UserData.ReadToken();
+            var response = ConnectHttp.PostDataHeader(token, "http://176.99.11.107/api/file/", "getfiles");
+
+            if(!(response.Result.StatusCode == System.Net.HttpStatusCode.OK))
+            {
+                ErrorMessage error = new ErrorMessage();
+                error.SetMessageText(response.Result.StatusCode.ToString());
+                error.ShowDialog();
+                return null;
+            }
+            Console.WriteLine(response.Result.Content);
+            FilesInfo files = JsonSerializer.Deserialize<FilesInfo>(response.Result.Content);
+            filesCount = files.count;
+            Console.WriteLine($"// {files.count} //");
+            return files;
+            //Console.WriteLine($"// {files.files[0].id} //");
         }
 
         private void bunifuVScrollBar1_Scroll(object sender, Bunifu.UI.WinForms.BunifuVScrollBar.ScrollEventArgs e)
@@ -178,6 +201,7 @@ namespace CrimeaCloud
             {
                 string pathNewFile = openFileDialog1.FileName;
                 string nameNewFile = openFileDialog1.SafeFileName;
+                string fileExtension = Path.GetExtension(pathNewFile);
                 var size = new FileInfo(pathNewFile).Length;
                 if (size > 5242880) // 5 mb
                 {
@@ -185,18 +209,57 @@ namespace CrimeaCloud
                     err.ShowDialog();
                     return;
                 }
-                AddNewFileToForm(pathNewFile, nameNewFile);
+                AddNewFileToServ(nameNewFile, pathNewFile);
+                AddNewFileToForm(pathNewFile, nameNewFile, fileExtension);
+                
             }
         }
-        public void AddNewFileToForm(string pathFile, string nameFile)
+        private async void AddNewFileToServ(string fileName, string filePath)
         {
+            string token = UserData.ReadToken();
+            var respone = await ConnectHttp.PostFile(fileName, filePath, token, "http://176.99.11.107/api/file/", "upload");
+            Console.WriteLine(respone.StatusCode);
+            Console.WriteLine(respone.Content.ReadAsStringAsync().Result);
+            Console.WriteLine("Файл добавлен на серв");
+        }
+        public void AddNewFileToForm(string pathFile, string nameFile, string extensionFile)
+        {
+            List<string> imgExtensions = new List<string> { ".jpg", ".jpeg", ".jpe", ".jfif", ".png", ".ico", ".gif", ".svg" };
             filesCount++;
             Array.Resize<string>(ref fileNames, filesCount);
             fileNames[filesCount-1] = nameFile;
             flowLayCust1.RealizeImgPnls(filesCount, nameFile);
-            Thread.Sleep(1000);
-            flowLayCust1.ChangeImg(filesCount, pathFile);
+            Console.WriteLine(nameFile);
+            if (imgExtensions.Contains(extensionFile))
+            {
+                Thread.Sleep(1000);
+                flowLayCust1.ChangeImg(filesCount, pathFile);
+            }
             Console.WriteLine(pathFile);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            Down();
+        }
+
+        private async void Down()
+        {
+            string token = UserData.ReadToken();
+            var data = new
+            {
+                fileId = "4"
+            };
+            var response = await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107/api/file/", "getfile");
+            SaveFile(@"C:\Users\black\Documents\GitHub\devCourse\console-application\WindowsFormsApp1", response.RawBytes);
+            Console.WriteLine("гтова");
+        }
+        public void SaveFile(string fileName, byte[] fileData)
+        {
+            string appPath = Application.StartupPath;
+            string filePathApp = Path.Combine(appPath, "new.jpg");
+            File.WriteAllBytes(filePathApp, fileData);
         }
     }
 }
