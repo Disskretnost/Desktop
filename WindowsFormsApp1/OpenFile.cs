@@ -92,5 +92,10 @@ namespace CrimeaCloud
         {
             label1.Text = nameFile;
         }
+
+        private void bunifuButton3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

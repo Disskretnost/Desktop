@@ -12,6 +12,8 @@ using Bunifu;
 using System.Threading;
 using System.Text.Json;
 
+
+
 namespace CrimeaCloud
 {
 
@@ -145,7 +147,11 @@ namespace CrimeaCloud
 
             for (int i = 0; i < filesCount; i++)
             {
-                flowLayCust1.RealizeImgPnls(i+1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
+                string str = filesFromServ.files[i].extension.ToString();
+                int index = str.IndexOf("/"); 
+                string type = str.Substring(0, index); //извлекаем "расширение" для необходимых файлов
+                Console.WriteLine(type); 
+                flowLayCust1.RealizeImgPnls(type,i+1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
             } 
         }
 
@@ -194,7 +200,7 @@ namespace CrimeaCloud
             {
                 string pathNewFile = openFileDialog1.FileName; //полный пусть
                 string nameNewFile = openFileDialog1.SafeFileName; //только имя
-                string fileExtension = Path.GetExtension(pathNewFile);
+                string fileExtension = Path.GetExtension(pathNewFile); //расширение
                 var size = new FileInfo(pathNewFile).Length; //размер файла
 
                 if (size > 5242880) // 5 mb
