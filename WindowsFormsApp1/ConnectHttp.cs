@@ -57,9 +57,9 @@ namespace CrimeaCloud
         {
             var clientRest = new RestClient(urlBase);
             var requestRest = new RestRequest(urlEnd, Method.POST);
+            requestRest.AddHeader("Authorization", "Bearer " + token);
             try
             {
-                requestRest.AddHeader("Authorization", "Bearer " + token);
                 var response = clientRest.Execute(requestRest);
                 return response;
             } 
@@ -91,6 +91,7 @@ namespace CrimeaCloud
         public async static void CheckTokenStartApp()
         {
             string oldToken = UserData.ReadToken();
+            Console.WriteLine("Старый токен: " + oldToken);
             var response = await PostDataHeader(oldToken, "http://176.99.11.107/api/user/", "update");
             if (response == null)
             {
@@ -98,8 +99,13 @@ namespace CrimeaCloud
             }
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                Console.WriteLine(response.Content); // поймать токен и перезаписать
-                //UserData.SaveToken(resp)
+                Console.WriteLine(response.Content);
+                UserData userData = JsonSerializer.Deserialize<UserData>(response.Content);
+                Console.WriteLine("Полученный Токен: {0}", userData.token); //(успешно Deserialize
+                if (userData != null && !string.IsNullOrEmpty(userData.token)) //проверка на пустоту
+                {
+                    UserData.SaveToken(userData.token); //сохраняем
+                }
                 Application.Run(new MainForm());
             }
             else

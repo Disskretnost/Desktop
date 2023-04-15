@@ -91,7 +91,7 @@ namespace TESTControl
         protected async override void OnLoad(EventArgs e)
         {
             text = "undefined";
-            await LoadPictureAsync("xdd_cut-photo.ru.jpg");
+            await LoadPictureAsync("FileIcon.jpg");
         }
 
         protected override void OnTextChanged(EventArgs e)

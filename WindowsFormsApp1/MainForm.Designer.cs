@@ -44,8 +44,8 @@ namespace CrimeaCloud
             this.button1 = new System.Windows.Forms.Button();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
             this.bunifuVScrollBar1 = new Bunifu.UI.WinForms.BunifuVScrollBar();
-            this.flowLayCust1 = new CrimeaCloud.FlowLayCust();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.flowLayCust1 = new CrimeaCloud.FlowLayCust();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.bunifuPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -279,6 +279,10 @@ namespace CrimeaCloud
             this.bunifuVScrollBar1.Value = 0;
             this.bunifuVScrollBar1.Scroll += new System.EventHandler<Bunifu.UI.WinForms.BunifuVScrollBar.ScrollEventArgs>(this.bunifuVScrollBar1_Scroll);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // flowLayCust1
             // 
             this.flowLayCust1.Location = new System.Drawing.Point(330, 25);
@@ -286,10 +290,6 @@ namespace CrimeaCloud
             this.flowLayCust1.Size = new System.Drawing.Size(1122, 856);
             this.flowLayCust1.TabIndex = 40;
             this.flowLayCust1.Visible = false;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // MainForm
             // 
