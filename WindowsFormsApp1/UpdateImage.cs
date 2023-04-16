@@ -44,6 +44,7 @@ namespace CrimeaCloud
         public static void InitFiles(FlowLayoutPanel flowL)
         {
             FilesInfo filesFromServ = GetFilesFromServer();
+            //System.Threading.Thread.Sleep(1000);
             flowL.Visible = true;
             //Console.WriteLine(filesCount);
             //Console.WriteLine(fileNames.Length);
@@ -55,7 +56,7 @@ namespace CrimeaCloud
                 string type = str.Substring(0, index); //извлекаем "расширения" для необходимых файлов
                 //Console.WriteLine(type);
                 //ResetImg(type, i + 1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
-                UpdateImage.ResetImg(type, i + 1, filesFromServ.files[i].id, filesFromServ.files[i].original_name, flowL);
+                ResetImg(type, i + 1, filesFromServ.files[i].id, filesFromServ.files[i].original_name, flowL);
 
             }
         }

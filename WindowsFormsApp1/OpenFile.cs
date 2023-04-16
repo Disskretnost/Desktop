@@ -59,16 +59,6 @@ namespace CrimeaCloud
             }
         }
 
-        private void bunifuButton2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bunifuPanel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void bunifuButton2_Click_1(object sender, EventArgs e)
         {
             DownloadThisFile();
@@ -101,16 +91,11 @@ namespace CrimeaCloud
         private void bunifuButton3_Click(object sender, EventArgs e)
         {
             DeleteThisFile();
-            needDel = true;
-
             for (int i = 0; i < 30; i++)
             {
                 flowL.Controls[$"imgPnl{i + 1}"].Visible = false;
             }
-            //InitFiles();
             UpdateImage.InitFiles(flowL);
-
-
         }
         //public static FilesInfo GetFilesFromServer()
         //{

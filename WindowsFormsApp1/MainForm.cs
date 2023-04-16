@@ -21,7 +21,8 @@ namespace CrimeaCloud
     {
         Point coordinate;
         public static int filesCount = 22;
-        string[] fileNames = new string[filesCount]; 
+        string[] fileNames = new string[filesCount];
+        public FlowLayoutPanel flowL;
         public MainForm()
         {
             InitializeComponent();
@@ -134,9 +135,9 @@ namespace CrimeaCloud
         }
         private void button1_Click(object sender, EventArgs e)
         {
-
             
             InitFiles();
+            //UpdateImage.InitFiles(flowL);
 
         }
         public void InitFiles()
@@ -158,6 +159,7 @@ namespace CrimeaCloud
                 //Console.WriteLine(type);
                 flowLayCust1.RealizeImgPnls(type, i + 1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
             }
+            //filesFromServ.files.Clear(); // очистка списка files
         }
 
         public static FilesInfo GetFilesFromServer()
@@ -208,19 +210,21 @@ namespace CrimeaCloud
                 string fileExtension = Path.GetExtension(pathNewFile); //расширение
                 var size = new FileInfo(pathNewFile).Length; //размер файла
 
-                if (size > 5242880) // 5 mb
+                if (size > 524288000) // 
                 {
                     err.SetMessageText("The file is too large. Size limit 5 MB.");
                     err.ShowDialog();
                     //вызов метода
                     return;
                 }
-
                 AddNewFileToServ(nameNewFile, pathNewFile);
+                Console.Write("//////////////////////////////");
                 AddNewFileToForm(pathNewFile, nameNewFile, fileExtension); //добавление файла на форму
+                InitFiles(); //МЕГАКОСТЫЛЬ.................................................................................................................................
 
             }
         }
+
         private async void AddNewFileToServ(string fileName, string filePath)
         {
             string token = UserData.ReadToken();
@@ -245,23 +249,6 @@ namespace CrimeaCloud
             Console.WriteLine(pathFile);
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-            Down();
-        }
-
-        private async void Down()
-        {
-            string token = UserData.ReadToken();
-            var data = new
-            {
-                fileId = "4"
-            };
-            var response = await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107:3000/api/file/", "getfile");
-            SaveFile(@"C:\Users\MSi\Documents\GitHub\console-application\WindowsFormsApp1", response.RawBytes);
-            Console.WriteLine("гтова");
-        }
         public void SaveFile(string fileName, byte[] fileData)
         {
             string appPath = Application.StartupPath;
