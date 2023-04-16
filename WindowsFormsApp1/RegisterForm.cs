@@ -65,7 +65,7 @@ namespace CrimeaCloud
                 confirmPassword = bunifuTextBox3.Text
             };
 
-            var response = await ConnectHttp.PostData(data, "http://176.99.11.107/api/user/", "signup");
+            var response = await ConnectHttp.PostData(data, "http://176.99.11.107:3000/api/user/", "signup");
             ErrorMessage errorMessage = new ErrorMessage();
             if (response == null)
             {

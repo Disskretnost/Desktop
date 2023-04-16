@@ -163,7 +163,7 @@ namespace CrimeaCloud
         public static FilesInfo GetFilesFromServer()
         {
             string token = UserData.ReadToken();
-            var response = ConnectHttp.PostDataHeader(token, "http://176.99.11.107/api/file/", "getfiles");
+            var response = ConnectHttp.PostDataHeader(token, "http://176.99.11.107:3000/api/file/", "getfiles");
 
             if(!(response.Result.StatusCode == System.Net.HttpStatusCode.OK))
             {
@@ -224,7 +224,7 @@ namespace CrimeaCloud
         private async void AddNewFileToServ(string fileName, string filePath)
         {
             string token = UserData.ReadToken();
-            var respone = await ConnectHttp.PostFile(fileName, filePath, token, "http://176.99.11.107/api/file/", "upload");
+            var respone = await ConnectHttp.PostFile(fileName, filePath, token, "http://176.99.11.107:3000/api/file/", "upload");
             Console.WriteLine(respone.StatusCode);
             Console.WriteLine(respone.Content.ReadAsStringAsync().Result);
             Console.WriteLine("Файл добавлен на серв");
@@ -258,7 +258,7 @@ namespace CrimeaCloud
             {
                 fileId = "4"
             };
-            var response = await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107/api/file/", "getfile");
+            var response = await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107:3000/api/file/", "getfile");
             SaveFile(@"C:\Users\MSi\Documents\GitHub\console-application\WindowsFormsApp1", response.RawBytes);
             Console.WriteLine("гтова");
         }

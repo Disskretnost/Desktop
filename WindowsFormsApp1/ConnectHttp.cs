@@ -114,8 +114,8 @@ namespace CrimeaCloud
         public async static void CheckTokenStartApp()
         {
             string oldToken = UserData.ReadToken();
-            Console.WriteLine("Старый токен: " + oldToken);
-            var response = await PostDataHeader(oldToken, "http://176.99.11.107/api/user/", "update");
+            //Console.WriteLine("Старый токен: " + oldToken);
+            var response = await PostDataHeader(oldToken, "http://176.99.11.107:3000/api/user/", "update");
             if (response == null)
             {
                 Application.Run(new LoginForm());
