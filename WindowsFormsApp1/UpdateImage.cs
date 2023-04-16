@@ -18,7 +18,6 @@ namespace CrimeaCloud
         {
             flowL.Controls[$"imgPnl{num}"].Visible = true;
             flowL.Controls[$"imgPnl{num}"].Text = text;
-            //((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"])
             ((TESTControl.ImgPnl)flowL.Controls[$"imgPnl{num}"]).textWithInfo = text;
             ((TESTControl.ImgPnl)flowL.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
         }
@@ -44,18 +43,13 @@ namespace CrimeaCloud
         public static void InitFiles(FlowLayoutPanel flowL)
         {
             FilesInfo filesFromServ = GetFilesFromServer();
-            //System.Threading.Thread.Sleep(1000);
             flowL.Visible = true;
-            //Console.WriteLine(filesCount);
-            //Console.WriteLine(fileNames.Length);
-
             for (int i = 0; i < filesFromServ.count; i++)
             {
                 string str = filesFromServ.files[i].extension.ToString();
                 int index = str.IndexOf("/");
                 string type = str.Substring(0, index); //извлекаем "расширения" для необходимых файлов
-                //Console.WriteLine(type);
-                //ResetImg(type, i + 1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
+                //Console.WriteLine(type);;
                 ResetImg(type, i + 1, filesFromServ.files[i].id, filesFromServ.files[i].original_name, flowL);
 
             }

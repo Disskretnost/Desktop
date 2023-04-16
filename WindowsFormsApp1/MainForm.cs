@@ -193,7 +193,7 @@ namespace CrimeaCloud
             // Добавляем обработчик события прокрутки
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private async void button3_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog(); //файловый диалог
             ErrorMessage err = new ErrorMessage(); //для ошибок
@@ -217,7 +217,7 @@ namespace CrimeaCloud
                     //вызов метода
                     return;
                 }
-                AddNewFileToServ(nameNewFile, pathNewFile);
+                await AddNewFileToServ(nameNewFile, pathNewFile);
                 Console.Write("//////////////////////////////");
                 AddNewFileToForm(pathNewFile, nameNewFile, fileExtension); //добавление файла на форму
                 InitFiles(); //МЕГАКОСТЫЛЬ.................................................................................................................................
@@ -225,13 +225,13 @@ namespace CrimeaCloud
             }
         }
 
-        private async void AddNewFileToServ(string fileName, string filePath)
+        private async Task AddNewFileToServ(string fileName, string filePath)
         {
             string token = UserData.ReadToken();
             var respone = await ConnectHttp.PostFile(fileName, filePath, token, "http://176.99.11.107:3000/api/file/", "upload");
             Console.WriteLine(respone.StatusCode);
             Console.WriteLine(respone.Content.ReadAsStringAsync().Result);
-            Console.WriteLine("Файл добавлен на серв");
+            Console.WriteLine("Файл добавлен на сервер");
         }
         public void AddNewFileToForm(string pathFile, string nameFile, string extensionFile)
         {

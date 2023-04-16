@@ -50,7 +50,7 @@ namespace CrimeaCloud
             //fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("multipart/form-data");
 
             form.Add(fileContent, "file", Path.GetFileName(filePath));
-            var response = await httpClient.PostAsync(urlEnd, form);
+            var response = await httpClient.PostAsync(urlEnd, form); //ИСКЛЮЧЕНИЕ..........НУЖНЕН TRY/CATCH
 
             return response;
         }
