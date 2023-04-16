@@ -40,6 +40,7 @@ namespace CrimeaCloud
         {
             var httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(urlBase);
+            httpClient.Timeout = TimeSpan.FromSeconds(200);
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token); // Добавляем заголовок с токеном
 
             var form = new MultipartFormDataContent();
