@@ -111,6 +111,15 @@ namespace CrimeaCloud
             //((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;
             //((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
         }
+        public void ClearIMG()
+        {
+            //flowLayoutPanel1.Controls[$"imgPnl1"].Visible = true;
+            //Clean.UpdateIMG(flowLayoutPanel1, 2);
+            for (int i = 0; i < flowLayoutPanel1.Controls.Count-1; i++)
+            {
+                flowLayoutPanel1.Controls[$"imgPnl{i+1}"].Visible = false;
+            }
+        }
         public void RealizeImgPnls( int num, int numberFromServ, string text = "undefine")
         {
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Visible = true;

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TESTControl;
 
 namespace CrimeaCloud
 {
@@ -15,6 +16,8 @@ namespace CrimeaCloud
     {
         public string numberFromServ;
         public string nameFile;
+        public static bool needDel;
+
         public string NumberFromServ
         {
             get
@@ -96,8 +99,26 @@ namespace CrimeaCloud
         private void bunifuButton3_Click(object sender, EventArgs e)
         {
             DeleteThisFile();
-            //GetFilesFromServer();
+            needDel = true;
+            FlowLayCust myFlowLayCust = new FlowLayCust();
+            myFlowLayCust.ClearIMG();
 
+            //
+            //FlowLayCust.ClearIMG();
+            //DisableAllControls(FlowLayCust flowLayoutPanel1);
+
+
+
+        }
+        public void DisableAllControls(FlowLayoutPanel flowLayoutPanel)
+        {
+            foreach (Control control in flowLayoutPanel.Controls)
+            {
+                if (control is FlowLayoutPanel)
+                {
+                    DisableAllControls((FlowLayoutPanel)control);
+                }
+            }
         }
         //удаление (номер файла, токен, ссылка)
         public async void DeleteThisFile()

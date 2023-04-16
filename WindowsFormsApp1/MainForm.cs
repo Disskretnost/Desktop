@@ -132,9 +132,9 @@ namespace CrimeaCloud
             loginForm.ShowDialog();
             Close();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
+
             FilesInfo filesFromServ = GetFilesFromServer();
             flowLayCust1.Visible = true;
             Console.WriteLine(filesCount);

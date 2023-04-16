@@ -71,6 +71,10 @@ namespace TESTControl
             InitializeComponent();
             this.DoubleBuffered = true;
         }
+        public void CleanMG()
+        {
+            Visible = false;
+        }
         protected override void OnBackColorChanged(EventArgs e)
         {
             label1.BackColor = BackColor;
