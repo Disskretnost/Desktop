@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TESTControl;
@@ -16,8 +17,8 @@ namespace CrimeaCloud
     {
         public string numberFromServ;
         public string nameFile;
-        public static bool needDel;
-
+        public bool needDel;
+        public FlowLayoutPanel flowL;
         public string NumberFromServ
         {
             get
@@ -29,13 +30,14 @@ namespace CrimeaCloud
                 numberFromServ = value;
             }
         }
-        public OpenFile()
+        public OpenFile(FlowLayoutPanel flow)
         {
             InitializeComponent();
             bunifuButton1.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton2.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton3.TextAlign = ContentAlignment.MiddleCenter;
             StartPosition = FormStartPosition.CenterScreen;
+            flowL = flow;
         }
         private Point _mouseDownLocation;
 
@@ -100,15 +102,58 @@ namespace CrimeaCloud
         {
             DeleteThisFile();
             needDel = true;
-            FlowLayCust myFlowLayCust = new FlowLayCust();
-            myFlowLayCust.ClearIMG();
 
-            //
-            //FlowLayCust.ClearIMG();
-            //DisableAllControls(FlowLayCust flowLayoutPanel1);
+            for (int i = 0; i < 30; i++)
+            {
+                flowL.Controls[$"imgPnl{i + 1}"].Visible = false;
+            }
+            InitFiles();
 
 
+        }
+        public static FilesInfo GetFilesFromServer()
+        {
+            string token = UserData.ReadToken();
+            var response = ConnectHttp.PostDataHeader(token, "http://176.99.11.107/api/file/", "getfiles");
 
+            if (!(response.Result.StatusCode == System.Net.HttpStatusCode.OK))
+            {
+                ErrorMessage error = new ErrorMessage();
+                error.SetMessageText(response.Result.StatusCode.ToString());
+                error.ShowDialog();
+                return null;
+            }
+            Console.WriteLine(response.Result.Content);
+            FilesInfo files = JsonSerializer.Deserialize<FilesInfo>(response.Result.Content);
+            //filesCount = files.count;
+            Console.WriteLine($"// {files.count} //");
+            return files;
+            //Console.WriteLine($"// {files.files[0].id} //");
+        }
+        public void InitFiles()
+        {
+            FilesInfo filesFromServ = GetFilesFromServer();
+            flowL.Visible = true;
+            //Console.WriteLine(filesCount);
+            //Console.WriteLine(fileNames.Length);
+
+            for (int i = 0; i < filesFromServ.count; i++)
+            {
+                string str = filesFromServ.files[i].extension.ToString();
+                int index = str.IndexOf("/");
+                string type = str.Substring(0, index); //извлекаем "расширения" для необходимых файлов
+                //Console.WriteLine(type);
+                ResetImg(type, i + 1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
+
+            }
+        }
+        public void ResetImg(string type, int num, int numberFromServ, string text)
+        {
+            flowL.Controls[$"imgPnl{num}"].Visible = true;
+            flowL.Controls[$"imgPnl{num}"].Text = text;
+            //((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"])
+            ((TESTControl.ImgPnl)flowL.Controls[$"imgPnl{num}"]).textWithInfo = text;
+            ((TESTControl.ImgPnl)flowL.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
         }
         public void DisableAllControls(FlowLayoutPanel flowLayoutPanel)
         {

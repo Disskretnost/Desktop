@@ -83,7 +83,13 @@ namespace CrimeaCloud
         //тип,id файла, id владельца, название
         public void RealizeImgPnls(string type, int num, int numberFromServ, string text)
         {
-            Image image;
+            /*if (OpenFile.needDel)
+            {
+                ClearIMG();
+                
+            .needDel = false;
+            }*/
+            /*Image image;
             switch (type.ToLower())
             {
                 case ".jpg":
@@ -97,10 +103,10 @@ namespace CrimeaCloud
                 default:
                     image = Properties.Resources.SecondPhoto;
                     break;
-            }
+            } */
 
             // Set the image and other properties of the control
-            ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).BackgroundImage = image;
+            //((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).BackgroundImage = image;
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Visible = true;
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Text = text;
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;
@@ -120,10 +126,12 @@ namespace CrimeaCloud
                 flowLayoutPanel1.Controls[$"imgPnl{i+1}"].Visible = false;
             }
         }
+        
         public void RealizeImgPnls( int num, int numberFromServ, string text = "undefine")
         {
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Visible = true;
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Text = text;
+            //((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"])
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
         }

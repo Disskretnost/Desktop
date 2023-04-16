@@ -135,6 +135,12 @@ namespace CrimeaCloud
         private void button1_Click(object sender, EventArgs e)
         {
 
+            
+            InitFiles();
+
+        }
+        public void InitFiles()
+        {
             FilesInfo filesFromServ = GetFilesFromServer();
             flowLayCust1.Visible = true;
             Console.WriteLine(filesCount);
@@ -144,15 +150,14 @@ namespace CrimeaCloud
                 //Вызываем метод для установки ползунка по нужным размерам
                 bunifuVScrollBar1.Visible = true;
             }
-
             for (int i = 0; i < filesCount; i++)
             {
                 string str = filesFromServ.files[i].extension.ToString();
-                int index = str.IndexOf("/"); 
+                int index = str.IndexOf("/");
                 string type = str.Substring(0, index); //извлекаем "расширения" для необходимых файлов
-                Console.WriteLine(type); 
-                flowLayCust1.RealizeImgPnls(type, i+1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
-            } 
+                //Console.WriteLine(type);
+                flowLayCust1.RealizeImgPnls(type, i + 1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
+            }
         }
 
         public static FilesInfo GetFilesFromServer()

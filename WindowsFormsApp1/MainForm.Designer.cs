@@ -333,7 +333,7 @@ namespace CrimeaCloud
         private System.Windows.Forms.Button button1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.UI.WinForms.BunifuVScrollBar bunifuVScrollBar1;
-        private FlowLayCust flowLayCust1;
+        public FlowLayCust flowLayCust1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

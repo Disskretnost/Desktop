@@ -99,6 +99,7 @@ namespace CrimeaCloud
             Hide();
             MainForm mainForm = new MainForm();
             mainForm.ShowDialog();
+            
             Close();
         }
 

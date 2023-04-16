@@ -18,6 +18,7 @@ namespace TESTControl
         public string adress;
         public string text = "undefine";
         public string TextWithInfo;
+        public FlowLayoutPanel flow;
         public string textWithInfo
         {
             get
@@ -66,10 +67,11 @@ namespace TESTControl
 
         public object TexWithInfo { get; internal set; }
 
-        public ImgPnl()
+        public ImgPnl(FlowLayoutPanel flowL)
         {
             InitializeComponent();
             this.DoubleBuffered = true;
+            flow = flowL;
         }
         public void CleanMG()
         {
@@ -141,8 +143,10 @@ namespace TESTControl
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            CrimeaCloud.OpenFile openfile = new CrimeaCloud.OpenFile();
+            CrimeaCloud.OpenFile openfile = new CrimeaCloud.OpenFile(flow);
+            //openfile.flow = flow;
             openfile.NumberFromServ = numberFromServ;
+            //NumberFromServ = numberFromServ;
             openfile.nameFile = textWithInfo;
             openfile.ShowDialog();
             Console.WriteLine("dfdfdf");
