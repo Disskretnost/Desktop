@@ -107,7 +107,7 @@ namespace TESTControl
                 {
                     Task.Run(() => LoadPictureAsync(pathPict));
                 }
-                catch(OutOfMemoryException ex)
+                catch (OutOfMemoryException ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
@@ -133,8 +133,6 @@ namespace TESTControl
             {
                 Console.WriteLine(ex.Message);
             }
-
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

@@ -149,9 +149,9 @@ namespace CrimeaCloud
             {
                 string str = filesFromServ.files[i].extension.ToString();
                 int index = str.IndexOf("/"); 
-                string type = str.Substring(0, index); //извлекаем "расширение" для необходимых файлов
+                string type = str.Substring(0, index); //извлекаем "расширения" для необходимых файлов
                 Console.WriteLine(type); 
-                flowLayCust1.RealizeImgPnls(type,i+1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
+                flowLayCust1.RealizeImgPnls(type, i+1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
             } 
         }
 
@@ -254,7 +254,7 @@ namespace CrimeaCloud
                 fileId = "4"
             };
             var response = await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107/api/file/", "getfile");
-            SaveFile(@"C:\Users\black\Documents\GitHub\devCourse\console-application\WindowsFormsApp1", response.RawBytes);
+            SaveFile(@"C:\Users\MSi\Documents\GitHub\console-application\WindowsFormsApp1", response.RawBytes);
             Console.WriteLine("гтова");
         }
         public void SaveFile(string fileName, byte[] fileData)
@@ -262,6 +262,11 @@ namespace CrimeaCloud
             string appPath = Application.StartupPath;
             string filePathApp = Path.Combine(appPath, "new.jpg");
             File.WriteAllBytes(filePathApp, fileData);
+        }
+
+        private void bunifuPanel2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

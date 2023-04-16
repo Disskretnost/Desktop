@@ -95,6 +95,21 @@ namespace CrimeaCloud
 
         private void bunifuButton3_Click(object sender, EventArgs e)
         {
+            DeleteThisFile();
+            //GetFilesFromServer();
+
+        }
+        //удаление (номер файла, токен, ссылка)
+        public async void DeleteThisFile()
+        {
+            string token = UserData.ReadToken();
+            var data = new
+            {
+                fileId = numberFromServ
+            };
+            var response = await ConnectHttp.PostDeleteFile(data, token, "http://176.99.11.107/api/file/", "delete");
+            //SaveFile(nameFile, response.RawBytes);
+            Console.WriteLine(response.Content);
 
         }
     }

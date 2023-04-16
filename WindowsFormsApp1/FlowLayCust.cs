@@ -83,10 +83,33 @@ namespace CrimeaCloud
         //тип,id файла, id владельца, название
         public void RealizeImgPnls(string type, int num, int numberFromServ, string text)
         {
+            Image image;
+            switch (type.ToLower())
+            {
+                case ".jpg":
+                case "text":
+                    image = Properties.Resources.SecondPhoto;
+                    break;
+                case ".png":
+                    image = Properties.Resources.text;
+                    break;
+
+                default:
+                    image = Properties.Resources.SecondPhoto;
+                    break;
+            }
+
+            // Set the image and other properties of the control
+            ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).BackgroundImage = image;
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Visible = true;
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Text = text;
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
+
+            //flowLayoutPanel1.Controls[$"imgPnl{num}"].Visible = true;
+            //flowLayoutPanel1.Controls[$"imgPnl{num}"].Text = text;
+            //((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;
+            //((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
         }
         public void RealizeImgPnls( int num, int numberFromServ, string text = "undefine")
         {

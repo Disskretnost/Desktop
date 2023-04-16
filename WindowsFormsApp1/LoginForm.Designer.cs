@@ -31,31 +31,31 @@ namespace CrimeaCloud
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.registerlabel = new System.Windows.Forms.Label();
             this.resetLabel = new System.Windows.Forms.Label();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.Close = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.LogIn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.PasswordAuto = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.LoginAuto = new Bunifu.UI.WinForms.BunifuTextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.LoginAuto = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.PasswordAuto = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.LogIn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.Close = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // registerlabel
@@ -86,191 +86,44 @@ namespace CrimeaCloud
             this.resetLabel.Text = "Forgot password?";
             this.resetLabel.Click += new System.EventHandler(this.resetLabel_Click);
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(187, 40);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(110, 110);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 7;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(69, 234);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(43, 43);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(69, 298);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(43, 43);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
             // bunifuElipse1
             // 
             this.bunifuElipse1.ElipseRadius = 35;
             this.bunifuElipse1.TargetControl = this;
             // 
-            // LoginAuto
+            // label1
             // 
-            this.LoginAuto.AcceptsReturn = false;
-            this.LoginAuto.AcceptsTab = false;
-            this.LoginAuto.AnimationSpeed = 200;
-            this.LoginAuto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.LoginAuto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.LoginAuto.BackColor = System.Drawing.Color.Transparent;
-            this.LoginAuto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LoginAuto.BackgroundImage")));
-            this.LoginAuto.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.LoginAuto.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.LoginAuto.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.LoginAuto.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.LoginAuto.BorderRadius = 20;
-            this.LoginAuto.BorderThickness = 1;
-            this.LoginAuto.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.LoginAuto.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.LoginAuto.DefaultFont = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LoginAuto.DefaultText = "";
-            this.LoginAuto.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.LoginAuto.ForeColor = System.Drawing.Color.White;
-            this.LoginAuto.HideSelection = true;
-            this.LoginAuto.IconLeft = null;
-            this.LoginAuto.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.LoginAuto.IconPadding = 10;
-            this.LoginAuto.IconRight = null;
-            this.LoginAuto.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-            this.LoginAuto.Lines = new string[0];
-            this.LoginAuto.Location = new System.Drawing.Point(118, 234);
-            this.LoginAuto.MaxLength = 32767;
-            this.LoginAuto.MinimumSize = new System.Drawing.Size(1, 1);
-            this.LoginAuto.Modified = false;
-            this.LoginAuto.Multiline = false;
-            this.LoginAuto.Name = "LoginAuto";
-            stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            stateProperties5.FillColor = System.Drawing.Color.Empty;
-            stateProperties5.ForeColor = System.Drawing.Color.Empty;
-            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.LoginAuto.OnActiveState = stateProperties5;
-            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.LoginAuto.OnDisabledState = stateProperties6;
-            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            stateProperties7.FillColor = System.Drawing.Color.Empty;
-            stateProperties7.ForeColor = System.Drawing.Color.Empty;
-            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.LoginAuto.OnHoverState = stateProperties7;
-            stateProperties8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            stateProperties8.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            stateProperties8.ForeColor = System.Drawing.Color.White;
-            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.LoginAuto.OnIdleState = stateProperties8;
-            this.LoginAuto.Padding = new System.Windows.Forms.Padding(3);
-            this.LoginAuto.PasswordChar = '\0';
-            this.LoginAuto.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.LoginAuto.PlaceholderText = "Email";
-            this.LoginAuto.ReadOnly = false;
-            this.LoginAuto.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.LoginAuto.SelectedText = "";
-            this.LoginAuto.SelectionLength = 0;
-            this.LoginAuto.SelectionStart = 0;
-            this.LoginAuto.ShortcutsEnabled = true;
-            this.LoginAuto.Size = new System.Drawing.Size(260, 43);
-            this.LoginAuto.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.LoginAuto.TabIndex = 13;
-            this.LoginAuto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.LoginAuto.TextMarginBottom = 0;
-            this.LoginAuto.TextMarginLeft = 3;
-            this.LoginAuto.TextMarginTop = 0;
-            this.LoginAuto.TextPlaceholder = "Email";
-            this.LoginAuto.UseSystemPasswordChar = false;
-            this.LoginAuto.WordWrap = true;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(160, 178);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(167, 38);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Apps Login";
             // 
-            // PasswordAuto
+            // Close
             // 
-            this.PasswordAuto.AcceptsReturn = false;
-            this.PasswordAuto.AcceptsTab = false;
-            this.PasswordAuto.AnimationSpeed = 200;
-            this.PasswordAuto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.PasswordAuto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.PasswordAuto.BackColor = System.Drawing.Color.Transparent;
-            this.PasswordAuto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PasswordAuto.BackgroundImage")));
-            this.PasswordAuto.BorderColorActive = System.Drawing.Color.DodgerBlue;
-            this.PasswordAuto.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.PasswordAuto.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.PasswordAuto.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.PasswordAuto.BorderRadius = 20;
-            this.PasswordAuto.BorderThickness = 1;
-            this.PasswordAuto.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.PasswordAuto.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.PasswordAuto.DefaultFont = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PasswordAuto.DefaultText = "";
-            this.PasswordAuto.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.PasswordAuto.ForeColor = System.Drawing.Color.White;
-            this.PasswordAuto.HideSelection = true;
-            this.PasswordAuto.IconLeft = null;
-            this.PasswordAuto.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.PasswordAuto.IconPadding = 10;
-            this.PasswordAuto.IconRight = null;
-            this.PasswordAuto.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-            this.PasswordAuto.Lines = new string[0];
-            this.PasswordAuto.Location = new System.Drawing.Point(118, 298);
-            this.PasswordAuto.MaxLength = 32767;
-            this.PasswordAuto.MinimumSize = new System.Drawing.Size(1, 1);
-            this.PasswordAuto.Modified = false;
-            this.PasswordAuto.Multiline = false;
-            this.PasswordAuto.Name = "PasswordAuto";
-            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            stateProperties1.FillColor = System.Drawing.Color.Empty;
-            stateProperties1.ForeColor = System.Drawing.Color.Empty;
-            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.PasswordAuto.OnActiveState = stateProperties1;
-            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.PasswordAuto.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            stateProperties3.FillColor = System.Drawing.Color.Empty;
-            stateProperties3.ForeColor = System.Drawing.Color.Empty;
-            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.PasswordAuto.OnHoverState = stateProperties3;
-            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            stateProperties4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            stateProperties4.ForeColor = System.Drawing.Color.White;
-            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.PasswordAuto.OnIdleState = stateProperties4;
-            this.PasswordAuto.Padding = new System.Windows.Forms.Padding(3);
-            this.PasswordAuto.PasswordChar = '\0';
-            this.PasswordAuto.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.PasswordAuto.PlaceholderText = "Password";
-            this.PasswordAuto.ReadOnly = false;
-            this.PasswordAuto.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.PasswordAuto.SelectedText = "";
-            this.PasswordAuto.SelectionLength = 0;
-            this.PasswordAuto.SelectionStart = 0;
-            this.PasswordAuto.ShortcutsEnabled = true;
-            this.PasswordAuto.Size = new System.Drawing.Size(260, 43);
-            this.PasswordAuto.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.PasswordAuto.TabIndex = 14;
-            this.PasswordAuto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.PasswordAuto.TextMarginBottom = 0;
-            this.PasswordAuto.TextMarginLeft = 3;
-            this.PasswordAuto.TextMarginTop = 0;
-            this.PasswordAuto.TextPlaceholder = "Password";
-            this.PasswordAuto.UseSystemPasswordChar = false;
-            this.PasswordAuto.WordWrap = true;
-            this.PasswordAuto.TextChange += new System.EventHandler(this.PasswordAuto_TextChange);
+            this.Close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Close.Font = new System.Drawing.Font("Berlin Sans FB", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Close.ForeColor = System.Drawing.Color.MintCream;
+            this.Close.Location = new System.Drawing.Point(421, 14);
+            this.Close.Name = "Close";
+            this.Close.Size = new System.Drawing.Size(27, 30);
+            this.Close.TabIndex = 36;
+            this.Close.Text = "X";
+            this.Close.Click += new System.EventHandler(this.Close_Click_1);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(394, 16);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(21, 21);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 35;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // LogIn
             // 
@@ -362,39 +215,186 @@ namespace CrimeaCloud
             this.LogIn.UseDefaultRadiusAndThickness = true;
             this.LogIn.Click += new System.EventHandler(this.LogIn_Click);
             // 
-            // label1
+            // PasswordAuto
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(160, 178);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 38);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Apps Login";
+            this.PasswordAuto.AcceptsReturn = false;
+            this.PasswordAuto.AcceptsTab = false;
+            this.PasswordAuto.AnimationSpeed = 200;
+            this.PasswordAuto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.PasswordAuto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.PasswordAuto.BackColor = System.Drawing.Color.Transparent;
+            this.PasswordAuto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PasswordAuto.BackgroundImage")));
+            this.PasswordAuto.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.PasswordAuto.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.PasswordAuto.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.PasswordAuto.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.PasswordAuto.BorderRadius = 20;
+            this.PasswordAuto.BorderThickness = 1;
+            this.PasswordAuto.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.PasswordAuto.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.PasswordAuto.DefaultFont = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PasswordAuto.DefaultText = "";
+            this.PasswordAuto.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.PasswordAuto.ForeColor = System.Drawing.Color.White;
+            this.PasswordAuto.HideSelection = true;
+            this.PasswordAuto.IconLeft = null;
+            this.PasswordAuto.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.PasswordAuto.IconPadding = 10;
+            this.PasswordAuto.IconRight = null;
+            this.PasswordAuto.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.PasswordAuto.Lines = new string[0];
+            this.PasswordAuto.Location = new System.Drawing.Point(118, 298);
+            this.PasswordAuto.MaxLength = 32767;
+            this.PasswordAuto.MinimumSize = new System.Drawing.Size(1, 1);
+            this.PasswordAuto.Modified = false;
+            this.PasswordAuto.Multiline = false;
+            this.PasswordAuto.Name = "PasswordAuto";
+            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
+            stateProperties1.FillColor = System.Drawing.Color.Empty;
+            stateProperties1.ForeColor = System.Drawing.Color.Empty;
+            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.PasswordAuto.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.PasswordAuto.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
+            stateProperties3.FillColor = System.Drawing.Color.Empty;
+            stateProperties3.ForeColor = System.Drawing.Color.Empty;
+            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.PasswordAuto.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            stateProperties4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            stateProperties4.ForeColor = System.Drawing.Color.White;
+            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.PasswordAuto.OnIdleState = stateProperties4;
+            this.PasswordAuto.Padding = new System.Windows.Forms.Padding(3);
+            this.PasswordAuto.PasswordChar = '\0';
+            this.PasswordAuto.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.PasswordAuto.PlaceholderText = "Password";
+            this.PasswordAuto.ReadOnly = false;
+            this.PasswordAuto.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.PasswordAuto.SelectedText = "";
+            this.PasswordAuto.SelectionLength = 0;
+            this.PasswordAuto.SelectionStart = 0;
+            this.PasswordAuto.ShortcutsEnabled = true;
+            this.PasswordAuto.Size = new System.Drawing.Size(260, 43);
+            this.PasswordAuto.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.PasswordAuto.TabIndex = 14;
+            this.PasswordAuto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.PasswordAuto.TextMarginBottom = 0;
+            this.PasswordAuto.TextMarginLeft = 3;
+            this.PasswordAuto.TextMarginTop = 0;
+            this.PasswordAuto.TextPlaceholder = "Password";
+            this.PasswordAuto.UseSystemPasswordChar = false;
+            this.PasswordAuto.WordWrap = true;
+            this.PasswordAuto.TextChange += new System.EventHandler(this.PasswordAuto_TextChange);
             // 
-            // pictureBox6
+            // LoginAuto
             // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(394, 16);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(21, 21);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 35;
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
+            this.LoginAuto.AcceptsReturn = false;
+            this.LoginAuto.AcceptsTab = false;
+            this.LoginAuto.AnimationSpeed = 200;
+            this.LoginAuto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.LoginAuto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.LoginAuto.BackColor = System.Drawing.Color.Transparent;
+            this.LoginAuto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LoginAuto.BackgroundImage")));
+            this.LoginAuto.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
+            this.LoginAuto.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.LoginAuto.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.LoginAuto.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.LoginAuto.BorderRadius = 20;
+            this.LoginAuto.BorderThickness = 1;
+            this.LoginAuto.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.LoginAuto.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.LoginAuto.DefaultFont = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LoginAuto.DefaultText = "";
+            this.LoginAuto.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.LoginAuto.ForeColor = System.Drawing.Color.White;
+            this.LoginAuto.HideSelection = true;
+            this.LoginAuto.IconLeft = null;
+            this.LoginAuto.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.LoginAuto.IconPadding = 10;
+            this.LoginAuto.IconRight = null;
+            this.LoginAuto.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.LoginAuto.Lines = new string[0];
+            this.LoginAuto.Location = new System.Drawing.Point(118, 234);
+            this.LoginAuto.MaxLength = 32767;
+            this.LoginAuto.MinimumSize = new System.Drawing.Size(1, 1);
+            this.LoginAuto.Modified = false;
+            this.LoginAuto.Multiline = false;
+            this.LoginAuto.Name = "LoginAuto";
+            stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
+            stateProperties5.FillColor = System.Drawing.Color.Empty;
+            stateProperties5.ForeColor = System.Drawing.Color.Empty;
+            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.LoginAuto.OnActiveState = stateProperties5;
+            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.LoginAuto.OnDisabledState = stateProperties6;
+            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
+            stateProperties7.FillColor = System.Drawing.Color.Empty;
+            stateProperties7.ForeColor = System.Drawing.Color.Empty;
+            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.LoginAuto.OnHoverState = stateProperties7;
+            stateProperties8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            stateProperties8.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            stateProperties8.ForeColor = System.Drawing.Color.White;
+            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.LoginAuto.OnIdleState = stateProperties8;
+            this.LoginAuto.Padding = new System.Windows.Forms.Padding(3);
+            this.LoginAuto.PasswordChar = '\0';
+            this.LoginAuto.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.LoginAuto.PlaceholderText = "Email";
+            this.LoginAuto.ReadOnly = false;
+            this.LoginAuto.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.LoginAuto.SelectedText = "";
+            this.LoginAuto.SelectionLength = 0;
+            this.LoginAuto.SelectionStart = 0;
+            this.LoginAuto.ShortcutsEnabled = true;
+            this.LoginAuto.Size = new System.Drawing.Size(260, 43);
+            this.LoginAuto.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.LoginAuto.TabIndex = 13;
+            this.LoginAuto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.LoginAuto.TextMarginBottom = 0;
+            this.LoginAuto.TextMarginLeft = 3;
+            this.LoginAuto.TextMarginTop = 0;
+            this.LoginAuto.TextPlaceholder = "Email";
+            this.LoginAuto.UseSystemPasswordChar = false;
+            this.LoginAuto.WordWrap = true;
             // 
-            // Close
+            // pictureBox3
             // 
-            this.Close.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Close.Font = new System.Drawing.Font("Berlin Sans FB", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Close.ForeColor = System.Drawing.Color.MintCream;
-            this.Close.Location = new System.Drawing.Point(421, 14);
-            this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(27, 30);
-            this.Close.TabIndex = 36;
-            this.Close.Text = "X";
-            this.Close.Click += new System.EventHandler(this.Close_Click_1);
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(187, 40);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(110, 110);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 7;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(69, 234);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(43, 43);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(69, 298);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(43, 43);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // LoginForm
             // 
@@ -421,10 +421,10 @@ namespace CrimeaCloud
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

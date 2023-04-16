@@ -408,6 +408,9 @@
     <None Include="img\email 3.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\FileIcon.jpg" />
+    <None Include="bin\Debug\SecondPhoto.jpg" />
+    <None Include="bin\Debug\text.jpg" />
     <Content Include="clouds-outlined-weather-symbol_icon-icons.com_54695.ico" />
   </ItemGroup>
   <ItemGroup>

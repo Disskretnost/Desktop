@@ -235,6 +235,7 @@ namespace CrimeaCloud
             this.bunifuPanel2.ShowBorders = true;
             this.bunifuPanel2.Size = new System.Drawing.Size(273, 170);
             this.bunifuPanel2.TabIndex = 1;
+            this.bunifuPanel2.Click += new System.EventHandler(this.bunifuPanel2_Click);
             // 
             // bunifuVScrollBar1
             // 
