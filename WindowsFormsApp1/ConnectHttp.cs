@@ -57,10 +57,10 @@ namespace CrimeaCloud
             return response;
         }
         //update
-        public static async Task<IRestResponse> PostDataHeader(string token, string urlBase, string urlEnd)
+        public static async Task<RestResponse> PostDataHeader(string token, string urlBase, string urlEnd)
         {
             var clientRest = new RestClient(urlBase);
-            var requestRest = new RestRequest(urlEnd, Method.POST);
+            var requestRest = new RestRequest(urlEnd, Method.Post);
             requestRest.AddHeader("Authorization", "Bearer " + token);
             try
             {
@@ -73,33 +73,72 @@ namespace CrimeaCloud
             }
             return null;
         }
-        public static async Task<IRestResponse> PostDownloadFile(object number, string token, string urlBase, string urlEnd)
+        public static async void PostDownloadFile(object number, string token, string urlBase, string urlEnd, string nameFile)
         {
-            var clientRest = new RestClient(urlBase);
-            var requestRest = new RestRequest(urlEnd, Method.POST);
+            /*using (var clientRest = new RestClient(urlBase))
+            {
+                var requestRest = new RestRequest(urlEnd, Method.Post);
+                var json = JsonSerializer.Serialize(number);
+                try
+                {
+                    requestRest.AddHeader("Authorization", "Bearer " + token);
+                    requestRest.AddHeader("Content-Type", "application/json");
+                    requestRest.AddParameter("application/json", json, ParameterType.RequestBody);
+
+                    //requestRest.AutomaticDecompression = true;
+                    //requestRest.BufferSize = 16384; // 16 КБ
+                    requestRest.Timeout = 600000;
+                    var response = await clientRest.ExecuteAsync(requestRest);
+
+                    //clientRest.ExecuteAsync(requestRest, restres)
+                    return response;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ошибка RestSharp2: " + ex.Message);
+                }
+            }
+            return null; */  //РАБОЧИЙ МЕТОД # 1 (просто расскоментировать) (не забудь ещё в openfile.cs открыть)
+            var clientRest = new RestClient(urlBase); //рабочий метод # 2 (тут я пытался делить файл на части при записи, чтобы освобождать память и не вызывть OutOfMemoryException
+            var requestRest = new RestRequest(urlEnd, Method.Post);
             var json = JsonSerializer.Serialize(number);
+            requestRest.AddHeader("Authorization", "Bearer " + token);
+            requestRest.AddHeader("Content-Type", "application/json");
+            requestRest.AddParameter("application/json", json, ParameterType.RequestBody);
+
+            RestResponse restResponse = null;
+            Stream responseStream = null;
+
             try
             {
-                requestRest.AddHeader("Authorization", "Bearer " + token);
-                requestRest.AddHeader("Content-Type", "application/json");
-                requestRest.AddParameter("application/json", json, ParameterType.RequestBody);
-                clientRest.Timeout = 300000;
-                var response = clientRest.Execute(requestRest);
+                restResponse = await clientRest.ExecuteAsync(requestRest) as RestResponse;
+                responseStream = restResponse.RawBytes != null ? new MemoryStream(restResponse.RawBytes) : null;
+                var buffer = new byte[64 * 64];
+                int bytesRead;
+                var fileStream = new FileStream(nameFile, FileMode.Create, FileAccess.Write, FileShare.None, 4096, true);
 
-                //clientRest.ExecuteAsync(requestRest, restres)
-                return response;
+                while ((bytesRead = await responseStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                {
+                    await fileStream.WriteAsync(buffer, 0, bytesRead); //пишет файл 
+                    Array.Clear(buffer, 0, buffer.Length);
+                }
+
+                await fileStream.FlushAsync();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ошибка RestSharp2: " + ex.Message);
             }
-            return null;
+            finally
+            {
+                responseStream?.Dispose();
+            }
         }
 
-        public static async Task<IRestResponse> PostDeleteFile(object number, string token, string urlBase, string urlEnd)
+        public static async Task<RestResponse> PostDeleteFile(object number, string token, string urlBase, string urlEnd)
         {
             var clientRest = new RestClient(urlBase);
-            var requestRest = new RestRequest(urlEnd, Method.POST); 
+            var requestRest = new RestRequest(urlEnd, Method.Post); 
             var json = JsonSerializer.Serialize(number); //номер файла
             MessageBox.Show(json);
             try

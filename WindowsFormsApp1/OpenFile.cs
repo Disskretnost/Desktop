@@ -73,16 +73,17 @@ namespace CrimeaCloud
             {
                 fileId = numberFromServ
             };
-            var response = await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107:3000/api/file/", "getfile");
-            if (response != null && response.StatusCode == HttpStatusCode.OK)
+            ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107:3000/api/file/", "getfile", nameFile); // РАБОЧИЙ МЕТОД #2 (но большие файлы нет)
+            //var response =  await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107:3000/api/file/", "getfile", nameFile);
+            /*if (response != null)
             {
                 SaveFile(nameFile, response.RawBytes);
                 Console.WriteLine("Файл сохранен.");
             }
             else
             {
-                Console.WriteLine("Не удалось получить файл." + response.StatusCode);
-            }
+                Console.WriteLine("Не удалось получить файл.");
+            } */      // РАБОЧИЙ МЕТОД № 1(но большие файлы нет)
         }
         public void SaveFile(string fileName, byte[] fileData)
         {
