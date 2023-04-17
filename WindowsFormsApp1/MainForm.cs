@@ -138,14 +138,17 @@ namespace CrimeaCloud
         {
             
             InitFiles();
-            //UpdateImage.InitFiles(flowL);
 
         }
         public void InitFiles()
         {
             FilesInfo filesFromServ = GetFilesFromServer();
-            flowLayCust1.Visible = true;
             Console.WriteLine("Количество файлов на диске:" + filesCount);
+            if (filesFromServ == null)
+            {
+                return;
+            }
+                        flowLayCust1.Visible = true;
             if (filesCount > 20)
             {
                 //Вызываем метод для установки ползунка по нужным размерам
@@ -169,10 +172,12 @@ namespace CrimeaCloud
 
             if(!(response.Result.StatusCode == System.Net.HttpStatusCode.OK))
             {
-                ErrorMessage error = new ErrorMessage();
-                error.SetMessageText(response.Result.StatusCode.ToString());
-                error.ShowDialog();
-                return null;
+                using (ErrorMessage error = new ErrorMessage())
+                {
+                    error.SetMessageText("Check your internet connection.");
+                    error.ShowDialog();
+                    return null;
+                }
             }
             Console.WriteLine(response.Result.Content);
             FilesInfo files = JsonSerializer.Deserialize<FilesInfo>(response.Result.Content);
@@ -194,32 +199,41 @@ namespace CrimeaCloud
 
         private async void button3_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog(); //файловый диалог
-            ErrorMessage err = new ErrorMessage(); //для ошибок
-            if (!flowLayCust1.Visible) //если не отображён flowLayCust1
-            {
-                err.SetMessageText("Please, open drive firstly");
-                err.ShowDialog();
-                return;
-            }
-            if(openFileDialog1.ShowDialog() == DialogResult.OK) //если файловый диалог открылся
-            {
-                
-                string pathNewFile = openFileDialog1.FileName; //полный пусть
-                string nameNewFile = openFileDialog1.SafeFileName; //только имя
-                var size = new FileInfo(pathNewFile).Length; //размер файла
-                if (size > 8589934592) // 
+            using (OpenFileDialog openFileDialog1 = new OpenFileDialog())
+            { //файловый диалог
+                if (!flowLayCust1.Visible) //если не отображён flowLayCust1
                 {
-                    err.SetMessageText("The file is too large. Size limit 1000 MB.");
-                    err.ShowDialog();
-                    return;
+                    using (ErrorMessage err = new ErrorMessage())
+                    {
+                        err.SetMessageText("Please, open drive firstly");
+                        err.ShowDialog();
+                        return;
+                    }
                 }
-                LoadfFileForm loadfFileForm = new LoadfFileForm();
-                loadfFileForm.SetMessageText("Uploading files");
-                loadfFileForm.Show();
-                await AddNewFileToServ(nameNewFile, pathNewFile);
-                InitFiles(); //МЕГАКОСТЫЛЬ.................................................................................................................................
-                loadfFileForm.Close();
+                if (openFileDialog1.ShowDialog() == DialogResult.OK) //если файловый диалог открылся
+                {
+
+                    string pathNewFile = openFileDialog1.FileName; //полный пусть
+                    string nameNewFile = openFileDialog1.SafeFileName; //только имя
+                    var size = new FileInfo(pathNewFile).Length; //размер файла
+                    if (size > 8589934592) // 
+                    {
+                        using (ErrorMessage err = new ErrorMessage())
+                        {
+                            err.SetMessageText("The file is too large. Size limit 1000 MB.");
+                            err.ShowDialog();
+                            return;
+                        }
+                    }
+                    using (LoadfFileForm loadfFileForm = new LoadfFileForm())
+                    {
+                        loadfFileForm.SetMessageText("Uploading files");
+                        loadfFileForm.Show();
+                        await AddNewFileToServ(nameNewFile, pathNewFile);
+                        loadfFileForm.Close();
+                        InitFiles();
+                    }
+                }
             }
         }
 
@@ -229,15 +243,9 @@ namespace CrimeaCloud
             try
             {
                 var respone = await ConnectHttp.PostFile(fileName, filePath, token, "http://176.99.11.107:3000/api/file/", "upload");
-                Console.WriteLine(respone.StatusCode);
-                Console.WriteLine(respone.Content.ReadAsStringAsync().Result);
+                Console.WriteLine(respone?.StatusCode);
+                Console.WriteLine(respone?.Content.ReadAsStringAsync().Result);
                 Console.WriteLine("Файл добавлен на сервер");
-                if (!respone.IsSuccessStatusCode)
-                {
-                    ErrorMessage error = new ErrorMessage();
-                    error.SetMessageText("Failed to send file");
-                    error.ShowDialog();
-                }
             }
             catch(Exception ex)
             {

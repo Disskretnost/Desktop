@@ -120,7 +120,7 @@ namespace TESTControl
             }
             else
             {
-                MessageBox.Show("Net");
+                Console.WriteLine("я юзлес впроде");
             }
         }
         private async Task LoadPictureAsync(string filePath)

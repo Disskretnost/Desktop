@@ -20,6 +20,7 @@ namespace CrimeaCloud
         public string numberFromServ;
         public string nameFile;
         public bool needDel;
+        public bool deletedFile = true;
         public FlowLayoutPanel flowL;
         public string NumberFromServ
         {
@@ -88,7 +89,11 @@ namespace CrimeaCloud
             }
             else
             {
-                Console.WriteLine("Не удалось получить файл.");
+                using (ErrorMessage errorMessage = new ErrorMessage())
+                {
+                    errorMessage.SetMessageText("Failed to download");
+                    errorMessage.ShowDialog();
+                }
             }
             System.Runtime.GCSettings.LargeObjectHeapCompactionMode = System.Runtime.GCLargeObjectHeapCompactionMode.CompactOnce;
             System.GC.Collect();
@@ -115,6 +120,15 @@ namespace CrimeaCloud
         private void bunifuButton3_Click(object sender, EventArgs e)
         {
             DeleteThisFile();
+            if (!deletedFile)
+            {
+                using (ErrorMessage errorMessage = new ErrorMessage())
+                {
+                    errorMessage.SetMessageText("Check your internet connection");
+                    errorMessage.ShowDialog();
+                    return;
+                }
+            }
             for (int i = 0; i < 30; i++)
             {
                 flowL.Controls[$"imgPnl{i + 1}"].Visible = false;
@@ -130,16 +144,19 @@ namespace CrimeaCloud
             {
                 fileId = numberFromServ
             };
-            var response = await ConnectHttp.PostDeleteFile(data, token, "http://176.99.11.107:3000/api/file/", "delete");
-            //Messagebox.Show(response.GetType());
-            var content = response.Content;
-            ErrorData deserializedResponse = JsonConvert.DeserializeObject<ErrorData>(content); 
-            ErrorMessage er = new ErrorMessage();
-            er.SetMessageText(deserializedResponse.message);
-            er.TopMost = true;
-            MainForm main = new MainForm(123.ToString());
-            er.Show(main); // показываем форму er с MainForm в качестве родительской
-            Close(); // закрываем текущую форму
+            try
+            {
+                var response = await ConnectHttp.PostDeleteFile(data, token, "http://176.99.11.107:3000/api/file/", "delete");
+                if (response == null || response.StatusCode != HttpStatusCode.OK)
+                {
+                    deletedFile = false;
+                }
+            }
+            catch(Exception ex)
+            {
+                deletedFile = false;
+                Console.WriteLine("fafa" + ex.Message);
+            }
         }
     }
 }
