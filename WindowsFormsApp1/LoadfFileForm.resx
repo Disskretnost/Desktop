@@ -117,4 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="bunifuElipse1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="bunifuPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        9rW7uPgXmvFBksBHK2MAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="bunifuLabel1.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 12px;font-family: 'Microsoft Tai Le'; font-size: 15pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(255, 255, 255); text-align: center; }</value>
+  </data>
 </root>

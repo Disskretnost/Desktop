@@ -35,7 +35,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -43,6 +43,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -325,6 +326,12 @@
     <Compile Include="ImgPnl.designer.cs">
       <DependentUpon>ImgPnl.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoadfFileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadfFileForm.Designer.cs">
+      <DependentUpon>LoadfFileForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -351,12 +358,6 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="testform.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="testform.Designer.cs">
-      <DependentUpon>testform.cs</DependentUpon>
-    </Compile>
     <Compile Include="UpdateImage.cs" />
     <Compile Include="UserData.cs" />
     <EmbeddedResource Include="ErrorMessage.resx">
@@ -370,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ImgPnl.resx">
       <DependentUpon>ImgPnl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadfFileForm.resx">
+      <DependentUpon>LoadfFileForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -388,9 +392,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="testform.resx">
-      <DependentUpon>testform.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="CrimeaCloud_TemporaryKey.pfx" />
     <None Include="packages.config" />
@@ -428,6 +429,7 @@
     <None Include="bin\Debug\FileIcon.jpg" />
     <None Include="bin\Debug\SecondPhoto.jpg" />
     <None Include="bin\Debug\text.jpg" />
+    <None Include="bin\Debug\LoadFile.png" />
     <Content Include="clouds-outlined-weather-symbol_icon-icons.com_54695.ico" />
   </ItemGroup>
   <ItemGroup>
