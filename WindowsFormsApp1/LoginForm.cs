@@ -75,32 +75,39 @@ namespace CrimeaCloud
                 email = LoginAuto.Text,
                 password = PasswordAuto.Text
             };
-            var response = await ConnectHttp.PostData(data, "http://176.99.11.107:3000/api/user/", "signin");
-            ErrorMessage errorMessage = new ErrorMessage();
-            if (response == null)
+            try
             {
-                errorMessage.SetMessageText("No netconnection"); //без ToString тоже ошибка с кодировкой 
-                errorMessage.Show();
-                return;
+                var response = await ConnectHttp.PostData(data, "http://176.99.11.107:3000/api/user/", "signin");
+                if (!(response.StatusCode == System.Net.HttpStatusCode.OK))
+                {
+                    using (ErrorMessage errorMessage = new ErrorMessage())
+                    {
+                        ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
+                        errorMessage.SetMessageText(errorInfo.message.ToString()); //без ToString тоже ошибка с кодировкой 
+                        errorMessage.ShowDialog();
+                        //Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
+                        return;
+                    }
+                }
+                UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);//распаковали данные 
+                Console.WriteLine($"{dataFromServ.user.id} Token ({dataFromServ.user.name}){dataFromServ.token}");
+                Console.WriteLine($"Email: {dataFromServ.user.email}");
+                UserData.SaveToken(dataFromServ.token); //записали токен в файл
+                Hide();
+                MainForm mainForm = new MainForm();
+                mainForm.ShowDialog();
+                Close();
             }
-            if (!(response.StatusCode == System.Net.HttpStatusCode.OK)) // если статус не 200
+            catch (Exception)
             {
-                ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
-                errorMessage.SetMessageText(errorInfo.message.ToString()); //без ToString тоже ошибка с кодировкой 
-                errorMessage.Show();
-                //Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
-                return;
+                using(ErrorMessage errorMessage = new ErrorMessage())
+                {
+                    errorMessage.SetMessageText("Check your internet connection");
+                    errorMessage.ShowDialog();
+                    return;
+                }
             }
-            UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result); //в экземпляр класса передаем информация с сервера
-            //распаковали данные 
-            Console.WriteLine($"{dataFromServ.user.id} Token ({dataFromServ.user.name}){dataFromServ.token}");
-            Console.WriteLine($"Email: {dataFromServ.user.email}"); 
-            UserData.SaveToken(dataFromServ.token); //записали токен в файл
-            Hide();
-            MainForm mainForm = new MainForm();
-            mainForm.ShowDialog();
-            
-            Close();
+
         }
 
 

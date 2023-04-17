@@ -29,7 +29,7 @@ namespace CrimeaCloud
             if (!(response.Result.StatusCode == System.Net.HttpStatusCode.OK))
             {
                 ErrorMessage error = new ErrorMessage();
-                error.SetMessageText(response.Result.StatusCode.ToString());
+                error.SetMessageText("Check your internet connection");
                 error.ShowDialog();
                 return null;
             }
@@ -43,6 +43,10 @@ namespace CrimeaCloud
         public static void InitFiles(FlowLayoutPanel flowL)
         {
             FilesInfo filesFromServ = GetFilesFromServer();
+            if (filesFromServ == null)
+            {
+                return;
+            }
             flowL.Visible = true;
             for (int i = 0; i < filesFromServ.count; i++)
             {

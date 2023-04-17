@@ -83,7 +83,7 @@ namespace CrimeaCloud
             this.Close.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Close.Font = new System.Drawing.Font("Berlin Sans FB", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Close.ForeColor = System.Drawing.Color.MintCream;
-            this.Close.Location = new System.Drawing.Point(3, 6);
+            this.Close.Location = new System.Drawing.Point(3, 0);
             this.Close.Name = "Close";
             this.Close.Size = new System.Drawing.Size(22, 30);
             this.Close.TabIndex = 37;
