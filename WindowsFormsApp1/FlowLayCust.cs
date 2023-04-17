@@ -83,7 +83,9 @@ namespace CrimeaCloud
         //тип,id файла, id владельца, название
         public void RealizeImgPnls(string type, int num, int numberFromServ, string text)
         {
-            /*if (OpenFile.needDel)
+            /*if (OpenFile
+             * 
+             * .needDel)
             {
                 ClearIMG();
                 
