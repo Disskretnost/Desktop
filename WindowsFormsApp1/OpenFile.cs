@@ -64,7 +64,7 @@ namespace CrimeaCloud
         private async void bunifuButton2_Click_1(object sender, EventArgs e)
         {
             LoadfFileForm loadfFileForm = new LoadfFileForm();
-            loadfFileForm.SetMessageText(this.Text);///////
+            loadfFileForm.SetMessageText("Uploading files");///////
             //loadfFileForm.Topmost = true;
             loadfFileForm.Show();
             Close();
