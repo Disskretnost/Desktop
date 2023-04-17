@@ -43,11 +43,13 @@ namespace CrimeaCloud
             this.bunifuPanel6 = new Bunifu.UI.WinForms.BunifuPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.bunifuVScrollBar1 = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.flowLayCust1 = new CrimeaCloud.FlowLayCust();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.bunifuPanel1.SuspendLayout();
+            this.bunifuPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // Close
@@ -229,6 +231,7 @@ namespace CrimeaCloud
             this.bunifuPanel2.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuPanel2.BorderRadius = 0;
             this.bunifuPanel2.BorderThickness = 0;
+            this.bunifuPanel2.Controls.Add(this.label1);
             this.bunifuPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuPanel2.Location = new System.Drawing.Point(0, 0);
             this.bunifuPanel2.Name = "bunifuPanel2";
@@ -236,6 +239,19 @@ namespace CrimeaCloud
             this.bunifuPanel2.Size = new System.Drawing.Size(273, 170);
             this.bunifuPanel2.TabIndex = 1;
             this.bunifuPanel2.Click += new System.EventHandler(this.bunifuPanel2_Click);
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 16.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(185)))), ((int)(((byte)(212)))));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(273, 170);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Username";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // bunifuVScrollBar1
             // 
@@ -314,6 +330,7 @@ namespace CrimeaCloud
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.bunifuPanel1.ResumeLayout(false);
+            this.bunifuPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -335,5 +352,6 @@ namespace CrimeaCloud
         private Bunifu.UI.WinForms.BunifuVScrollBar bunifuVScrollBar1;
         public FlowLayCust flowLayCust1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label1;
     }
 }

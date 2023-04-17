@@ -61,12 +61,18 @@ namespace CrimeaCloud
             }
         }
 
-        private void bunifuButton2_Click_1(object sender, EventArgs e)
+        private async void bunifuButton2_Click_1(object sender, EventArgs e)
         {
-            DownloadThisFile();
-            
+            LoadfFileForm loadfFileForm = new LoadfFileForm();
+            loadfFileForm.SetMessageText("Uploading files");///////
+            //loadfFileForm.Topmost = true;
+            loadfFileForm.Show();
+            Close();
+            await DownloadThisFile();
+            loadfFileForm.Close();
         }
-        public async void DownloadThisFile()
+
+        public async Task DownloadThisFile()
         {
             string token = UserData.ReadToken();
             var data = new
@@ -131,7 +137,7 @@ namespace CrimeaCloud
             ErrorMessage er = new ErrorMessage();
             er.SetMessageText(deserializedResponse.message);
             er.TopMost = true;
-            MainForm main = new MainForm();
+            MainForm main = new MainForm(123.ToString());
             er.Show(main); // показываем форму er с MainForm в качестве родительской
             Close(); // закрываем текущую форму
         }
