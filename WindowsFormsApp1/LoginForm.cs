@@ -94,7 +94,7 @@ namespace CrimeaCloud
                 Console.WriteLine($"Email: {dataFromServ.user.email}");
                 UserData.SaveToken(dataFromServ.token); //записали токен в файл
                 Hide();
-                MainForm mainForm = new MainForm();
+                MainForm mainForm = new MainForm(dataFromServ.user.name);
                 mainForm.ShowDialog();
                 Close();
             }

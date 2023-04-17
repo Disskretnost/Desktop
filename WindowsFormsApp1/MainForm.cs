@@ -23,7 +23,7 @@ namespace CrimeaCloud
         public static int filesCount = 22;
         string[] fileNames = new string[filesCount];
         public FlowLayoutPanel flowL;
-        public MainForm()
+        public MainForm(string userName)
         {
             InitializeComponent();
             this.DoubleBuffered = true;
@@ -36,6 +36,7 @@ namespace CrimeaCloud
             bunifuVScrollBar1.Maximum = 400;
             bunifuVScrollBar1.SmallChange = 5;
             bunifuVScrollBar1.LargeChange = 15;
+            label1.Text = userName; 
         }
 
         private void bunifuPanel1_Click(object sender, EventArgs e)

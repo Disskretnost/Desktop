@@ -62,12 +62,18 @@ namespace CrimeaCloud
             }
         }
 
-        private void bunifuButton2_Click_1(object sender, EventArgs e)
+        private async void bunifuButton2_Click_1(object sender, EventArgs e)
         {
-            DownloadThisFile();
-            
+            LoadfFileForm loadfFileForm = new LoadfFileForm();
+            loadfFileForm.SetMessageText("Uploading files");///////
+            //loadfFileForm.Topmost = true;
+            loadfFileForm.Show();
+            Close();
+            await DownloadThisFile();
+            loadfFileForm.Close();
         }
-        public async void DownloadThisFile()
+
+        public async Task DownloadThisFile()
         {
             string token = UserData.ReadToken();
             var data = new

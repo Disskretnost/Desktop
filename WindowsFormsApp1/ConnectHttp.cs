@@ -149,12 +149,13 @@ namespace CrimeaCloud
                     {
                         UserData.SaveToken(userData.token); //сохраняем
                     }
-                    Application.Run(new MainForm());
+                    Application.Run(new MainForm(userData.user.name));
                 }
                 else
                 {
                     Application.Run(new LoginForm());
                 }
+            
             }
             catch (Exception) { }
         }
