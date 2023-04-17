@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
-using TESTControl;
 
 namespace CrimeaCloud
 {
@@ -36,6 +28,8 @@ namespace CrimeaCloud
         public OpenFile(FlowLayoutPanel flow)
         {
             InitializeComponent();
+            pictureBox1.ImageLocation = $@"{ Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\FileIcon.jpg";
+            pictureBox1.Load();
             bunifuButton1.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton2.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton3.TextAlign = ContentAlignment.MiddleCenter;
@@ -100,8 +94,9 @@ namespace CrimeaCloud
         }
         public void SaveFile(string fileName, byte[] fileData)
         {
-            string appPath = Application.StartupPath;
-            string filePathApp = Path.Combine(appPath, fileName);
+            string downloadPath = Environment.SpecialFolder.Desktop.ToString();
+            //string appPath = Application.StartupPath;
+            string filePathApp = Path.Combine(downloadPath, fileName);
             if (fileData != null)
             {
                 File.WriteAllBytes(filePathApp, fileData);

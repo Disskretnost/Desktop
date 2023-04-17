@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 
@@ -52,9 +46,9 @@ namespace CrimeaCloud
 
             // поворот на заданный угол
             e.Graphics.RotateTransform(angle);
-
+            Image img = Image.FromFile($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\LoadFile.png");
             // отображение картинки
-            e.Graphics.DrawImage(Properties.Resources.LoadFile, new Point(-Properties.Resources.LoadFile.Width / 2, -Properties.Resources.LoadFile.Height / 2));
+            e.Graphics.DrawImage(img, new Point(-img.Width / 2, -img.Height / 2));
 
             // восстановление сохраненного состояния графического контекста
             e.Graphics.Restore(state);

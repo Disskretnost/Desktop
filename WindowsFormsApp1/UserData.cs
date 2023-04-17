@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using System.Windows.Forms;
 
 namespace CrimeaCloud
 {
@@ -18,13 +18,13 @@ namespace CrimeaCloud
         {
             byte[] data = Encoding.Unicode.GetBytes(token);
             byte[] encryptedData = ProtectedData.Protect(data, entropy, DataProtectionScope.CurrentUser);
-            File.WriteAllBytes("secrets.bin", encryptedData);
+            File.WriteAllBytes($@"{ Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\secrets.bin", encryptedData);
         }
         public static string ReadToken()
         {
-            if (File.Exists("secrets.bin"))
+            if (File.Exists($@"{ Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\secrets.bin"))
             {
-                byte[] encryptedData = File.ReadAllBytes("secrets.bin");
+                byte[] encryptedData = File.ReadAllBytes($@"{ Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\secrets.bin");
                 byte[] data = ProtectedData.Unprotect(encryptedData, entropy, DataProtectionScope.CurrentUser);
                 return Encoding.Unicode.GetString(data);
             }
@@ -34,7 +34,7 @@ namespace CrimeaCloud
         {
             byte[] data = Encoding.Unicode.GetBytes("");
             byte[] encryptedData = ProtectedData.Protect(data, entropy, DataProtectionScope.CurrentUser);
-            File.WriteAllBytes("secrets.bin", encryptedData);
+            File.WriteAllBytes($@"{ Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\secrets.bin", encryptedData);
         }
         
     }
