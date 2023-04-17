@@ -209,7 +209,7 @@ namespace CrimeaCloud
                 var size = new FileInfo(pathNewFile).Length; //размер файла
                 if (size > 8589934592) // 
                 {
-                    err.SetMessageText("The file is too large. Size limit 500 MB.");
+                    err.SetMessageText("The file is too large. Size limit 1000 MB.");
                     err.ShowDialog();
                     return;
                 }
