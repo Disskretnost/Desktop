@@ -203,23 +203,22 @@ namespace CrimeaCloud
             }
             if(openFileDialog1.ShowDialog() == DialogResult.OK) //если файловый диалог открылся
             {
+                
                 string pathNewFile = openFileDialog1.FileName; //полный пусть
                 string nameNewFile = openFileDialog1.SafeFileName; //только имя
-                string fileExtension = Path.GetExtension(pathNewFile); //расширение
                 var size = new FileInfo(pathNewFile).Length; //размер файла
-
                 if (size > 8589934592) // 
                 {
                     err.SetMessageText("The file is too large. Size limit 1000 MB.");
                     err.ShowDialog();
-                    //вызов метода
                     return;
                 }
+                LoadfFileForm loadfFileForm = new LoadfFileForm();
+                loadfFileForm.SetMessageText("Uploading files");
+                loadfFileForm.Show();
                 await AddNewFileToServ(nameNewFile, pathNewFile);
-                Console.Write("//////////////////////////////");
-                //AddNewFileToForm(pathNewFile, nameNewFile, fileExtension); //добавление файла на форму
                 InitFiles(); //МЕГАКОСТЫЛЬ.................................................................................................................................
-
+                loadfFileForm.Close();
             }
         }
 
@@ -245,14 +244,7 @@ namespace CrimeaCloud
             }
 
         }
-        public void AddNewFileToForm(string pathFile, string nameFile, string extensionFile)
-        {
-            filesCount++;
-            fileNames[filesCount-1] = nameFile;
-            flowLayCust1.RealizeImgPnls(filesCount, 0, nameFile);
-            Console.WriteLine(nameFile);
-            Console.WriteLine(pathFile);
-        }
+
         private void bunifuPanel2_Click(object sender, EventArgs e)
         {
 
