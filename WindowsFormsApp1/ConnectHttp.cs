@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using RestSharp;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
 
 namespace CrimeaCloud
 {
@@ -82,7 +83,10 @@ namespace CrimeaCloud
                 requestRest.AddHeader("Authorization", "Bearer " + token);
                 requestRest.AddHeader("Content-Type", "application/json");
                 requestRest.AddParameter("application/json", json, ParameterType.RequestBody);
+                clientRest.Timeout = 300000;
                 var response = clientRest.Execute(requestRest);
+
+                //clientRest.ExecuteAsync(requestRest, restres)
                 return response;
             }
             catch (Exception ex)
@@ -91,6 +95,7 @@ namespace CrimeaCloud
             }
             return null;
         }
+
         public static async Task<IRestResponse> PostDeleteFile(object number, string token, string urlBase, string urlEnd)
         {
             var clientRest = new RestClient(urlBase);

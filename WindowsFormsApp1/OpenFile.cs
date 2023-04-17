@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -73,15 +74,28 @@ namespace CrimeaCloud
                 fileId = numberFromServ
             };
             var response = await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107:3000/api/file/", "getfile");
-            SaveFile(nameFile, response.RawBytes);
-            Console.WriteLine("гтова");
-            
+            if (response != null && response.StatusCode == HttpStatusCode.OK)
+            {
+                SaveFile(nameFile, response.RawBytes);
+                Console.WriteLine("Файл сохранен.");
+            }
+            else
+            {
+                Console.WriteLine("Не удалось получить файл." + response.StatusCode);
+            }
         }
         public void SaveFile(string fileName, byte[] fileData)
         {
             string appPath = Application.StartupPath;
             string filePathApp = Path.Combine(appPath, fileName);
-            File.WriteAllBytes(filePathApp, fileData);
+            if (fileData != null)
+            {
+                File.WriteAllBytes(filePathApp, fileData);
+            }
+            else
+            {
+                Console.WriteLine("Не удалось скачать");
+            }
         }
 
         private void bunifuPanel1_Layout(object sender, LayoutEventArgs e)

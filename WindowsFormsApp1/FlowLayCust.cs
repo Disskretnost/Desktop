@@ -135,11 +135,6 @@ namespace CrimeaCloud
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
         }
-        public void ChangeImg(int num, string imagePath)
-        {
-            ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).ChangePict(imagePath);
-        }
-
         private void flowLayoutPanel1_Scroll(object sender, ScrollEventArgs e)
         {
             Console.WriteLine(flowLayoutPanel1.VerticalScroll.Value.ToString());

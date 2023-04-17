@@ -144,8 +144,7 @@ namespace CrimeaCloud
         {
             FilesInfo filesFromServ = GetFilesFromServer();
             flowLayCust1.Visible = true;
-            Console.WriteLine(filesCount);
-            //Console.WriteLine(fileNames.Length);
+            Console.WriteLine("Количество файлов на диске:" + filesCount);
             if (filesCount > 20)
             {
                 //Вызываем метод для установки ползунка по нужным размерам
@@ -179,7 +178,6 @@ namespace CrimeaCloud
             filesCount = files.count;
             Console.WriteLine($"// {files.count} //");
             return files;
-            //Console.WriteLine($"// {files.files[0].id} //");
         }
 
         private void bunifuVScrollBar1_Scroll(object sender, Bunifu.UI.WinForms.BunifuVScrollBar.ScrollEventArgs e)
@@ -212,14 +210,14 @@ namespace CrimeaCloud
 
                 if (size > 524288000) // 
                 {
-                    err.SetMessageText("The file is too large. Size limit 5 MB.");
+                    err.SetMessageText("The file is too large. Size limit 500 MB.");
                     err.ShowDialog();
                     //вызов метода
                     return;
                 }
                 await AddNewFileToServ(nameNewFile, pathNewFile);
                 Console.Write("//////////////////////////////");
-                AddNewFileToForm(pathNewFile, nameNewFile, fileExtension); //добавление файла на форму
+                //AddNewFileToForm(pathNewFile, nameNewFile, fileExtension); //добавление файла на форму
                 InitFiles(); //МЕГАКОСТЫЛЬ.................................................................................................................................
 
             }
@@ -228,34 +226,33 @@ namespace CrimeaCloud
         private async Task AddNewFileToServ(string fileName, string filePath)
         {
             string token = UserData.ReadToken();
-            var respone = await ConnectHttp.PostFile(fileName, filePath, token, "http://176.99.11.107:3000/api/file/", "upload");
-            Console.WriteLine(respone.StatusCode);
-            Console.WriteLine(respone.Content.ReadAsStringAsync().Result);
-            Console.WriteLine("Файл добавлен на сервер");
+            try
+            {
+                var respone = await ConnectHttp.PostFile(fileName, filePath, token, "http://176.99.11.107:3000/api/file/", "upload");
+                Console.WriteLine(respone.StatusCode);
+                Console.WriteLine(respone.Content.ReadAsStringAsync().Result);
+                Console.WriteLine("Файл добавлен на сервер");
+                if (!respone.IsSuccessStatusCode)
+                {
+                    ErrorMessage error = new ErrorMessage();
+                    error.SetMessageText("Failed to send file");
+                    error.ShowDialog();
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
         }
         public void AddNewFileToForm(string pathFile, string nameFile, string extensionFile)
         {
-            List<string> imgExtensions = new List<string> { ".jpg", ".jpeg", ".jpe", ".jfif", ".png", ".ico", ".gif", ".svg" };
             filesCount++;
-            //Array.Resize<string>(ref fileNames, filesCount);
             fileNames[filesCount-1] = nameFile;
             flowLayCust1.RealizeImgPnls(filesCount, 0, nameFile);
             Console.WriteLine(nameFile);
-            if (imgExtensions.Contains(extensionFile))
-            {
-                Thread.Sleep(1000);
-                flowLayCust1.ChangeImg(filesCount, pathFile);
-            }
             Console.WriteLine(pathFile);
         }
-
-        public void SaveFile(string fileName, byte[] fileData)
-        {
-            string appPath = Application.StartupPath;
-            string filePathApp = Path.Combine(appPath, "new.jpg");
-            File.WriteAllBytes(filePathApp, fileData);
-        }
-
         private void bunifuPanel2_Click(object sender, EventArgs e)
         {
 
