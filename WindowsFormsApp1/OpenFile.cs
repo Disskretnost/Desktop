@@ -120,6 +120,7 @@ namespace CrimeaCloud
         private void bunifuButton3_Click(object sender, EventArgs e)
         {
             DeleteThisFile();
+            Close();
             if (!deletedFile)
             {
                 using (ErrorMessage errorMessage = new ErrorMessage())
