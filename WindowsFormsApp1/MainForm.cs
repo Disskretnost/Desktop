@@ -12,6 +12,8 @@ using Bunifu;
 using System.Threading;
 using System.Text.Json;
 
+
+
 namespace CrimeaCloud
 {
 
@@ -19,7 +21,8 @@ namespace CrimeaCloud
     {
         Point coordinate;
         public static int filesCount = 22;
-        string[] fileNames = new string[filesCount]; 
+        string[] fileNames = new string[filesCount];
+        public FlowLayoutPanel flowL;
         public MainForm()
         {
             InitializeComponent();
@@ -130,29 +133,38 @@ namespace CrimeaCloud
             loginForm.ShowDialog();
             Close();
         }
-
         private void button1_Click(object sender, EventArgs e)
+        {
+            
+            InitFiles();
+            //UpdateImage.InitFiles(flowL);
+
+        }
+        public void InitFiles()
         {
             FilesInfo filesFromServ = GetFilesFromServer();
             flowLayCust1.Visible = true;
-            Console.WriteLine(filesCount);
-            //Console.WriteLine(fileNames.Length);
+            Console.WriteLine("Количество файлов на диске:" + filesCount);
             if (filesCount > 20)
             {
                 //Вызываем метод для установки ползунка по нужным размерам
                 bunifuVScrollBar1.Visible = true;
             }
-
             for (int i = 0; i < filesCount; i++)
             {
-                flowLayCust1.RealizeImgPnls(i+1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
-            } 
+                string str = filesFromServ.files[i].extension.ToString();
+                int index = str.IndexOf("/");
+                string type = str.Substring(0, index); //извлекаем "расширения" для необходимых файлов
+                //Console.WriteLine(type);
+                flowLayCust1.RealizeImgPnls(type, i + 1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
+            }
+            //filesFromServ.files.Clear(); // очистка списка files
         }
 
         public static FilesInfo GetFilesFromServer()
         {
             string token = UserData.ReadToken();
-            var response = ConnectHttp.PostDataHeader(token, "http://176.99.11.107/api/file/", "getfiles");
+            var response = ConnectHttp.PostDataHeader(token, "http://176.99.11.107:3000/api/file/", "getfiles");
 
             if(!(response.Result.StatusCode == System.Net.HttpStatusCode.OK))
             {
@@ -166,7 +178,6 @@ namespace CrimeaCloud
             filesCount = files.count;
             Console.WriteLine($"// {files.count} //");
             return files;
-            //Console.WriteLine($"// {files.files[0].id} //");
         }
 
         private void bunifuVScrollBar1_Scroll(object sender, Bunifu.UI.WinForms.BunifuVScrollBar.ScrollEventArgs e)
@@ -180,7 +191,7 @@ namespace CrimeaCloud
             // Добавляем обработчик события прокрутки
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private async void button3_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog(); //файловый диалог
             ErrorMessage err = new ErrorMessage(); //для ошибок
@@ -192,70 +203,51 @@ namespace CrimeaCloud
             }
             if(openFileDialog1.ShowDialog() == DialogResult.OK) //если файловый диалог открылся
             {
+                
                 string pathNewFile = openFileDialog1.FileName; //полный пусть
                 string nameNewFile = openFileDialog1.SafeFileName; //только имя
-                string fileExtension = Path.GetExtension(pathNewFile);
                 var size = new FileInfo(pathNewFile).Length; //размер файла
-
-                if (size > 5242880) // 5 mb
+                if (size > 8589934592) // 
                 {
-                    err.SetMessageText("The file is too large. Size limit 5 MB.");
+                    err.SetMessageText("The file is too large. Size limit 500 MB.");
                     err.ShowDialog();
-                    //вызов метода
                     return;
                 }
-
-                AddNewFileToServ(nameNewFile, pathNewFile);
-                AddNewFileToForm(pathNewFile, nameNewFile, fileExtension); //добавление файла на форму
-
+                LoadfFileForm loadfFileForm = new LoadfFileForm();
+                loadfFileForm.SetMessageText("Uploading files");
+                loadfFileForm.Show();
+                await AddNewFileToServ(nameNewFile, pathNewFile);
+                InitFiles(); //МЕГАКОСТЫЛЬ.................................................................................................................................
+                loadfFileForm.Close();
             }
         }
-        private async void AddNewFileToServ(string fileName, string filePath)
+
+        private async Task AddNewFileToServ(string fileName, string filePath)
         {
             string token = UserData.ReadToken();
-            var respone = await ConnectHttp.PostFile(fileName, filePath, token, "http://176.99.11.107/api/file/", "upload");
-            Console.WriteLine(respone.StatusCode);
-            Console.WriteLine(respone.Content.ReadAsStringAsync().Result);
-            Console.WriteLine("Файл добавлен на серв");
-        }
-        public void AddNewFileToForm(string pathFile, string nameFile, string extensionFile)
-        {
-            List<string> imgExtensions = new List<string> { ".jpg", ".jpeg", ".jpe", ".jfif", ".png", ".ico", ".gif", ".svg" };
-            filesCount++;
-            //Array.Resize<string>(ref fileNames, filesCount);
-            fileNames[filesCount-1] = nameFile;
-            flowLayCust1.RealizeImgPnls(filesCount, 0, nameFile);
-            Console.WriteLine(nameFile);
-            if (imgExtensions.Contains(extensionFile))
+            try
             {
-                Thread.Sleep(1000);
-                flowLayCust1.ChangeImg(filesCount, pathFile);
+                var respone = await ConnectHttp.PostFile(fileName, filePath, token, "http://176.99.11.107:3000/api/file/", "upload");
+                Console.WriteLine(respone.StatusCode);
+                Console.WriteLine(respone.Content.ReadAsStringAsync().Result);
+                Console.WriteLine("Файл добавлен на сервер");
+                if (!respone.IsSuccessStatusCode)
+                {
+                    ErrorMessage error = new ErrorMessage();
+                    error.SetMessageText("Failed to send file");
+                    error.ShowDialog();
+                }
             }
-            Console.WriteLine(pathFile);
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-            Down();
-        }
-
-        private async void Down()
-        {
-            string token = UserData.ReadToken();
-            var data = new
+            catch(Exception ex)
             {
-                fileId = "4"
-            };
-            var response = await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107/api/file/", "getfile");
-            SaveFile(@"C:\Users\black\Documents\GitHub\devCourse\console-application\WindowsFormsApp1", response.RawBytes);
-            Console.WriteLine("гтова");
+                Console.WriteLine(ex.Message);
+            }
+
         }
-        public void SaveFile(string fileName, byte[] fileData)
+
+        private void bunifuPanel2_Click(object sender, EventArgs e)
         {
-            string appPath = Application.StartupPath;
-            string filePathApp = Path.Combine(appPath, "new.jpg");
-            File.WriteAllBytes(filePathApp, fileData);
+
         }
     }
 }

@@ -44,8 +44,8 @@ namespace CrimeaCloud
             this.button1 = new System.Windows.Forms.Button();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
             this.bunifuVScrollBar1 = new Bunifu.UI.WinForms.BunifuVScrollBar();
-            this.flowLayCust1 = new CrimeaCloud.FlowLayCust();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.flowLayCust1 = new CrimeaCloud.FlowLayCust();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.bunifuPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -235,6 +235,7 @@ namespace CrimeaCloud
             this.bunifuPanel2.ShowBorders = true;
             this.bunifuPanel2.Size = new System.Drawing.Size(273, 170);
             this.bunifuPanel2.TabIndex = 1;
+            this.bunifuPanel2.Click += new System.EventHandler(this.bunifuPanel2_Click);
             // 
             // bunifuVScrollBar1
             // 
@@ -279,6 +280,10 @@ namespace CrimeaCloud
             this.bunifuVScrollBar1.Value = 0;
             this.bunifuVScrollBar1.Scroll += new System.EventHandler<Bunifu.UI.WinForms.BunifuVScrollBar.ScrollEventArgs>(this.bunifuVScrollBar1_Scroll);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // flowLayCust1
             // 
             this.flowLayCust1.Location = new System.Drawing.Point(330, 25);
@@ -286,10 +291,6 @@ namespace CrimeaCloud
             this.flowLayCust1.Size = new System.Drawing.Size(1122, 856);
             this.flowLayCust1.TabIndex = 40;
             this.flowLayCust1.Visible = false;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // MainForm
             // 
@@ -332,7 +333,7 @@ namespace CrimeaCloud
         private System.Windows.Forms.Button button1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.UI.WinForms.BunifuVScrollBar bunifuVScrollBar1;
-        private FlowLayCust flowLayCust1;
+        public FlowLayCust flowLayCust1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

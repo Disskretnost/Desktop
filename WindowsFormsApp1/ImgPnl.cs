@@ -18,6 +18,7 @@ namespace TESTControl
         public string adress;
         public string text = "undefine";
         public string TextWithInfo;
+        public FlowLayoutPanel flow;
         public string textWithInfo
         {
             get
@@ -66,10 +67,15 @@ namespace TESTControl
 
         public object TexWithInfo { get; internal set; }
 
-        public ImgPnl()
+        public ImgPnl(FlowLayoutPanel flowL)
         {
             InitializeComponent();
             this.DoubleBuffered = true;
+            flow = flowL;
+        }
+        public void CleanMG()
+        {
+            Visible = false;
         }
         protected override void OnBackColorChanged(EventArgs e)
         {
@@ -91,7 +97,7 @@ namespace TESTControl
         protected async override void OnLoad(EventArgs e)
         {
             text = "undefined";
-            await LoadPictureAsync("xdd_cut-photo.ru.jpg");
+            await LoadPictureAsync("FileIcon.jpg");
         }
 
         protected override void OnTextChanged(EventArgs e)
@@ -107,7 +113,7 @@ namespace TESTControl
                 {
                     Task.Run(() => LoadPictureAsync(pathPict));
                 }
-                catch(OutOfMemoryException ex)
+                catch (OutOfMemoryException ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
@@ -133,14 +139,14 @@ namespace TESTControl
             {
                 Console.WriteLine(ex.Message);
             }
-
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            CrimeaCloud.OpenFile openfile = new CrimeaCloud.OpenFile();
+            CrimeaCloud.OpenFile openfile = new CrimeaCloud.OpenFile(flow);
+            //openfile.flow = flow;
             openfile.NumberFromServ = numberFromServ;
+            //NumberFromServ = numberFromServ;
             openfile.nameFile = textWithInfo;
             openfile.ShowDialog();
             Console.WriteLine("dfdfdf");

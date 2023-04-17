@@ -5,9 +5,13 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using TESTControl;
 
 namespace CrimeaCloud
 {
@@ -15,6 +19,8 @@ namespace CrimeaCloud
     {
         public string numberFromServ;
         public string nameFile;
+        public bool needDel;
+        public FlowLayoutPanel flowL;
         public string NumberFromServ
         {
             get
@@ -26,13 +32,14 @@ namespace CrimeaCloud
                 numberFromServ = value;
             }
         }
-        public OpenFile()
+        public OpenFile(FlowLayoutPanel flow)
         {
             InitializeComponent();
             bunifuButton1.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton2.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton3.TextAlign = ContentAlignment.MiddleCenter;
             StartPosition = FormStartPosition.CenterScreen;
+            flowL = flow;
         }
         private Point _mouseDownLocation;
 
@@ -54,16 +61,6 @@ namespace CrimeaCloud
             }
         }
 
-        private void bunifuButton2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bunifuPanel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void bunifuButton2_Click_1(object sender, EventArgs e)
         {
             DownloadThisFile();
@@ -76,21 +73,65 @@ namespace CrimeaCloud
             {
                 fileId = numberFromServ
             };
-            var response = await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107/api/file/", "getfile");
-            SaveFile(nameFile, response.RawBytes);
-            Console.WriteLine("гтова");
-            
+            ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107:3000/api/file/", "getfile", nameFile); // РАБОЧИЙ МЕТОД #2 (но большие файлы нет)
+            //var response =  await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107:3000/api/file/", "getfile", nameFile);
+            /*if (response != null)
+            {
+                SaveFile(nameFile, response.RawBytes);
+                Console.WriteLine("Файл сохранен.");
+            }
+            else
+            {
+                Console.WriteLine("Не удалось получить файл.");
+            } */      // РАБОЧИЙ МЕТОД № 1(но большие файлы нет)
         }
         public void SaveFile(string fileName, byte[] fileData)
         {
             string appPath = Application.StartupPath;
             string filePathApp = Path.Combine(appPath, fileName);
-            File.WriteAllBytes(filePathApp, fileData);
+            if (fileData != null)
+            {
+                File.WriteAllBytes(filePathApp, fileData);
+            }
+            else
+            {
+                Console.WriteLine("Не удалось скачать");
+            }
         }
 
         private void bunifuPanel1_Layout(object sender, LayoutEventArgs e)
         {
             label1.Text = nameFile;
+        }
+
+        private void bunifuButton3_Click(object sender, EventArgs e)
+        {
+            DeleteThisFile();
+            for (int i = 0; i < 30; i++)
+            {
+                flowL.Controls[$"imgPnl{i + 1}"].Visible = false;
+            }
+            UpdateImage.InitFiles(flowL);
+        }
+
+        //удаление (номер файла, токен, ссылка)
+        public async void DeleteThisFile()
+        {
+            string token = UserData.ReadToken();
+            var data = new
+            {
+                fileId = numberFromServ
+            };
+            var response = await ConnectHttp.PostDeleteFile(data, token, "http://176.99.11.107:3000/api/file/", "delete");
+            //Messagebox.Show(response.GetType());
+            var content = response.Content;
+            ErrorData deserializedResponse = JsonConvert.DeserializeObject<ErrorData>(content); 
+            ErrorMessage er = new ErrorMessage();
+            er.SetMessageText(deserializedResponse.message);
+            er.TopMost = true;
+            MainForm main = new MainForm();
+            er.Show(main); // показываем форму er с MainForm в качестве родительской
+            Close(); // закрываем текущую форму
         }
     }
 }

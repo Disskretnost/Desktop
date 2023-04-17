@@ -80,18 +80,61 @@ namespace CrimeaCloud
             Console.WriteLine($"////////////////// {flowLayoutPanel1.PreferredSize} ///////////////////////");
             //flowLayoutPanel1.VerticalScroll.Value = scrollValue;
         }
-        public void RealizeImgPnls(int num, int numberFromServ, string text = "undefine" )
+        //тип,id файла, id владельца, название
+        public void RealizeImgPnls(string type, int num, int numberFromServ, string text)
         {
+            /*if (OpenFile.needDel)
+            {
+                ClearIMG();
+                
+            .needDel = false;
+            }*/
+            /*Image image;
+            switch (type.ToLower())
+            {
+                case ".jpg":
+                case "text":
+                    image = Properties.Resources.SecondPhoto;
+                    break;
+                case ".png":
+                    image = Properties.Resources.text;
+                    break;
+
+                default:
+                    image = Properties.Resources.SecondPhoto;
+                    break;
+            } */
+
+            // Set the image and other properties of the control
+            //((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).BackgroundImage = image;
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Visible = true;
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Text = text;
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
-        }
-        public void ChangeImg(int num, string imagePath)
-        {
-            ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).ChangePict(imagePath);
-        }
 
+            //flowLayoutPanel1.Controls[$"imgPnl{num}"].Visible = true;
+            //flowLayoutPanel1.Controls[$"imgPnl{num}"].Text = text;
+            //((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;
+            //((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
+        }
+        public void ClearIMG()
+        {
+            //flowLayoutPanel1.Controls[$"imgPnl1"].Visible = true;
+            //Clean.UpdateIMG(flowLayoutPanel1, 2);
+            for (int i = 0; i < flowLayoutPanel1.Controls.Count-1; i++)
+            {
+                flowLayoutPanel1.Controls[$"imgPnl{i+1}"].Visible = false;
+            }
+        }
+        
+        public void RealizeImgPnls( int num, int numberFromServ, string text = "undefine")
+        {
+            flowLayoutPanel1.Controls[$"imgPnl{num}"].Visible = true;
+            flowLayoutPanel1.Controls[$"imgPnl{num}"].Text = text;
+            //((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"])
+            ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;
+            ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
+        }
         private void flowLayoutPanel1_Scroll(object sender, ScrollEventArgs e)
         {
             Console.WriteLine(flowLayoutPanel1.VerticalScroll.Value.ToString());
