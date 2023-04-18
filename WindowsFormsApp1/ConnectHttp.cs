@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using RestSharp;
 using System.Windows.Forms;
 using System.IO;
-using System.Threading;
 
 namespace CrimeaCloud
 {

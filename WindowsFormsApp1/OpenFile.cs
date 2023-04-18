@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
-using TESTControl;
+using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace CrimeaCloud
 {
@@ -22,6 +16,7 @@ namespace CrimeaCloud
         public bool needDel;
         public bool deletedFile = true;
         public FlowLayoutPanel flowL;
+        LoadfFileForm loadfFileForm = new LoadfFileForm();
         public string NumberFromServ
         {
             get
@@ -36,6 +31,8 @@ namespace CrimeaCloud
         public OpenFile(FlowLayoutPanel flow)
         {
             InitializeComponent();
+            pictureBox1.ImageLocation = $@"{ Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\FileIcon.jpg";
+            pictureBox1.Load();
             bunifuButton1.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton2.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton3.TextAlign = ContentAlignment.MiddleCenter;
@@ -64,51 +61,81 @@ namespace CrimeaCloud
 
         private async void bunifuButton2_Click_1(object sender, EventArgs e)
         {
-            LoadfFileForm loadfFileForm = new LoadfFileForm();
-            loadfFileForm.SetMessageText("Uploading files");///////
+            //oadfFileForm.SetMessageText("Uploading files");///////
             //loadfFileForm.Topmost = true;
-            loadfFileForm.Show();
             Close();
+      
             await DownloadThisFile();
-            loadfFileForm.Close();
+        }
+
+        //путь для сохранения 
+        private string ShowSaveFileDialog(string defaultFileName)
+        {
+            using (var saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Title = "Select the file storage location";
+                saveFileDialog.FileName = defaultFileName; //дефолтное имя при открытии проводника
+                saveFileDialog.Filter = "All Files (*.*)|*.*"; //все файлы
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Console.WriteLine("Функция возвращает"+saveFileDialog.FileName);
+                    return saveFileDialog.FileName; //возвращает полный путь
+                }
+            }
+
+            return null;
         }
 
         public async Task DownloadThisFile()
         {
+
             string token = UserData.ReadToken();
             var data = new
             {
                 fileId = numberFromServ
             };
-            var response =  await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107:3000/api/file/", "getfile", nameFile);
-            if (response != null && response.IsSuccessStatusCode)
+            string filePath = ShowSaveFileDialog(nameFile);
+            if (filePath == null)
             {
-                var contentBytes = await response.Content.ReadAsByteArrayAsync();
-                SaveFile(nameFile, contentBytes);
-                Console.WriteLine("Файл сохранен.");
+                return;
             }
-            else
+            using (LoadfFileForm loadfFileForm = new LoadfFileForm())
             {
-                using (ErrorMessage errorMessage = new ErrorMessage())
+                loadfFileForm.SetMessageText("Uploading files");
+                loadfFileForm.Show();
+                var response = await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107:3000/api/file/", "getfile", nameFile);
+
+                if (response != null && response.IsSuccessStatusCode)
                 {
-                    errorMessage.SetMessageText("Failed to download");
-                    errorMessage.ShowDialog();
+                    var contentBytes = await response.Content.ReadAsByteArrayAsync();
+                    SaveFile(nameFile, contentBytes, filePath);
+                    Console.WriteLine("Файл сохранен.");
                 }
+                else
+                {
+                    using (ErrorMessage errorMessage = new ErrorMessage())
+                    {
+                        errorMessage.SetMessageText("Failed to download");
+                        errorMessage.ShowDialog();
+                    }
+                }
+                loadfFileForm.Close();
+                System.Runtime.GCSettings.LargeObjectHeapCompactionMode = System.Runtime.GCLargeObjectHeapCompactionMode.CompactOnce;
+                System.GC.Collect();
             }
-            System.Runtime.GCSettings.LargeObjectHeapCompactionMode = System.Runtime.GCLargeObjectHeapCompactionMode.CompactOnce;
-            System.GC.Collect();
         }
-        public void SaveFile(string fileName, byte[] fileData)
+
+        public void SaveFile(string fileName, byte[] fileData, string filePath)
         {
-            string appPath = Application.StartupPath;
-            string filePathApp = Path.Combine(appPath, fileName);
+
             if (fileData != null)
             {
-                File.WriteAllBytes(filePathApp, fileData);
+                File.WriteAllBytes(filePath, fileData);
             }
             else
             {
-                Console.WriteLine("Не удалось скачать");
+                Console.WriteLine("Не удалось сохранить файл");
             }
         }
 

@@ -63,6 +63,26 @@ namespace CrimeaCloud.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap circle {
+            get {
+                object obj = ResourceManager.GetObject("circle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cloud_2 {
+            get {
+                object obj = ResourceManager.GetObject("cloud 2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap email_3 {
             get {
                 object obj = ResourceManager.GetObject("email 3", resourceCulture);
@@ -126,6 +146,16 @@ namespace CrimeaCloud.Properties {
         internal static System.Drawing.Bitmap SecondPhoto {
             get {
                 object obj = ResourceManager.GetObject("SecondPhoto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap uploadCircle {
+            get {
+                object obj = ResourceManager.GetObject("uploadCircle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

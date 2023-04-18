@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
 using System.IO;
 
 namespace TESTControl
 {
     public partial class ImgPnl : UserControl
     {
-        //private Dictionary<string, Image> imageCache = new Dictionary<string, Image>();
         public string adress;
         public string text = "undefine";
         public string TextWithInfo;
@@ -87,9 +80,9 @@ namespace TESTControl
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.Size = Size;
             label1.Font = new Font("Microsoft Tai Le", 10, FontStyle.Regular);
-            label1.ForeColor = System.Drawing.Color.White;
-            label1.BackColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            label1.Size = new System.Drawing.Size(Size.Width, Size.Height - 119);
+            label1.ForeColor = Color.White;
+            label1.BackColor = Color.FromArgb(64, 64, 64);
+            label1.Size = new Size(Size.Width, Size.Height - 119);
             label1.Text = text;
             //pictureBox1.BorderStyle = BorderStyle.FixedSingle;
             
@@ -97,7 +90,7 @@ namespace TESTControl
         protected async override void OnLoad(EventArgs e)
         {
             text = "undefined";
-            await LoadPictureAsync("FileIcon.jpg");
+            await LoadPictureAsync($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\FileIcon.jpg");
         }
 
         protected override void OnTextChanged(EventArgs e)
@@ -131,7 +124,7 @@ namespace TESTControl
                 //imageCache[filePath] = img;
                 pictureBox1.Image = img;
             }
-            catch (System.OutOfMemoryException ex)
+            catch (OutOfMemoryException ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -144,12 +137,9 @@ namespace TESTControl
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             CrimeaCloud.OpenFile openfile = new CrimeaCloud.OpenFile(flow);
-            //openfile.flow = flow;
             openfile.NumberFromServ = numberFromServ;
-            //NumberFromServ = numberFromServ;
             openfile.nameFile = textWithInfo;
             openfile.ShowDialog();
-            Console.WriteLine("dfdfdf");
         }
     }
 }

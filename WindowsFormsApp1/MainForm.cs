@@ -21,7 +21,6 @@ namespace CrimeaCloud
     {
         Point coordinate;
         public static int filesCount = 22;
-        string[] fileNames = new string[filesCount];
         public FlowLayoutPanel flowL;
         public MainForm(string userName)
         {
@@ -39,15 +38,6 @@ namespace CrimeaCloud
             label1.Text = userName; 
         }
 
-        private void bunifuPanel1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void MyDrive_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void MainForm_MouseDown(object sender, MouseEventArgs e)
         {
@@ -68,60 +58,9 @@ namespace CrimeaCloud
             Application.Exit();
         }
 
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.WindowState = FormWindowState.Minimized;
-            }
-            catch(ArgumentException ex)
-            {
-                MessageBox.Show("сАНЯ ЧЁ ЭТО ЗА ХУЙНЯ" + ex.Message);
-            }
-        }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
-        }
 
-        private void button1_MouseLeave(object sender, EventArgs e)
-        {
-            button1.BackColor = Color.FromArgb(40,40,40) ;
-        }
-
-        private void button1_MouseEnter(object sender, EventArgs e)
-        {
-            button1.BackColor = Color.FromArgb(1, 147, 147);
-        }
-
-        private void button2_MouseEnter(object sender, EventArgs e)
-        {
-            button2.BackColor = Color.FromArgb(1, 147, 147);
-        }
-
-        private void button2_MouseLeave(object sender, EventArgs e)
-        {
-            button2.BackColor = Color.FromArgb(40, 40, 40);
-        }
-
-        private void button3_MouseEnter(object sender, EventArgs e)
-        {
-            button3.BackColor = Color.FromArgb(1, 147, 147);
-        }
-
-        private void button3_MouseLeave(object sender, EventArgs e)
-        {
-            button3.BackColor = Color.FromArgb(40, 40, 40);
-        }
-
-        private void button4_MouseEnter(object sender, EventArgs e)
-        {
-            button4.BackColor = Color.FromArgb(1, 147, 147);
-        }
-
-        private void button4_MouseLeave(object sender, EventArgs e)
-        {
-            button4.BackColor = Color.FromArgb(40, 40, 40);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -254,9 +193,41 @@ namespace CrimeaCloud
 
         }
 
-        private void bunifuPanel2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
+            flowLayCust1.Visible = false;
+        }
 
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.FromArgb(1, 147, 147);
+        }
+
+
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.FromArgb(40, 40, 40);
+        }
+
+        private void button3_MouseEnter(object sender, EventArgs e)
+        {
+            button3.BackColor = Color.FromArgb(1, 147, 147);
+        }
+
+        private void button3_MouseLeave(object sender, EventArgs e)
+        {
+            button3.BackColor = Color.FromArgb(40, 40, 40);
+        }
+
+        private void button4_MouseEnter(object sender, EventArgs e)
+        {
+            button4.BackColor = Color.FromArgb(1, 147, 147);
+        }
+
+        private void button4_MouseLeave(object sender, EventArgs e)
+        {
+            button4.BackColor = Color.FromArgb(40, 40, 40);
         }
     }
 }

@@ -35,7 +35,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -314,12 +314,6 @@
     <Compile Include="FlowLayCust.Designer.cs">
       <DependentUpon>FlowLayCust.cs</DependentUpon>
     </Compile>
-    <Compile Include="FlowLayoutCustomPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="FlowLayoutCustomPanel.Designer.cs">
-      <DependentUpon>FlowLayoutCustomPanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="ImgPnl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -352,6 +346,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -365,9 +364,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FlowLayCust.resx">
       <DependentUpon>FlowLayCust.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FlowLayoutCustomPanel.resx">
-      <DependentUpon>FlowLayoutCustomPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImgPnl.resx">
       <DependentUpon>ImgPnl.cs</DependentUpon>
@@ -399,11 +395,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -426,6 +417,9 @@
     <None Include="img\email 3.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\circle.gif" />
+    <None Include="Resources\uploadCircle.gif" />
+    <None Include="img\cloud 2.png" />
     <None Include="bin\Debug\FileIcon.jpg" />
     <None Include="bin\Debug\SecondPhoto.jpg" />
     <None Include="bin\Debug\text.jpg" />
