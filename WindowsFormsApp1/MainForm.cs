@@ -235,5 +235,10 @@ namespace CrimeaCloud
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            flowLayCust1.Visible = false;
+        }
     }
 }
