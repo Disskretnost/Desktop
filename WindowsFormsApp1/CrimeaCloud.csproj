@@ -426,6 +426,7 @@
     <None Include="img\email 3.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="img\cloud 2.png" />
     <None Include="bin\Debug\FileIcon.jpg" />
     <None Include="bin\Debug\SecondPhoto.jpg" />
     <None Include="bin\Debug\text.jpg" />

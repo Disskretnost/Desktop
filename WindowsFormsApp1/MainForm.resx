@@ -121,7 +121,7 @@
     <value>-7, 14</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>87</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="bunifuPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -192,10 +192,21 @@
         YF4/QgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="bunifuPanel5.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAREAAABWCAYAAADovqLuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEeSURBVHhe7dQ5AcAwEMCwssnBKLQw70MhXjWIgq611v3Z
+        ACf+RPbMPAAnJAIkEgESiQCJRIBEIkAiESCRCJBIBEgkAiQSARKJAIlEgEQiQCIRIJEIkEgESCQCJBIB
+        EokAiUSARCJAIhEgkQiQSARIJAIkEgESiQCJRIBEIkAiESCRCJBIBEgkAiQSARKJAIlEgEQiQCIRIJEI
+        kEgESCQCJBIBEokAiUSARCJAIhEgkQiQSARIJAIkEgESiQCJRIBEIkAiESCRCJBIBEgkAiQSARKJAIlE
+        gEQiQCIRIJEIkEgESCQCJBIBEokAiUSARCJAIhEgkQiQSARIJAIkEgESiQCJRIBEIkAiESCRCJBIBEgk
+        AiQSARKJAIlEgGCeF6ojqVpkqqBIAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="bunifuPanel2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAREAAACqCAYAAACK7nuMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAIQSURBVHhe7dQ5AcAwEMCwssnBKLQw70MhXjWIgq611v3Z
+        iVBORw0KGgoAAAANSUhEUgAAAREAAAC/CAYAAADZ9eikAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJMSURBVHhe7dQ5AcAwEMCwssnBKLQw70MhXjWIgq611v3Z
         ACf+RPbMPAAnJAIkEgESiQCJRIBEIkAiESCRCJBIBEgkAiQSARKJAIlEgEQiQCIRIJEIkEgESCQCJBIB
         EokAiUSARCJAIhEgkQiQSARIJAIkEgESiQCJRIBEIkAiESCRCJBIBEgkAiQSARKJAIlEgEQiQCIRIJEI
         kEgESCQCJBIBEokAiUSARCJAIhEgkQiQSARIJAIkEgESiQCJRIBEIkAiESCRCJBIBEgkAiQSARKJAIlE
@@ -204,7 +215,8 @@
         ESCRCJBIBEgkAiQSARKJAIlEgEQiQCIRIJEIkEgESCQCJBIBEokAiUSARCJAIhEgkQiQSARIJAIkEgES
         iQCJRIBEIkAiESCRCJBIBEgkAiQSARKJAIlEgEQiQCIRIJEIkEgESCQCJBIBEokAiUSARCJAIhEgkQiQ
         SARIJAIkEgESiQCJRIBEIkAiESCRCJBIBEgkAiQSARKJAIlEgEQiQCIRIJEIkEgESCQCJBIBEokAiUSA
-        RCJAIhEgkQiQSAQI5nkBSEa+K94UQ9MAAAAASUVORK5CYII=
+        RCJAIhEgkQiQSARIJAIkEgESiQCJRIBEIkAiESCRCJBIBEgkAiQSARKJAIlEgEQiQCIRIJEIkEgESCQC
+        JBIBEokAiUSARCJAMM8LlIKDY63WzD0AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="bunifuVScrollBar1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
