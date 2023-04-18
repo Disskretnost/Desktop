@@ -68,11 +68,4 @@ namespace CrimeaCloud
         public string message { get; set; }
        
     }
-    //public class Clean
-    //{
-    //    public static void UpdateIMG(FlowLayoutPanel flowLayoutPanel1, int number)
-    //    {
-    //        flowLayoutPanel1.Controls[$"imgPnl{number}"].Visible = false;
-    //    }
-    //}
 }

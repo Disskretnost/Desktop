@@ -176,7 +176,6 @@
             // 
             // pictureBox1
             // 
-            //this.pictureBox1.Image = global::CrimeaCloud.Properties.Resources.FileIcon;
             this.pictureBox1.Location = new System.Drawing.Point(129, 45);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(150, 170);
@@ -372,8 +371,9 @@
             this.ClientSize = new System.Drawing.Size(408, 472);
             this.Controls.Add(this.bunifuPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OpenFile";
-            this.Text = "OpenFile";
+            this.Text = "CrimeaCloud";
             this.bunifuPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

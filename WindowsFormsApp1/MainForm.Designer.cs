@@ -91,9 +91,10 @@ namespace CrimeaCloud
             this.bunifuPanel1.Controls.Add(this.bunifuPanel2);
             this.bunifuPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.bunifuPanel1.Location = new System.Drawing.Point(0, 0);
+            this.bunifuPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bunifuPanel1.Name = "bunifuPanel1";
             this.bunifuPanel1.ShowBorders = true;
-            this.bunifuPanel1.Size = new System.Drawing.Size(273, 894);
+            this.bunifuPanel1.Size = new System.Drawing.Size(273, 884);
             this.bunifuPanel1.TabIndex = 0;
             // 
             // button4
@@ -104,7 +105,8 @@ namespace CrimeaCloud
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Tai Le", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(0, 461);
+            this.button4.Location = new System.Drawing.Point(0, 499);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(273, 55);
             this.button4.TabIndex = 33;
@@ -123,7 +125,8 @@ namespace CrimeaCloud
             this.bunifuPanel4.BorderRadius = 0;
             this.bunifuPanel4.BorderThickness = 0;
             this.bunifuPanel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuPanel4.Location = new System.Drawing.Point(0, 424);
+            this.bunifuPanel4.Location = new System.Drawing.Point(0, 462);
+            this.bunifuPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bunifuPanel4.Name = "bunifuPanel4";
             this.bunifuPanel4.ShowBorders = true;
             this.bunifuPanel4.Size = new System.Drawing.Size(273, 37);
@@ -137,7 +140,8 @@ namespace CrimeaCloud
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Tai Le", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(0, 369);
+            this.button3.Location = new System.Drawing.Point(0, 407);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(273, 55);
             this.button3.TabIndex = 31;
@@ -156,7 +160,8 @@ namespace CrimeaCloud
             this.bunifuPanel3.BorderRadius = 0;
             this.bunifuPanel3.BorderThickness = 0;
             this.bunifuPanel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuPanel3.Location = new System.Drawing.Point(0, 332);
+            this.bunifuPanel3.Location = new System.Drawing.Point(0, 370);
+            this.bunifuPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bunifuPanel3.Name = "bunifuPanel3";
             this.bunifuPanel3.ShowBorders = true;
             this.bunifuPanel3.Size = new System.Drawing.Size(273, 37);
@@ -170,7 +175,8 @@ namespace CrimeaCloud
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(0, 277);
+            this.button1.Location = new System.Drawing.Point(0, 315);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(273, 55);
             this.button1.TabIndex = 29;
@@ -179,7 +185,6 @@ namespace CrimeaCloud
             this.button1.Click += new System.EventHandler(this.button1_Click);
             this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
             this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
-           
             // 
             // bunifuPanel5
             // 
@@ -191,7 +196,8 @@ namespace CrimeaCloud
             this.bunifuPanel5.BorderThickness = 0;
             this.bunifuPanel5.Controls.Add(this.label1);
             this.bunifuPanel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuPanel5.Location = new System.Drawing.Point(0, 191);
+            this.bunifuPanel5.Location = new System.Drawing.Point(0, 229);
+            this.bunifuPanel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bunifuPanel5.Name = "bunifuPanel5";
             this.bunifuPanel5.ShowBorders = true;
             this.bunifuPanel5.Size = new System.Drawing.Size(273, 86);
@@ -205,7 +211,7 @@ namespace CrimeaCloud
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(185)))), ((int)(((byte)(212)))));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(273, 77);
+            this.label1.Size = new System.Drawing.Size(273, 78);
             this.label1.TabIndex = 0;
             this.label1.Text = "Username";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -221,9 +227,10 @@ namespace CrimeaCloud
             this.bunifuPanel2.Controls.Add(this.bunifuPictureBox1);
             this.bunifuPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuPanel2.Location = new System.Drawing.Point(0, 0);
+            this.bunifuPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bunifuPanel2.Name = "bunifuPanel2";
             this.bunifuPanel2.ShowBorders = true;
-            this.bunifuPanel2.Size = new System.Drawing.Size(273, 191);
+            this.bunifuPanel2.Size = new System.Drawing.Size(273, 229);
             this.bunifuPanel2.TabIndex = 0;
             // 
             // bunifuPictureBox1
@@ -232,12 +239,13 @@ namespace CrimeaCloud
             this.bunifuPictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.bunifuPictureBox1.AutoSizeHeight = true;
             this.bunifuPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.bunifuPictureBox1.BorderRadius = 76;
+            this.bunifuPictureBox1.BorderRadius = 92;
             this.bunifuPictureBox1.Image = global::CrimeaCloud.Properties.Resources.cloud_2;
             this.bunifuPictureBox1.IsCircle = true;
-            this.bunifuPictureBox1.Location = new System.Drawing.Point(60, 25);
+            this.bunifuPictureBox1.Location = new System.Drawing.Point(36, 23);
+            this.bunifuPictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bunifuPictureBox1.Name = "bunifuPictureBox1";
-            this.bunifuPictureBox1.Size = new System.Drawing.Size(152, 152);
+            this.bunifuPictureBox1.Size = new System.Drawing.Size(185, 185);
             this.bunifuPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.bunifuPictureBox1.TabIndex = 0;
             this.bunifuPictureBox1.TabStop = false;
@@ -265,7 +273,7 @@ namespace CrimeaCloud
             this.bunifuVScrollBar1.DurationBeforeShrink = 2000;
             this.bunifuVScrollBar1.LargeChange = 10;
             this.bunifuVScrollBar1.Location = new System.Drawing.Point(1459, 25);
-            this.bunifuVScrollBar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuVScrollBar1.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuVScrollBar1.Maximum = 300;
             this.bunifuVScrollBar1.Minimum = 0;
             this.bunifuVScrollBar1.MinimumThumbLength = 18;
@@ -276,7 +284,7 @@ namespace CrimeaCloud
             this.bunifuVScrollBar1.ScrollBarBorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bunifuVScrollBar1.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuVScrollBar1.ShrinkSizeLimit = 3;
-            this.bunifuVScrollBar1.Size = new System.Drawing.Size(33, 856);
+            this.bunifuVScrollBar1.Size = new System.Drawing.Size(33, 857);
             this.bunifuVScrollBar1.SmallChange = 1;
             this.bunifuVScrollBar1.TabIndex = 39;
             this.bunifuVScrollBar1.ThumbColor = System.Drawing.Color.DimGray;
@@ -288,9 +296,10 @@ namespace CrimeaCloud
             // 
             // flowLayCust1
             // 
-            this.flowLayCust1.Location = new System.Drawing.Point(330, 25);
+            this.flowLayCust1.Location = new System.Drawing.Point(331, 25);
+            this.flowLayCust1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayCust1.Name = "flowLayCust1";
-            this.flowLayCust1.Size = new System.Drawing.Size(1122, 856);
+            this.flowLayCust1.Size = new System.Drawing.Size(1123, 857);
             this.flowLayCust1.TabIndex = 40;
             this.flowLayCust1.Visible = false;
             // 
@@ -300,16 +309,17 @@ namespace CrimeaCloud
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1551, 894);
+            this.ClientSize = new System.Drawing.Size(1551, 884);
             this.Controls.Add(this.flowLayCust1);
             this.Controls.Add(this.Close);
             this.Controls.Add(this.bunifuPanel1);
             this.Controls.Add(this.bunifuVScrollBar1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainForm";
+            this.Text = "CrimeaCloud";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);

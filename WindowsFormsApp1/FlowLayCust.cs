@@ -12,8 +12,6 @@ namespace CrimeaCloud
 {
     public partial class FlowLayCust : UserControl
     {
-        //public int scrollValue = 100;
-        //public int ScrollValue { get { return ScrollValue; }  set{scrollValue = value; ScrollChanged(); } }
         public FlowLayCust()
         {
             InitializeComponent();
@@ -21,7 +19,7 @@ namespace CrimeaCloud
             ControlStyles.UserPaint |
             ControlStyles.AllPaintingInWmPaint, true);
             this.DoubleBuffered = true;
-            //flowLayoutPanel1.VerticalScroll.Value = 96;
+
             {
                 imgPnl1.Visible = false;
                 imgPnl2.Visible = false;
@@ -74,55 +72,19 @@ namespace CrimeaCloud
             flowLayoutPanel1.VerticalScroll.Minimum = VscrollBarMin;
             flowLayoutPanel1.VerticalScroll.Maximum = VscrollBarMax;
             flowLayoutPanel1.VerticalScroll.Value = VscrollBarV;
-            Console.WriteLine(flowLayoutPanel1.VerticalScroll.Value);
-            Console.WriteLine($"////////////////// {flowLayoutPanel1.ClientSize} ///////////////////////");
-            Console.WriteLine($"////////////////// {flowLayoutPanel1.Size} ///////////////////////");
-            Console.WriteLine($"////////////////// {flowLayoutPanel1.PreferredSize} ///////////////////////");
-            //flowLayoutPanel1.VerticalScroll.Value = scrollValue;
         }
         //тип,id файла, id владельца, название
         public void RealizeImgPnls(string type, int num, int numberFromServ, string text)
         {
-            /*if (OpenFile
-             * 
-             * .needDel)
-            {
-                ClearIMG();
-                
-            .needDel = false;
-            }*/
-            /*Image image;
-            switch (type.ToLower())
-            {
-                case ".jpg":
-                case "text":
-                    image = Properties.Resources.SecondPhoto;
-                    break;
-                case ".png":
-                    image = Properties.Resources.text;
-                    break;
 
-                default:
-                    image = Properties.Resources.SecondPhoto;
-                    break;
-            } */
-
-            // Set the image and other properties of the control
-            //((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).BackgroundImage = image;
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Visible = true;
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Text = text;
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
 
-            //flowLayoutPanel1.Controls[$"imgPnl{num}"].Visible = true;
-            //flowLayoutPanel1.Controls[$"imgPnl{num}"].Text = text;
-            //((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;
-            //((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
         }
         public void ClearIMG()
         {
-            //flowLayoutPanel1.Controls[$"imgPnl1"].Visible = true;
-            //Clean.UpdateIMG(flowLayoutPanel1, 2);
             for (int i = 0; i < flowLayoutPanel1.Controls.Count-1; i++)
             {
                 flowLayoutPanel1.Controls[$"imgPnl{i+1}"].Visible = false;
@@ -133,7 +95,6 @@ namespace CrimeaCloud
         {
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Visible = true;
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Text = text;
-            //((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"])
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
         }

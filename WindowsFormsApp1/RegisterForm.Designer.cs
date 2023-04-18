@@ -704,7 +704,7 @@ namespace CrimeaCloud
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RegisterForm";
+            this.Text = "CrimeaCloud";
             this.Load += new System.EventHandler(this.RegisterForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RegisterForm_MouseDown_1);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.RegisterForm_MouseMove);

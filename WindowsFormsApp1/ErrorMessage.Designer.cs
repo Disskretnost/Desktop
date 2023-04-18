@@ -121,8 +121,9 @@ namespace CrimeaCloud
             this.ClientSize = new System.Drawing.Size(405, 110);
             this.Controls.Add(this.bunifuPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ErrorMessage";
-            this.Text = "ErrorMessage";
+            this.Text = "CrimeaCloud";
             this.bunifuPanel1.ResumeLayout(false);
             this.bunifuPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
