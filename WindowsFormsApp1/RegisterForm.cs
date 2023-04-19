@@ -62,6 +62,15 @@ namespace CrimeaCloud
                 password = bunifuTextBox2.Text,
                 confirmPassword = bunifuTextBox3.Text
             };
+            if (LoginRegist.Text == "" || bunifuTextBox1.Text == "" || bunifuTextBox2.Text == "" || bunifuTextBox3.Text == "")
+            {
+                using (ErrorMessage errorMessage = new ErrorMessage())
+                {
+                    errorMessage.SetMessageText("All fields must be filled");
+                    errorMessage.ShowDialog();
+                    return;
+                }
+            }
             try
             {
                 var response = await ConnectHttp.PostData(data, "http://176.99.11.107:3000/api/user/", "signup");
@@ -70,9 +79,8 @@ namespace CrimeaCloud
                     using (ErrorMessage errorMessage = new ErrorMessage())
                     {
                         ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
-                        errorMessage.SetMessageText(errorInfo.message.ToString()); //без ToString тоже ошибка с кодировкой 
+                        errorMessage.SetMessageText(errorInfo.message.ToString());
                         errorMessage.ShowDialog();
-                        //Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
                         return;
                     }
                 }
@@ -81,6 +89,11 @@ namespace CrimeaCloud
                 Console.WriteLine($"{dataFromServ.token}");
                 //Console.WriteLine($"Email: {dataFromServ.user.email}");
                 UserData.SaveToken(dataFromServ.token);
+                using (ErrorMessage regMessage = new ErrorMessage())
+                {
+                    regMessage.SetMessageText("Successfully registred");
+                    regMessage.ShowDialog();
+                }
             }
             catch (Exception)
             {

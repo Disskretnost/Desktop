@@ -106,7 +106,7 @@ namespace CrimeaCloud
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(405, 110);
             this.bunifuLabel1.TabIndex = 0;
-            this.bunifuLabel1.Text = "None";
+            this.bunifuLabel1.Text = "None\r";
             this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.bunifuLabel1.Click += new System.EventHandler(this.bunifuLabel1_Click);
