@@ -29,7 +29,6 @@ namespace CrimeaCloud
             SetStyle(ControlStyles.OptimizedDoubleBuffer |
             ControlStyles.UserPaint |
             ControlStyles.AllPaintingInWmPaint, true);
-            //bunifuVScrollBar1.Value = flowLayCust1.VerticalScroll.Value;
             bunifuVScrollBar1.Visible = false;
             bunifuVScrollBar1.Minimum = 0;
             bunifuVScrollBar1.Maximum = 400;
@@ -95,10 +94,10 @@ namespace CrimeaCloud
             }
             for (int i = 0; i < filesCount; i++)
             {
-                string str = filesFromServ.files[i].extension.ToString();
-                int index = str.IndexOf("/");
-                string type = str.Substring(0, index); //извлекаем "расширения" для необходимых файлов
-                flowLayCust1.RealizeImgPnls(type, i + 1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
+                string fullName = filesFromServ.files[i].original_name.ToString();
+                int index = fullName.LastIndexOf(".");
+                string extension = fullName.Substring(index); //извлекаем "расширения" для необходимых файлов
+                flowLayCust1.RealizeImgPnls(extension, i + 1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
             }
         }
 
@@ -148,15 +147,14 @@ namespace CrimeaCloud
                 }
                 if (openFileDialog1.ShowDialog() == DialogResult.OK) //если файловый диалог открылся
                 {
-
                     string pathNewFile = openFileDialog1.FileName; //полный пусть
                     string nameNewFile = openFileDialog1.SafeFileName; //только имя
                     var size = new FileInfo(pathNewFile).Length; //размер файла
-                    if (size > 8589934592) // 
+                    if (size > 8589934592)
                     {
                         using (ErrorMessage err = new ErrorMessage())
                         {
-                            err.SetMessageText("The file is too large. Size limit 1000 MB.");
+                            err.SetMessageText("The file is too large. Size limit 1 Gb.");
                             err.ShowDialog();
                             return;
                         }

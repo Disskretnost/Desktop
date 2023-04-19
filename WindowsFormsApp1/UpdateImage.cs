@@ -13,7 +13,6 @@ namespace CrimeaCloud
 {
     class UpdateImage
     {
-        //public FlowLayoutPanel flowL;
         public static void ResetImg(string type, int num, int numberFromServ, string text, FlowLayoutPanel flowL)
         {
             flowL.Controls[$"imgPnl{num}"].Visible = true;

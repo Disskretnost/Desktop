@@ -19,7 +19,6 @@ namespace CrimeaCloud
             ControlStyles.UserPaint |
             ControlStyles.AllPaintingInWmPaint, true);
             this.DoubleBuffered = true;
-
             {
                 imgPnl1.Visible = false;
                 imgPnl2.Visible = false;
@@ -76,7 +75,7 @@ namespace CrimeaCloud
         //тип,id файла, id владельца, название
         public void RealizeImgPnls(string type, int num, int numberFromServ, string text)
         {
-
+            ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).fileType = type;
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Visible = true;
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Text = text;
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;

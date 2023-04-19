@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Collections.Generic;
 
 namespace TESTControl
 {
@@ -11,6 +12,9 @@ namespace TESTControl
         public string adress;
         public string text = "undefine";
         public string TextWithInfo;
+        public string fileType;
+        public static List<string> imgTypes = new List<string> { ".jpg", ".png", ".jpeg", ".gif", ".bmp", ".tiff", ".tif", ".svg", ".webp", ".ico", ".psd" };
+        public static List<string> textTypes = new List<string> { ".txt", ".csv", ".html", ".xml", ".json", ".docx", ".md", ".log", ".pdf" };
         public FlowLayoutPanel flow;
         public string textWithInfo
         {
@@ -90,7 +94,19 @@ namespace TESTControl
         protected async override void OnLoad(EventArgs e)
         {
             text = "undefined";
-            await LoadPictureAsync($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\FileIcon.jpg");
+            Console.WriteLine(fileType);
+            switch (fileType)
+            {
+                case var type when imgTypes.Contains(type):
+                    await LoadPictureAsync($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\SecondPhoto.jpg");
+                    break;
+                case var type when textTypes.Contains(type):
+                    await LoadPictureAsync($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\FileIcon.jpg");
+                    break;
+                default:
+                    await LoadPictureAsync($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\PhotoQuestion.jpg");
+                    break;
+            }
         }
 
         protected override void OnTextChanged(EventArgs e)
@@ -136,7 +152,8 @@ namespace TESTControl
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            CrimeaCloud.OpenFile openfile = new CrimeaCloud.OpenFile(flow);
+            CrimeaCloud.OpenFile openfile = new CrimeaCloud.OpenFile(flow, fileType);
+            Console.WriteLine(",,,,,,,,,,," + fileType);
             openfile.NumberFromServ = numberFromServ;
             openfile.nameFile = textWithInfo;
             openfile.ShowDialog();
