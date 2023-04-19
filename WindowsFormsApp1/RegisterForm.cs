@@ -30,17 +30,13 @@ namespace CrimeaCloud
 
         private void label1_Click(object sender, EventArgs e)
         {
-
             Application.Exit();
-
         }
 
         private void RegisterForm_Load(object sender, EventArgs e)
         {
-
             RegReg.AllowAnimations = false;
             AutorReg.AllowAnimations = false;
-
         }
 
         private void AutorReg_Click(object sender, EventArgs e)
@@ -86,8 +82,6 @@ namespace CrimeaCloud
                 }
             
                 UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);
-                Console.WriteLine($"{dataFromServ.token}");
-                //Console.WriteLine($"Email: {dataFromServ.user.email}");
                 UserData.SaveToken(dataFromServ.token);
                 using (ErrorMessage regMessage = new ErrorMessage())
                 {
@@ -99,13 +93,11 @@ namespace CrimeaCloud
             {
                 using (ErrorMessage errorMessage = new ErrorMessage())
                 {
-                    errorMessage.SetMessageText("Check your internet connection."); //без ToString тоже ошибка с кодировкой 
+                    errorMessage.SetMessageText("Check your internet connection.");
                     errorMessage.ShowDialog();
                     return;
                 }
-            }
-
-                
+            }     
         }
 
 
@@ -130,5 +122,4 @@ namespace CrimeaCloud
                 this.bunifuTextBox3.PasswordChar = '*';
         }
     }
-
 }

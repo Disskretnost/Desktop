@@ -19,7 +19,6 @@ namespace CrimeaCloud
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             ConnectHttp.CheckTokenStartApp();
-
         }
     }
 }

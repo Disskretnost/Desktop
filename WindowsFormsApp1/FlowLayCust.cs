@@ -58,6 +58,7 @@ namespace CrimeaCloud
                 imgPnl35.Visible = false;
             }
         }
+
         protected override CreateParams CreateParams
         {
             get
@@ -67,14 +68,15 @@ namespace CrimeaCloud
                 return cp;
             }
         }
+
         public void ScrollChanged(int VscrollBarV, int VscrollBarMin, int VscrollBarMax)
         {
             flowLayoutPanel1.VerticalScroll.Minimum = VscrollBarMin;
             flowLayoutPanel1.VerticalScroll.Maximum = VscrollBarMax;
             flowLayoutPanel1.VerticalScroll.Value = VscrollBarV;
         }
-        //тип,id файла, id владельца, название
-        public void RealizeImgPnls(string type, int num, int numberFromServ, string text, Bunifu.UI.WinForms.BunifuPanel BunifuPanel)
+
+        public void RealizeImgPnls(string type, int num, int numberFromServ, string text, Bunifu.UI.WinForms.BunifuPanel BunifuPanel)//тип,id файла, id владельца, название
         {
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).fileType = type;
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).bunifuPanel = BunifuPanel;
@@ -82,27 +84,14 @@ namespace CrimeaCloud
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Text = text;
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
-            //BunifuPanel.Visible = true;
-
         }
+
         public void ClearIMG()
         {
             for (int i = 0; i < flowLayoutPanel1.Controls.Count-1; i++)
             {
                 flowLayoutPanel1.Controls[$"imgPnl{i+1}"].Visible = false;
             }
-        }
-        
-        public void RealizeImgPnls( int num, int numberFromServ, string text = "undefine")
-        {
-            flowLayoutPanel1.Controls[$"imgPnl{num}"].Visible = true;
-            flowLayoutPanel1.Controls[$"imgPnl{num}"].Text = text;
-            ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;
-            ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
-        }
-        private void flowLayoutPanel1_Scroll(object sender, ScrollEventArgs e)
-        {
-            Console.WriteLine(flowLayoutPanel1.VerticalScroll.Value.ToString());
         }
     }
 }

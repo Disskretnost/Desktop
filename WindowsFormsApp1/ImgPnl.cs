@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Collections.Generic;
+using CrimeaCloud;
 
 namespace TESTControl
 {
@@ -17,6 +18,7 @@ namespace TESTControl
         public static List<string> textTypes = new List<string> { ".txt", ".csv", ".html", ".xml", ".json", ".docx", ".md", ".log", ".pdf" };
         public FlowLayoutPanel flow;
         public Bunifu.UI.WinForms.BunifuPanel bunifuPanel;
+        public string numberFromServ;
         public string textWithInfo
         {
             get
@@ -28,7 +30,7 @@ namespace TESTControl
                 TextWithInfo = value;
             }
         }
-        public string numberFromServ;
+ 
         public string NumberFromServ
         {
             get
@@ -89,13 +91,10 @@ namespace TESTControl
             label1.BackColor = Color.FromArgb(64, 64, 64);
             label1.Size = new Size(Size.Width, Size.Height - 119);
             label1.Text = text;
-            //pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            
         }
         protected async override void OnLoad(EventArgs e)
         {
             text = "undefined";
-            Console.WriteLine(fileType);
             switch (fileType)
             {
                 case var type when imgTypes.Contains(type):
@@ -114,47 +113,28 @@ namespace TESTControl
         {
             label1.Text = Text;
         }
-        public void ChangePict(string pathPict)
-        {
-            if (File.Exists(pathPict))
-            {
-                pathPict = $@"{pathPict}";
-                try
-                {
-                    Task.Run(() => LoadPictureAsync(pathPict));
-                }
-                catch (OutOfMemoryException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-            else
-            {
-                Console.WriteLine("я юзлес впроде");
-            }
-        }
+
         private async Task LoadPictureAsync(string filePath)
         {
             try
             {
                 Image img = await Task.Run(() => Image.FromFile(filePath));
-                //imageCache[filePath] = img;
                 pictureBox1.Image = img;
             }
-            catch (OutOfMemoryException ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                using (ErrorMessage errorMessage = new ErrorMessage())
+                {
+                    errorMessage.SetMessageText("failed to update image");
+                    errorMessage.ShowDialog();
+                    return;
+                }
             }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             CrimeaCloud.OpenFile openfile = new CrimeaCloud.OpenFile(flow, fileType, bunifuPanel);
-            Console.WriteLine(",,,,,,,,,,," + fileType);
             openfile.NumberFromServ = numberFromServ;
             openfile.nameFile = textWithInfo;
             openfile.ShowDialog();
