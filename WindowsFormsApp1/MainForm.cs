@@ -22,6 +22,7 @@ namespace CrimeaCloud
         Point coordinate;
         public static int filesCount = 22;
         public FlowLayoutPanel flowL;
+
         public MainForm(string userName)
         {
             InitializeComponent();
@@ -80,6 +81,7 @@ namespace CrimeaCloud
         }
         public void InitFiles()
         {
+            OpenFile.bunifuPanel = bunifuPanel6;
             FilesInfo filesFromServ = GetFilesFromServer();
             Console.WriteLine("Количество файлов на диске:" + filesCount);
             if (filesFromServ == null)
@@ -97,7 +99,7 @@ namespace CrimeaCloud
                 string fullName = filesFromServ.files[i].original_name.ToString();
                 int index = fullName.LastIndexOf(".");
                 string extension = fullName.Substring(index); //извлекаем "расширения" для необходимых файлов
-                flowLayCust1.RealizeImgPnls(extension, i + 1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
+                flowLayCust1.RealizeImgPnls(extension, i + 1, filesFromServ.files[i].id, filesFromServ.files[i].original_name, bunifuPanel6);
             }
         }
 
@@ -161,10 +163,10 @@ namespace CrimeaCloud
                     }
                     using (LoadfFileForm loadfFileForm = new LoadfFileForm())
                     {
-                        loadfFileForm.SetMessageText("Uploading files");
-                        loadfFileForm.Show();
+                        bunifuPanel6.BringToFront();
+                        bunifuPanel6.Visible = true;
                         await AddNewFileToServ(nameNewFile, pathNewFile);
-                        loadfFileForm.Close();
+                        bunifuPanel6.Visible = false;
                         InitFiles();
                     }
                 }
@@ -221,6 +223,21 @@ namespace CrimeaCloud
         private void button4_MouseLeave(object sender, EventArgs e)
         {
             button4.BackColor = Color.FromArgb(40, 40, 40);
+        }
+
+        private void bunifuPanel6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuPanel7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuLabel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

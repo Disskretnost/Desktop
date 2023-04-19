@@ -16,6 +16,7 @@ namespace TESTControl
         public static List<string> imgTypes = new List<string> { ".jpg", ".png", ".jpeg", ".gif", ".bmp", ".tiff", ".tif", ".svg", ".webp", ".ico", ".psd" };
         public static List<string> textTypes = new List<string> { ".txt", ".csv", ".html", ".xml", ".json", ".docx", ".md", ".log", ".pdf" };
         public FlowLayoutPanel flow;
+        public Bunifu.UI.WinForms.BunifuPanel bunifuPanel;
         public string textWithInfo
         {
             get
@@ -152,7 +153,7 @@ namespace TESTControl
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            CrimeaCloud.OpenFile openfile = new CrimeaCloud.OpenFile(flow, fileType);
+            CrimeaCloud.OpenFile openfile = new CrimeaCloud.OpenFile(flow, fileType, bunifuPanel);
             Console.WriteLine(",,,,,,,,,,," + fileType);
             openfile.NumberFromServ = numberFromServ;
             openfile.nameFile = textWithInfo;

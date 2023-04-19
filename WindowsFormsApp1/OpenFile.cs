@@ -16,6 +16,8 @@ namespace CrimeaCloud
         public bool deletedFile = true;
         public FlowLayoutPanel flowL;
         LoadfFileForm loadfFileForm = new LoadfFileForm();
+        public static Bunifu.UI.WinForms.BunifuPanel bunifuPanel;
+        
         public string NumberFromServ
         {
             get
@@ -27,7 +29,7 @@ namespace CrimeaCloud
                 numberFromServ = value;
             }
         }
-        public OpenFile(FlowLayoutPanel flow, string fileExtension)
+        public OpenFile(FlowLayoutPanel flow, string fileExtension, Bunifu.UI.WinForms.BunifuPanel bunifuPanel)
         {
             InitializeComponent();
             Console.WriteLine("FADA" + fileExtension);
@@ -49,6 +51,7 @@ namespace CrimeaCloud
             bunifuButton3.TextAlign = ContentAlignment.MiddleCenter;
             StartPosition = FormStartPosition.CenterScreen;
             flowL = flow;
+            //this.bunifuPanel = bunifuPanel;
         }
         private Point _mouseDownLocation;
 
@@ -76,7 +79,7 @@ namespace CrimeaCloud
             //loadfFileForm.Topmost = true;
             Close();
       
-            await DownloadThisFile();
+            await DownloadThisFile(bunifuPanel);
         }
 
         //путь для сохранения 
@@ -98,7 +101,7 @@ namespace CrimeaCloud
             return null;
         }
 
-        public async Task DownloadThisFile()
+        public async Task DownloadThisFile(Bunifu.UI.WinForms.BunifuPanel bunifuPanel)
         {
 
             string token = UserData.ReadToken();
@@ -111,30 +114,28 @@ namespace CrimeaCloud
             {
                 return;
             }
-            using (LoadfFileForm loadfFileForm = new LoadfFileForm())
+            ///
+            bunifuPanel.BringToFront();
+            bunifuPanel.Visible = true;
+            var response = await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107:3000/api/file/", "getfile", nameFile);
+            
+            if (response != null && response.IsSuccessStatusCode)
             {
-                loadfFileForm.SetMessageText("Uploading files");
-                loadfFileForm.Show();
-                var response = await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107:3000/api/file/", "getfile", nameFile);
-
-                if (response != null && response.IsSuccessStatusCode)
-                {
-                    var contentBytes = await response.Content.ReadAsByteArrayAsync();
-                    SaveFile(nameFile, contentBytes, filePath);
-                    Console.WriteLine("Файл сохранен.");
-                }
-                else
-                {
-                    using (ErrorMessage errorMessage = new ErrorMessage())
-                    {
-                        errorMessage.SetMessageText("Failed to download");
-                        errorMessage.ShowDialog();
-                    }
-                }
-                loadfFileForm.Close();
-                System.Runtime.GCSettings.LargeObjectHeapCompactionMode = System.Runtime.GCLargeObjectHeapCompactionMode.CompactOnce;
-                System.GC.Collect();
+                var contentBytes = await response.Content.ReadAsByteArrayAsync();
+                SaveFile(nameFile, contentBytes, filePath);
+                Console.WriteLine("Файл сохранен.");
             }
+            else
+            {
+                using (ErrorMessage errorMessage = new ErrorMessage())
+                {
+                    errorMessage.SetMessageText("Failed to download");
+                    errorMessage.ShowDialog();
+                }
+            }
+            bunifuPanel.Visible = false;
+            System.Runtime.GCSettings.LargeObjectHeapCompactionMode = System.Runtime.GCLargeObjectHeapCompactionMode.CompactOnce;
+            System.GC.Collect();
         }
 
         public void SaveFile(string fileName, byte[] fileData, string filePath)

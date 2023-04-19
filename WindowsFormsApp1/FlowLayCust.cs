@@ -18,6 +18,7 @@ namespace CrimeaCloud
             SetStyle(ControlStyles.OptimizedDoubleBuffer |
             ControlStyles.UserPaint |
             ControlStyles.AllPaintingInWmPaint, true);
+
             this.DoubleBuffered = true;
             {
                 imgPnl1.Visible = false;
@@ -73,13 +74,15 @@ namespace CrimeaCloud
             flowLayoutPanel1.VerticalScroll.Value = VscrollBarV;
         }
         //тип,id файла, id владельца, название
-        public void RealizeImgPnls(string type, int num, int numberFromServ, string text)
+        public void RealizeImgPnls(string type, int num, int numberFromServ, string text, Bunifu.UI.WinForms.BunifuPanel BunifuPanel)
         {
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).fileType = type;
+            ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).bunifuPanel = BunifuPanel;
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Visible = true;
             flowLayoutPanel1.Controls[$"imgPnl{num}"].Text = text;
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).textWithInfo = text;
             ((TESTControl.ImgPnl)flowLayoutPanel1.Controls[$"imgPnl{num}"]).NumberFromServ = numberFromServ.ToString();
+            //BunifuPanel.Visible = true;
 
         }
         public void ClearIMG()
