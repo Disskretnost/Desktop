@@ -11,7 +11,7 @@ using System.IO;
 
 namespace CrimeaCloud
 {
-    class ConnectHttp
+    public class ConnectHttp
     {
         //Логин, пароль
         public static async Task<HttpResponseMessage> PostData(object data, string urlBase, string urlEnd)
