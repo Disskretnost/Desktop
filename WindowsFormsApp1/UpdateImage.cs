@@ -11,7 +11,7 @@ using System.IO;
 
 namespace CrimeaCloud
 {
-    class UpdateImage
+    public class UpdateImage
     {
         public static void ResetImg(string type, int num, int numberFromServ, string text, FlowLayoutPanel flowL)
         {

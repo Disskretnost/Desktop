@@ -30,7 +30,6 @@ namespace CrimeaCloud
         public OpenFile(FlowLayoutPanel flow, string fileExtension)
         {
             InitializeComponent();
-            Console.WriteLine("FADA" + fileExtension);
             switch (fileExtension)
             {
                 case var type when TESTControl.ImgPnl.imgTypes.Contains(type):
