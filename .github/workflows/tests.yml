@@ -19,7 +19,7 @@ jobs:
       run: |
         sudo apt-get install -y apt-transport-https
         sudo apt-get update
-        sudo apt-get install -y dotnet-runtime-4.7.2
+        sudo apt-get install -y dotnet-runtime-5.0.0
     - name: Restore dependencies
       run: dotnet restore TestProj
     - name: Build
