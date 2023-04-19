@@ -13,7 +13,6 @@ namespace CrimeaCloud
     {
         public string numberFromServ;
         public string nameFile;
-        public bool needDel;
         public bool deletedFile = true;
         public FlowLayoutPanel flowL;
         LoadfFileForm loadfFileForm = new LoadfFileForm();
@@ -28,10 +27,22 @@ namespace CrimeaCloud
                 numberFromServ = value;
             }
         }
-        public OpenFile(FlowLayoutPanel flow)
+        public OpenFile(FlowLayoutPanel flow, string fileExtension)
         {
             InitializeComponent();
-            pictureBox1.ImageLocation = $@"{ Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\FileIcon.jpg";
+            Console.WriteLine("FADA" + fileExtension);
+            switch (fileExtension)
+            {
+                case var type when TESTControl.ImgPnl.imgTypes.Contains(type):
+                    pictureBox1.ImageLocation = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\SecondPhoto.jpg";
+                    break;
+                case var type when TESTControl.ImgPnl.textTypes.Contains(type):
+                    pictureBox1.ImageLocation = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\FileIcon.jpg";
+                    break;
+                default:
+                    pictureBox1.ImageLocation = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\PhotoQuestion.jpg";
+                    break;
+            }
             pictureBox1.Load();
             bunifuButton1.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton2.TextAlign = ContentAlignment.MiddleCenter;
