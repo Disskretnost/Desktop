@@ -73,6 +73,15 @@ namespace CrimeaCloud
                 email = LoginAuto.Text,
                 password = PasswordAuto.Text
             };
+            if (LoginAuto.Text == "" || PasswordAuto.Text == "")
+            {
+                using (ErrorMessage errorMessage = new ErrorMessage())
+                {
+                    errorMessage.SetMessageText("All fields must be filled");
+                    errorMessage.ShowDialog();
+                    return;
+                }
+            }
             try
             {
                 var response = await ConnectHttp.PostData(data, "http://176.99.11.107:3000/api/user/", "signin");
@@ -81,9 +90,8 @@ namespace CrimeaCloud
                     using (ErrorMessage errorMessage = new ErrorMessage())
                     {
                         ErrorData errorInfo = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
-                        errorMessage.SetMessageText(errorInfo.message.ToString()); //без ToString тоже ошибка с кодировкой 
+                        errorMessage.SetMessageText(errorInfo.message.ToString());
                         errorMessage.ShowDialog();
-                        //Console.WriteLine($"Ошибка: {errorInfo.message}: {errorInfo.status}");
                         return;
                     }
                 }

@@ -87,7 +87,7 @@ namespace CrimeaCloud
             {
                 return;
             }
-                        flowLayCust1.Visible = true;
+            flowLayCust1.Visible = true;
             if (filesCount > 20)
             {
                 //Вызываем метод для установки ползунка по нужным размерам
@@ -98,10 +98,8 @@ namespace CrimeaCloud
                 string str = filesFromServ.files[i].extension.ToString();
                 int index = str.IndexOf("/");
                 string type = str.Substring(0, index); //извлекаем "расширения" для необходимых файлов
-                //Console.WriteLine(type);
                 flowLayCust1.RealizeImgPnls(type, i + 1, filesFromServ.files[i].id, filesFromServ.files[i].original_name);
             }
-            //filesFromServ.files.Clear(); // очистка списка files
         }
 
         public static FilesInfo GetFilesFromServer()
@@ -121,7 +119,6 @@ namespace CrimeaCloud
             Console.WriteLine(response.Result.Content);
             FilesInfo files = JsonSerializer.Deserialize<FilesInfo>(response.Result.Content);
             filesCount = files.count;
-            Console.WriteLine($"// {files.count} //");
             return files;
         }
 
@@ -182,8 +179,6 @@ namespace CrimeaCloud
             try
             {
                 var respone = await ConnectHttp.PostFile(fileName, filePath, token, "http://176.99.11.107:3000/api/file/", "upload");
-                Console.WriteLine(respone?.StatusCode);
-                Console.WriteLine(respone?.Content.ReadAsStringAsync().Result);
                 Console.WriteLine("Файл добавлен на сервер");
             }
             catch(Exception ex)
