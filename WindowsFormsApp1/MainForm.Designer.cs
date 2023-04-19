@@ -45,11 +45,16 @@ namespace CrimeaCloud
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
             this.bunifuPictureBox1 = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.bunifuVScrollBar1 = new Bunifu.UI.WinForms.BunifuVScrollBar();
+            this.bunifuPanel6 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.bunifuPictureBox2 = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.flowLayCust1 = new CrimeaCloud.FlowLayCust();
             this.bunifuPanel1.SuspendLayout();
             this.bunifuPanel5.SuspendLayout();
             this.bunifuPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).BeginInit();
+            this.bunifuPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // Close
@@ -298,6 +303,53 @@ namespace CrimeaCloud
             this.bunifuVScrollBar1.Value = 0;
             this.bunifuVScrollBar1.Scroll += new System.EventHandler<Bunifu.UI.WinForms.BunifuVScrollBar.ScrollEventArgs>(this.bunifuVScrollBar1_Scroll);
             // 
+            // bunifuPanel6
+            // 
+            this.bunifuPanel6.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuPanel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuPanel6.BackgroundImage")));
+            this.bunifuPanel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuPanel6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
+            this.bunifuPanel6.BorderRadius = 25;
+            this.bunifuPanel6.BorderThickness = 3;
+            this.bunifuPanel6.Controls.Add(this.label2);
+            this.bunifuPanel6.Controls.Add(this.bunifuPictureBox2);
+            this.bunifuPanel6.Location = new System.Drawing.Point(654, 192);
+            this.bunifuPanel6.Name = "bunifuPanel6";
+            this.bunifuPanel6.ShowBorders = true;
+            this.bunifuPanel6.Size = new System.Drawing.Size(436, 362);
+            this.bunifuPanel6.TabIndex = 41;
+            this.bunifuPanel6.Visible = false;
+            this.bunifuPanel6.Click += new System.EventHandler(this.bunifuPanel6_Click);
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 17.2F);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(12, 244);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(412, 63);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Uploading files";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // bunifuPictureBox2
+            // 
+            this.bunifuPictureBox2.AllowFocused = false;
+            this.bunifuPictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.bunifuPictureBox2.AutoSizeHeight = true;
+            this.bunifuPictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuPictureBox2.BorderRadius = 86;
+            this.bunifuPictureBox2.Image = global::CrimeaCloud.Properties.Resources.LoadFile;
+            this.bunifuPictureBox2.IsCircle = true;
+            this.bunifuPictureBox2.Location = new System.Drawing.Point(131, 57);
+            this.bunifuPictureBox2.Name = "bunifuPictureBox2";
+            this.bunifuPictureBox2.Size = new System.Drawing.Size(172, 172);
+            this.bunifuPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuPictureBox2.TabIndex = 0;
+            this.bunifuPictureBox2.TabStop = false;
+            this.bunifuPictureBox2.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
+            // 
             // flowLayCust1
             // 
             this.flowLayCust1.Location = new System.Drawing.Point(331, 25);
@@ -314,6 +366,7 @@ namespace CrimeaCloud
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1551, 884);
+            this.Controls.Add(this.bunifuPanel6);
             this.Controls.Add(this.flowLayCust1);
             this.Controls.Add(this.Close);
             this.Controls.Add(this.bunifuPanel1);
@@ -331,6 +384,8 @@ namespace CrimeaCloud
             this.bunifuPanel5.ResumeLayout(false);
             this.bunifuPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).EndInit();
+            this.bunifuPanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -352,5 +407,8 @@ namespace CrimeaCloud
         private System.Windows.Forms.Label label1;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel2;
         private Bunifu.UI.WinForms.BunifuPictureBox bunifuPictureBox1;
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel6;
+        private Bunifu.UI.WinForms.BunifuPictureBox bunifuPictureBox2;
+        private System.Windows.Forms.Label label2;
     }
 }
