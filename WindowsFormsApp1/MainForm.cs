@@ -11,6 +11,7 @@ using System.IO;
 using Bunifu;
 using System.Threading;
 using System.Text.Json;
+using System.Diagnostics;
 
 namespace CrimeaCloud
 {
@@ -20,6 +21,7 @@ namespace CrimeaCloud
         Point coordinate;
         public static int filesCount = 22;
         public FlowLayoutPanel flowL;
+        const string url = "http://176.99.11.107/";
 
         public MainForm(string userName)
         {
@@ -68,7 +70,6 @@ namespace CrimeaCloud
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            //OpenFile.bunifuPanel = bunifuPanel6;
             InitFiles();
         }
 
@@ -193,6 +194,49 @@ namespace CrimeaCloud
         private void button4_MouseLeave(object sender, EventArgs e)
         {
             button4.BackColor = Color.FromArgb(40, 40, 40);
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            bool availabile = IsAvailable();
+            if (availabile== true)
+            {
+                Process.Start(url);
+            }
+            else
+            {
+                using (ErrorMessage err = new ErrorMessage())
+                {
+                    err.SetMessageText("The browser is not available");
+                    return;
+                }
+            }
+        }
+
+        private static bool IsAvailable()
+        {
+            var psi = new ProcessStartInfo{FileName = url};
+            try
+            {
+                using (var process = Process.Start(psi))
+                {
+                    return true; //если процесс запущен
+                }
+            }
+            catch (Exception)
+            {
+                return false; //браузер не доступен
+            }
+        }
+
+        private void button2_MouseLeave(object sender, EventArgs e)
+        {
+            button2.BackColor = Color.FromArgb(40, 40, 40);
+        }
+
+        private void button2_MouseEnter(object sender, EventArgs e)
+        {
+            button2.BackColor = Color.FromArgb(1, 147, 147);
         }
     }
 }
