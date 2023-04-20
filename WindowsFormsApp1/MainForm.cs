@@ -203,6 +203,14 @@ namespace CrimeaCloud
             {
                 Process.Start(url);
             }
+            else
+            {
+                using (ErrorMessage err = new ErrorMessage())
+                {
+                    err.SetMessageText("The browser is not available");
+                    return;
+                }
+            }
         }
 
         private static bool IsAvailable()
