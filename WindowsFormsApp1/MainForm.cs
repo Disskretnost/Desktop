@@ -198,22 +198,19 @@ namespace CrimeaCloud
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            bool availabile = IsAvailable();
-            if (availabile== true)
-            {
-                Process.Start(url);
-            }
-            else
+            bool availabile = IsAvailableBrowser();
+            if (!availabile)
             {
                 using (ErrorMessage err = new ErrorMessage())
                 {
                     err.SetMessageText("The browser is not available");
+                    err.ShowDialog();
                     return;
                 }
             }
         }
 
-        private static bool IsAvailable()
+        private static bool IsAvailableBrowser()
         {
             var psi = new ProcessStartInfo{FileName = url};
             try
