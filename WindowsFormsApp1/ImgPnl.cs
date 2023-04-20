@@ -14,7 +14,7 @@ namespace TESTControl
         public string text = "undefine";
         public string TextWithInfo;
         public string fileType;
-        public static List<string> imgTypes = new List<string> { ".jpg", ".png", ".jpeg", ".gif", ".bmp", ".tiff", ".tif", ".svg", ".webp", ".ico", ".psd" };
+        public static List<string> imgTypes = new List<string> { ".jpg", ".png", ".jpeg", ".gif", ".bmp", ".tiff", ".tif", ".svg", ".webp", ".ico", ".psd", ".mp4"};
         public static List<string> textTypes = new List<string> { ".txt", ".csv", ".html", ".xml", ".json", ".docx", ".md", ".log", ".pdf" };
         public FlowLayoutPanel flow;
         public Bunifu.UI.WinForms.BunifuPanel bunifuPanel;
@@ -94,17 +94,23 @@ namespace TESTControl
         }
         protected async override void OnLoad(EventArgs e)
         {
+            // ПОМЕНЯТЬ ПРИ СОЗДАНИИ УСТАНОВЩИКА ///////////////////////////////////////////////////////////////
+            string projectDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            string resourcesDirectory = Path.Combine(projectDirectory, @"Resources");
             text = "undefined";
             switch (fileType)
             {
                 case var type when imgTypes.Contains(type):
-                    await LoadPictureAsync($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\SecondPhoto.jpg");
+                    //await LoadPictureAsync($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\SecondPhoto.jpg"); // для установщика
+                    await LoadPictureAsync($@"{resourcesDirectory}\SecondPhoto.jpg"); // для отладки
                     break;
                 case var type when textTypes.Contains(type):
-                    await LoadPictureAsync($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\FileIcon.jpg");
+                    //await LoadPictureAsync($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\FileIcon.jpg"); // для установщика
+                    await LoadPictureAsync($@"{resourcesDirectory}\FileIcon.jpg"); // для отладки
                     break;
                 default:
-                    await LoadPictureAsync($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\PhotoQuestion.jpg");
+                    //await LoadPictureAsync($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\PhotoQuestion.jpg"); // для установщика
+                    await LoadPictureAsync($@"{resourcesDirectory}\PhotoQuestion.jpg"); // для отладки
                     break;
             }
         }

@@ -31,16 +31,22 @@ namespace CrimeaCloud
         public OpenFile(FlowLayoutPanel flow, string fileExtension, Bunifu.UI.WinForms.BunifuPanel bunifuPanel)
         {
             InitializeComponent();
+            // ПОМЕНЯТЬ ПРИ СОЗДАНИИ УСТАНОВЩИКА ///////////////////////////////////////////////////////////////
+            string projectDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            string resourcesDirectory = Path.Combine(projectDirectory, @"Resources");
             switch (fileExtension)
             {
                 case var type when TESTControl.ImgPnl.imgTypes.Contains(type):
-                    pictureBox1.ImageLocation = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\SecondPhoto.jpg";
+                    //pictureBox1.ImageLocation = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\SecondPhoto.jpg";
+                    pictureBox1.ImageLocation = $@"{resourcesDirectory}\SecondPhoto.jpg";
                     break;
                 case var type when TESTControl.ImgPnl.textTypes.Contains(type):
-                    pictureBox1.ImageLocation = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\FileIcon.jpg";
+                    //pictureBox1.ImageLocation = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\FileIcon.jpg";
+                    pictureBox1.ImageLocation = $@"{resourcesDirectory}\FileIcon.jpg";
                     break;
                 default:
-                    pictureBox1.ImageLocation = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\PhotoQuestion.jpg";
+                    //pictureBox1.ImageLocation = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\PhotoQuestion.jpg";
+                    pictureBox1.ImageLocation = $@"{resourcesDirectory}\PhotoQuestion.jpg";
                     break;
             }
             pictureBox1.Load();
