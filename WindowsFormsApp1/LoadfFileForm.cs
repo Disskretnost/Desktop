@@ -37,20 +37,11 @@ namespace CrimeaCloud
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-
-            // сохранение текущего состояния графического контекста
             GraphicsState state = e.Graphics.Save();
-
-            // перемещение системы координат в центр элемента управления
             e.Graphics.TranslateTransform(pictureBox1.Width / 2, pictureBox1.Height / 2);
-
-            // поворот на заданный угол
             e.Graphics.RotateTransform(angle);
             Image img = Image.FromFile($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\LoadFile.png");
-            // отображение картинки
             e.Graphics.DrawImage(img, new Point(-img.Width / 2, -img.Height / 2));
-
-            // восстановление сохраненного состояния графического контекста
             e.Graphics.Restore(state);
         }
     }

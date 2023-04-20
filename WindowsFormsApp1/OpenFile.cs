@@ -14,8 +14,7 @@ namespace CrimeaCloud
         public string numberFromServ;
         public string nameFile;
         public bool deletedFile = true;
-        public FlowLayoutPanel flowL;
-        LoadfFileForm loadfFileForm = new LoadfFileForm();
+        public static FlowLayoutPanel flowL;
         public static Bunifu.UI.WinForms.BunifuPanel bunifuPanel;
         
         public string NumberFromServ
@@ -50,7 +49,6 @@ namespace CrimeaCloud
             bunifuButton3.TextAlign = ContentAlignment.MiddleCenter;
             StartPosition = FormStartPosition.CenterScreen;
             flowL = flow;
-            //this.bunifuPanel = bunifuPanel;
         }
         private Point _mouseDownLocation;
 
@@ -74,35 +72,27 @@ namespace CrimeaCloud
 
         private async void bunifuButton2_Click_1(object sender, EventArgs e)
         {
-            //oadfFileForm.SetMessageText("Uploading files");///////
-            //loadfFileForm.Topmost = true;
             Close();
-      
             await DownloadThisFile(bunifuPanel);
         }
 
-        //путь для сохранения 
-        private string ShowSaveFileDialog(string defaultFileName)
+        private string ShowSaveFileDialog(string defaultFileName)//путь для сохранения 
         {
             using (var saveFileDialog = new SaveFileDialog())
             {
                 saveFileDialog.Title = "Select the file storage location";
                 saveFileDialog.FileName = defaultFileName; //дефолтное имя при открытии проводника
                 saveFileDialog.Filter = "All Files (*.*)|*.*"; //все файлы
-
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    //Console.WriteLine("Функция возвращает"+saveFileDialog.FileName);
                     return saveFileDialog.FileName; //возвращает полный путь
                 }
             }
-
             return null;
         }
 
         public async Task DownloadThisFile(Bunifu.UI.WinForms.BunifuPanel bunifuPanel)
         {
-
             string token = UserData.ReadToken();
             var data = new
             {
@@ -113,7 +103,6 @@ namespace CrimeaCloud
             {
                 return;
             }
-            ///
             bunifuPanel.BringToFront();
             bunifuPanel.Visible = true;
             var response = await ConnectHttp.PostDownloadFile(data, token, "http://176.99.11.107:3000/api/file/", "getfile", nameFile);
@@ -122,7 +111,6 @@ namespace CrimeaCloud
             {
                 var contentBytes = await response.Content.ReadAsByteArrayAsync();
                 SaveFile(nameFile, contentBytes, filePath);
-                Console.WriteLine("Файл сохранен.");
             }
             else
             {
@@ -146,7 +134,12 @@ namespace CrimeaCloud
             }
             else
             {
-                Console.WriteLine("Не удалось сохранить файл");
+                using (ErrorMessage errorMessage = new ErrorMessage())
+                {
+                    errorMessage.SetMessageText("Failed to save file");
+                    errorMessage.ShowDialog();
+                    return;
+                }
             }
         }
 
@@ -175,8 +168,7 @@ namespace CrimeaCloud
             UpdateImage.InitFiles(flowL);
         }
 
-        //удаление (номер файла, токен, ссылка)
-        public async void DeleteThisFile()
+        public async void DeleteThisFile()//удаление (номер файла, токен, ссылка)
         {
             string token = UserData.ReadToken();
             var data = new
@@ -191,10 +183,9 @@ namespace CrimeaCloud
                     deletedFile = false;
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 deletedFile = false;
-                Console.WriteLine("fafa" + ex.Message);
             }
         }
     }

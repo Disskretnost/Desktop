@@ -12,8 +12,6 @@ using Bunifu;
 using System.Threading;
 using System.Text.Json;
 
-
-
 namespace CrimeaCloud
 {
 
@@ -35,9 +33,9 @@ namespace CrimeaCloud
             bunifuVScrollBar1.Maximum = 400;
             bunifuVScrollBar1.SmallChange = 5;
             bunifuVScrollBar1.LargeChange = 15;
-            label1.Text = userName; 
+            label1.Text = userName;
+            OpenFile.bunifuPanel = bunifuPanel6;
         }
-
 
         private void MainForm_MouseDown(object sender, MouseEventArgs e)
         {
@@ -58,11 +56,6 @@ namespace CrimeaCloud
             Application.Exit();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             UserData.ClearToken();
@@ -75,15 +68,13 @@ namespace CrimeaCloud
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            //OpenFile.bunifuPanel = bunifuPanel6;
             InitFiles();
-
         }
+
         public void InitFiles()
         {
-            OpenFile.bunifuPanel = bunifuPanel6;
-            FilesInfo filesFromServ = GetFilesFromServer();
-            Console.WriteLine("Количество файлов на диске:" + filesCount);
+            FilesInfo filesFromServ =UpdateImage.GetFilesFromServer();
             if (filesFromServ == null)
             {
                 return;
@@ -91,8 +82,7 @@ namespace CrimeaCloud
             flowLayCust1.Visible = true;
             if (filesCount > 20)
             {
-                //Вызываем метод для установки ползунка по нужным размерам
-                bunifuVScrollBar1.Visible = true;
+                bunifuVScrollBar1.Visible = true; //Вызываем метод для установки ползунка по нужным размерам
             }
             for (int i = 0; i < filesCount; i++)
             {
@@ -103,26 +93,6 @@ namespace CrimeaCloud
             }
         }
 
-        public static FilesInfo GetFilesFromServer()
-        {
-            string token = UserData.ReadToken();
-            var response = ConnectHttp.PostDataHeader(token, "http://176.99.11.107:3000/api/file/", "getfiles");
-
-            if(!(response.Result.StatusCode == System.Net.HttpStatusCode.OK))
-            {
-                using (ErrorMessage error = new ErrorMessage())
-                {
-                    error.SetMessageText("Check your internet connection.");
-                    error.ShowDialog();
-                    return null;
-                }
-            }
-            Console.WriteLine(response.Result.Content);
-            FilesInfo files = JsonSerializer.Deserialize<FilesInfo>(response.Result.Content);
-            filesCount = files.count;
-            return files;
-        }
-
         private void bunifuVScrollBar1_Scroll(object sender, Bunifu.UI.WinForms.BunifuVScrollBar.ScrollEventArgs e)
         {
             flowLayCust1.ScrollChanged(bunifuVScrollBar1.Value, bunifuVScrollBar1.Minimum, bunifuVScrollBar1.Maximum);
@@ -131,13 +101,12 @@ namespace CrimeaCloud
         private void flowLayoutPanel1_EnabledChanged(object sender, EventArgs e)
         {
             this.Controls.Add(bunifuVScrollBar1);
-            // Добавляем обработчик события прокрутки
         }
 
         private async void button3_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog1 = new OpenFileDialog())
-            { //файловый диалог
+            using (OpenFileDialog openFileDialog1 = new OpenFileDialog()) //файловый диалог
+            {
                 if (!flowLayCust1.Visible) //если не отображён flowLayCust1
                 {
                     using (ErrorMessage err = new ErrorMessage())
@@ -179,13 +148,16 @@ namespace CrimeaCloud
             try
             {
                 var respone = await ConnectHttp.PostFile(fileName, filePath, token, "http://176.99.11.107:3000/api/file/", "upload");
-                Console.WriteLine("Файл добавлен на сервер");
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                using (ErrorMessage err = new ErrorMessage())
+                {
+                    err.SetMessageText("failed to upload file to server");
+                    err.ShowDialog();
+                    return;
+                }
             }
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -197,8 +169,6 @@ namespace CrimeaCloud
         {
             button1.BackColor = Color.FromArgb(1, 147, 147);
         }
-
-
 
         private void button1_MouseLeave(object sender, EventArgs e)
         {
@@ -223,21 +193,6 @@ namespace CrimeaCloud
         private void button4_MouseLeave(object sender, EventArgs e)
         {
             button4.BackColor = Color.FromArgb(40, 40, 40);
-        }
-
-        private void bunifuPanel6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bunifuPanel7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bunifuLabel1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

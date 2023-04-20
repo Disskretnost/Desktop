@@ -24,7 +24,6 @@ namespace CrimeaCloud
            
         }
 
-
         private void Close_MouseLeave(object sender, EventArgs e)
         {
             Close.ForeColor = Color.White;
@@ -35,7 +34,6 @@ namespace CrimeaCloud
             Close.ForeColor = Color.FromArgb(1,147,147);
         }
         
-        // Передвижение первой формы
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -48,7 +46,6 @@ namespace CrimeaCloud
         private void Form1_Load(object sender, EventArgs e)
         {
             LogIn.AllowAnimations = false;
-            //bunifuButton1.BackColor = Color.FromArgb(1, 147, 147);
         }
 
         private void registerlabel_MouseMove(object sender, MouseEventArgs e)
@@ -59,11 +56,6 @@ namespace CrimeaCloud
         private void registerlabel_MouseLeave(object sender, EventArgs e)
         {
             registerlabel.ForeColor = Color.White;
-        }
-
-        private void resetLabel_Click(object sender, EventArgs e)
-        {
-            // Восстановление пароля
         }
 
         private async void LogIn_Click(object sender, EventArgs e)
@@ -96,8 +88,6 @@ namespace CrimeaCloud
                     }
                 }
                 UserData dataFromServ = JsonSerializer.Deserialize<UserData>(response.Content.ReadAsStringAsync().Result);//распаковали данные 
-                Console.WriteLine($"{dataFromServ.user.id} Token ({dataFromServ.user.name}){dataFromServ.token}");
-                Console.WriteLine($"Email: {dataFromServ.user.email}");
                 UserData.SaveToken(dataFromServ.token); //записали токен в файл
                 Hide();
                 MainForm mainForm = new MainForm(dataFromServ.user.name);
@@ -113,7 +103,6 @@ namespace CrimeaCloud
                     return;
                 }
             }
-
         }
 
 

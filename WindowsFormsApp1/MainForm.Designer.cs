@@ -250,7 +250,7 @@ namespace CrimeaCloud
             this.bunifuPictureBox1.BorderRadius = 92;
             this.bunifuPictureBox1.Image = global::CrimeaCloud.Properties.Resources.cloud_2;
             this.bunifuPictureBox1.IsCircle = true;
-            this.bunifuPictureBox1.Location = new System.Drawing.Point(36, 23);
+            this.bunifuPictureBox1.Location = new System.Drawing.Point(41, 25);
             this.bunifuPictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bunifuPictureBox1.Name = "bunifuPictureBox1";
             this.bunifuPictureBox1.Size = new System.Drawing.Size(185, 185);
@@ -319,7 +319,6 @@ namespace CrimeaCloud
             this.bunifuPanel6.Size = new System.Drawing.Size(436, 362);
             this.bunifuPanel6.TabIndex = 41;
             this.bunifuPanel6.Visible = false;
-            this.bunifuPanel6.Click += new System.EventHandler(this.bunifuPanel6_Click);
             // 
             // label2
             // 
@@ -377,7 +376,6 @@ namespace CrimeaCloud
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CrimeaCloud";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);
             this.bunifuPanel1.ResumeLayout(false);

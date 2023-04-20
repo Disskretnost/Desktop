@@ -84,7 +84,7 @@ namespace CrimeaCloud
             this.resetLabel.Size = new System.Drawing.Size(186, 29);
             this.resetLabel.TabIndex = 10;
             this.resetLabel.Text = "Forgot password?";
-            this.resetLabel.Click += new System.EventHandler(this.resetLabel_Click);
+        
             // 
             // bunifuElipse1
             // 

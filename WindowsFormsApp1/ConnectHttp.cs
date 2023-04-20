@@ -13,8 +13,7 @@ namespace CrimeaCloud
 {
     public class ConnectHttp
     {
-        //Логин, пароль
-        public static async Task<HttpResponseMessage> PostData(object data, string urlBase, string urlEnd)
+        public static async Task<HttpResponseMessage> PostData(object data, string urlBase, string urlEnd)//Логин, пароль
         {
             using (var httpClient = new HttpClient())
             {
@@ -25,8 +24,8 @@ namespace CrimeaCloud
                 return response;
             }
         }
-        //добавление файлов на сервер
-        public static async Task<HttpResponseMessage> PostFile(string fileName, string filePath, string token, string urlBase, string urlEnd)
+
+        public static async Task<HttpResponseMessage> PostFile(string fileName, string filePath, string token, string urlBase, string urlEnd)//добавление файлов на сервер
         {
             using (var httpClient = new HttpClient())
             {
@@ -45,13 +44,17 @@ namespace CrimeaCloud
                                 form.Add(fileContent, "file", Path.GetFileName(filePath));
                                 try
                                 {
-                                    var response = await httpClient.PostAsync(urlEnd, form); //ИСКЛЮЧЕНИЕ..........НУЖНЕН TRY/CATCH
+                                    var response = await httpClient.PostAsync(urlEnd, form); 
 
                                     return response;
                                 }
                                 catch(Exception ex)
                                 {
-                                    Console.WriteLine("Ошибка при отправке файла");
+                                    using (ErrorMessage errorMessage = new ErrorMessage())
+                                    {
+                                        errorMessage.SetMessageText("Error sending file");
+                                        errorMessage.ShowDialog();
+                                    }
                                 }
                                 return null;
                             }
@@ -72,9 +75,13 @@ namespace CrimeaCloud
                     var response = clientRest.Execute(requestRest);
                     return response;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine("Ошибка RestSharp: " + ex.Message);
+                    using (ErrorMessage errorMessage = new ErrorMessage())
+                    {
+                        errorMessage.SetMessageText("RestSharp error");
+                        errorMessage.ShowDialog();
+                    }
                 }
             }
             return null;
@@ -93,15 +100,17 @@ namespace CrimeaCloud
                 try
                 {
                     var response = await client.PostAsync(urlEnd, content);
-                    Console.WriteLine(response.StatusCode);
                     return response;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine("Ошибка HttpClient: " + ex.Message);
+                    using (ErrorMessage errorMessage = new ErrorMessage())
+                    {
+                        errorMessage.SetMessageText("HttpClient error");
+                        errorMessage.ShowDialog();
+                    }
                 }
             }
-
             return null;
         }
 
@@ -118,9 +127,13 @@ namespace CrimeaCloud
                     var response = clientRest.Execute(requestRest);
                     return response;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine("Ошибка RestSharp2: " + ex.Message);
+                    using (ErrorMessage errorMessage = new ErrorMessage())
+                    {
+                        errorMessage.SetMessageText("RestSharp error");
+                        errorMessage.ShowDialog();
+                    }
                 }
             }
             return null;
@@ -130,7 +143,6 @@ namespace CrimeaCloud
         public async static void CheckTokenStartApp()
         {
             string oldToken = UserData.ReadToken();
-            //Console.WriteLine("Старый токен: " + oldToken);
             try
             {
                 var response = await PostDataHeader(oldToken, "http://176.99.11.107:3000/api/user/", "update");
@@ -141,9 +153,7 @@ namespace CrimeaCloud
                 }
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    Console.WriteLine(response.Content);
                     UserData userData = JsonSerializer.Deserialize<UserData>(response.Content);
-                    Console.WriteLine("Полученный Токен: {0}", userData.token); //(успешно Deserialize
                     if (userData != null && !string.IsNullOrEmpty(userData.token)) //проверка на пустоту
                     {
                         UserData.SaveToken(userData.token); //сохраняем
@@ -154,7 +164,6 @@ namespace CrimeaCloud
                 {
                     Application.Run(new LoginForm());
                 }
-            
             }
             catch (Exception) { }
         }
