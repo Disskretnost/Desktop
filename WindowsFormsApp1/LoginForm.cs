@@ -127,6 +127,5 @@ namespace CrimeaCloud
             else
                 this.PasswordAuto.PasswordChar = '*';
         }
-
     }
 }

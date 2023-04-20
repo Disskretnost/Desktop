@@ -35,6 +35,8 @@ namespace CrimeaCloud
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.bunifuPanel7 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.bunifuPanel4 = new Bunifu.UI.WinForms.BunifuPanel();
             this.button3 = new System.Windows.Forms.Button();
@@ -87,6 +89,8 @@ namespace CrimeaCloud
             this.bunifuPanel1.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuPanel1.BorderRadius = 0;
             this.bunifuPanel1.BorderThickness = 0;
+            this.bunifuPanel1.Controls.Add(this.bunifuPanel7);
+            this.bunifuPanel1.Controls.Add(this.button2);
             this.bunifuPanel1.Controls.Add(this.button4);
             this.bunifuPanel1.Controls.Add(this.bunifuPanel4);
             this.bunifuPanel1.Controls.Add(this.button3);
@@ -102,16 +106,51 @@ namespace CrimeaCloud
             this.bunifuPanel1.Size = new System.Drawing.Size(273, 884);
             this.bunifuPanel1.TabIndex = 0;
             // 
+            // bunifuPanel7
+            // 
+            this.bunifuPanel7.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.bunifuPanel7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuPanel7.BackgroundImage")));
+            this.bunifuPanel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuPanel7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.bunifuPanel7.BorderRadius = 0;
+            this.bunifuPanel7.BorderThickness = 0;
+            this.bunifuPanel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuPanel7.Location = new System.Drawing.Point(0, 554);
+            this.bunifuPanel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bunifuPanel7.Name = "bunifuPanel7";
+            this.bunifuPanel7.ShowBorders = true;
+            this.bunifuPanel7.Size = new System.Drawing.Size(273, 37);
+            this.bunifuPanel7.TabIndex = 35;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Tai Le", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(0, 499);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(273, 55);
+            this.button2.TabIndex = 34;
+            this.button2.Text = "Website";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.button2.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
+            this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
+            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Tai Le", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(0, 499);
+            this.button4.Location = new System.Drawing.Point(0, 595);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(273, 55);
@@ -396,7 +435,6 @@ namespace CrimeaCloud
         private Bunifu.UI.WinForms.BunifuVScrollBar bunifuVScrollBar1;
         public FlowLayCust flowLayCust1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button button4;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel4;
         private System.Windows.Forms.Button button3;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel3;
@@ -408,5 +446,8 @@ namespace CrimeaCloud
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel6;
         private Bunifu.UI.WinForms.BunifuPictureBox bunifuPictureBox2;
         private System.Windows.Forms.Label label2;
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel7;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button4;
     }
 }
