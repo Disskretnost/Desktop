@@ -19,6 +19,7 @@ namespace CrimeaCloud
             byte[] encryptedData = ProtectedData.Protect(data, entropy, DataProtectionScope.CurrentUser);
             File.WriteAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\secrets.bin", encryptedData);
         }
+
         public static string ReadToken()
         {
             if (File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\secrets.bin"))
@@ -29,13 +30,13 @@ namespace CrimeaCloud
             }
             return null;
         }
+
         public async static void ClearToken()
         {
             byte[] data = Encoding.Unicode.GetBytes("");
             byte[] encryptedData = ProtectedData.Protect(data, entropy, DataProtectionScope.CurrentUser);
             File.WriteAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\secrets.bin", encryptedData);
         }
-
     }
 
     class User
@@ -67,5 +68,12 @@ namespace CrimeaCloud
         public int status { get; set; }
         public string message { get; set; }
        
+    }
+
+    class LinkData
+    {
+        public int status { get; set; }
+        public string link { get; set; }
+
     }
 }

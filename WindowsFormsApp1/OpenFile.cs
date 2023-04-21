@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Text.Json;
+using RestSharp;
+
+
 
 namespace CrimeaCloud
 {
@@ -14,6 +18,7 @@ namespace CrimeaCloud
         public string numberFromServ;
         public string nameFile;
         public bool deletedFile = true;
+        public bool link = true;
         public static FlowLayoutPanel flowL;
         public static Bunifu.UI.WinForms.BunifuPanel bunifuPanel;
         
@@ -53,6 +58,7 @@ namespace CrimeaCloud
             bunifuButton1.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton2.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton3.TextAlign = ContentAlignment.MiddleCenter;
+            bunifuButton4.TextAlign = ContentAlignment.MiddleCenter;
             StartPosition = FormStartPosition.CenterScreen;
             flowL = flow;
         }
@@ -184,6 +190,7 @@ namespace CrimeaCloud
             try
             {
                 var response = await ConnectHttp.PostDeleteFile(data, token, "http://176.99.11.107:3000/api/file/", "delete");
+                Console.WriteLine(response.Content);
                 if (response == null || response.StatusCode != HttpStatusCode.OK)
                 {
                     deletedFile = false;
@@ -193,6 +200,35 @@ namespace CrimeaCloud
             {
                 deletedFile = false;
             }
+        }
+
+        private void bunifuButton4_Click(object sender, EventArgs e)
+        {
+            GetAlink();
+            
+        }
+
+        public async void GetAlink() //получение ссылки
+        {
+            string token = UserData.ReadToken();
+            var data = new
+            {
+                fileId = numberFromServ
+            };
+
+            var response = await ConnectHttp.GetLink(data, token, "http://176.99.11.107:3000/api/file/", "createlink");
+            Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+            LinkData linkdata = JsonSerializer.Deserialize<LinkData>(response.Content.ReadAsStringAsync().Result);
+            if (response == null || response.StatusCode != HttpStatusCode.OK)
+            {
+                using (ErrorMessage errorMessage = new ErrorMessage())
+                {
+                    errorMessage.SetMessageText("Couldn't get a link to the file");
+                    errorMessage.ShowDialog();
+                    return;
+                }
+            }
+            //ВЫВОД НА форму
         }
     }
 }

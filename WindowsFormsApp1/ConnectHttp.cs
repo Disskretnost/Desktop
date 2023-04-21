@@ -138,6 +138,29 @@ namespace CrimeaCloud
             }
             return null;
         }
+        public static async Task<HttpResponseMessage> GetLink(object number, string token, string urlBase, string urlEnd)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                var requestJson = JsonSerializer.Serialize(number); //номер файла
+                try
+                {
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                    var content = new StringContent(requestJson, Encoding.UTF8, "application/json");
+                    var response = await httpClient.PostAsync($"{urlBase}{urlEnd}", content);
+                    return response;
+                }
+                catch (Exception)
+                {
+                    using (ErrorMessage errorMessage = new ErrorMessage())
+                    {
+                        errorMessage.SetMessageText("HttpClient error");
+                        errorMessage.ShowDialog();
+                    }
+                }
+            }
+            return null;
+        }
 
 
         public async static void CheckTokenStartApp()
