@@ -15,39 +15,27 @@ namespace CrimeaCloud
 
         public async static void SaveToken(string token)
         {
-            string projectDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-            string resourcesDirectory = Path.Combine(projectDirectory, @"Resources");
             byte[] data = Encoding.Unicode.GetBytes(token);
             byte[] encryptedData = ProtectedData.Protect(data, entropy, DataProtectionScope.CurrentUser);
-            //File.WriteAllBytes($@"{ Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\secrets.bin", encryptedData); 
-            File.WriteAllBytes($@"{resourcesDirectory}\secrets.bin", encryptedData);
+            File.WriteAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\secrets.bin", encryptedData);
         }
-
         public static string ReadToken()
         {
-            string projectDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-            string resourcesDirectory = Path.Combine(projectDirectory, @"Resources");
-            //if (File.Exists($@"{ Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\secrets.bin"))
-            if (File.Exists($@"{resourcesDirectory}\secrets.bin"))
+            if (File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\secrets.bin"))
             {
-                //byte[] encryptedData = File.ReadAllBytes($@"{ Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\secrets.bin");
-                byte[] encryptedData = File.ReadAllBytes($@"{resourcesDirectory}\secrets.bin");
+                byte[] encryptedData = File.ReadAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\secrets.bin");
                 byte[] data = ProtectedData.Unprotect(encryptedData, entropy, DataProtectionScope.CurrentUser);
                 return Encoding.Unicode.GetString(data);
             }
             return null;
         }
-
         public async static void ClearToken()
         {
-            string projectDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-            string resourcesDirectory = Path.Combine(projectDirectory, @"Resources");
             byte[] data = Encoding.Unicode.GetBytes("");
             byte[] encryptedData = ProtectedData.Protect(data, entropy, DataProtectionScope.CurrentUser);
-            //File.WriteAllBytes($@"{ Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\secrets.bin", encryptedData);
-            File.WriteAllBytes($@"{resourcesDirectory}\secrets.bin", encryptedData);
+            File.WriteAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\CrimeaCloud\secrets.bin", encryptedData);
         }
-        
+
     }
 
     class User
