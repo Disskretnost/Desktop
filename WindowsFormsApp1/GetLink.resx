@@ -117,35 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="LoadFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LoadFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <metadata name="bunifuElipse1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="bunifuPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAzMAAABjCAYAAACvzV7cAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAPCSURBVHhe7d2tbttQAIbhwsHBwsIyx7UilbVwcHCwcJcw
+        2DsYHBwcHCzsJQQODg4GFm7nSKfSlLhtmp86n/S80oNWH+NPtrMTSZIkSZIkSZIkSZIkSZL2XNd1Z8Mw
+        XFd9398CAAC81uOmqPuiTY3DVG7wfjabfbm4uFgUfwEAAPalbI1fdeDM5/PTNkF27+rq6l09tNxguXpD
+        AACAfSqj5qH4Wh+mtEmyXfWAMmTux24CAABwQIutXz+rQ6YesHIgAADAW1kOw3DeJspmtVfLPJEBAACm
+        9vtVr5zVd9RGDgEAAJjCjzZVnq/+ekD96GbkAAAAgEl0XTdrk+Xp2i+XjR4AAAAwhbJTvrfJ8nT1953H
+        LgYAAJjQsn7b32bLevWXAkYuAgAAmFzZK9dtuqzX9/2HsYsAAACOwE2bLuvVf1z5YwAAgKNQv+9v02U9
+        H/8DAADHypgBAAAiGTMAAEAkYwYAAIhkzAAAAJGMGQAAIJIxAwAARDJmAACASMYMAAAQyZgBAAAiGTMA
+        AEAkYwYAAIhkzAAAAJGMGQAAIJIxAwAARDJmAACASMYMAAAQyZgBAAAiGTMAAEAkYwYAAIhkzAAAAJGM
+        GQAAIJIxAwAARDJmAACASMYMAAAQyZgBAAAiGTMAAEAkYwYAAIhkzAAAAJGMGQAAIJIxAwAARDJmAACA
+        SMYMAAAQyZgBAAAiGTMAAEAkYwYAAIhkzAAAAJGMGQAAIJIxAwAARDJmAACASMYMAAAQyZgBAAAiGTMA
+        AEAkYwYAAIhkzAAAAJGMGQAAIJIxAwAARDJmAACASMYMAAAQyZgBAAAiGTMAAEAkYwYAAIhkzAAAAJGM
+        GQAAIJIxAwAARDJmAACASMYMAAAQyZgBAAAiGTMAAEAkYwYAAIhkzAAAAJGMGQAAIJIxAwAARDJmAACA
+        SMYMAAAQyZgBAAAiGTMAAECkl8bM57GLAAAApvbsmBmG4ePYRQAAAFOrD1/adFmv/MHl6gUAAADHoD58
+        adNlvNls9mfsQgAAgKmUnfLQdd37NlvGK3/4bfVCAACAid21yfJ0Ze3MRi4EAACYzIuvmD3W9/3PsQMA
+        AAAmsGhT5eW6rjvz7QwAADC1+q3MMAznbapsVrnwsl64ehgAAMBb2fj1stXKxfWnmpf/HwYAAHBo9cFK
+        3/ef2jTZrvrKWTnkfuwGAAAAB7CoP0zWJsnuDcNwXQ69W7kJAADAXtSHKFu/VrZJ9T+qKTe6KTe6BQAA
+        2FXdF/P5/LRNDkmSJEmSJEmSJEmSJEmSdu/k5B8F2OooCJNa6wAAAABJRU5ErkJggg==
+</value>
   </data>
-  <data name="FileIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FileIcon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SecondPhoto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SecondPhoto.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="email3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\email3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cloud 2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cloud 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="email 3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\email 3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="email2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\email2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="copy1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bunifuTextBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAqoAAABLCAYAAAC4AqVkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADdSURBVHhe7cExAQAAAMKg9U9tCU8gAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAvmofsAABJqWBqgAAAABJRU5ErkJggg==
+</value>
   </data>
 </root>

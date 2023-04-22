@@ -205,7 +205,7 @@ namespace CrimeaCloud
 
         private void bunifuButton4_Click(object sender, EventArgs e)
         {
-
+            Close();
             GetAlink();
         }
 
@@ -229,8 +229,12 @@ namespace CrimeaCloud
                     return;
                 }
             }
-            Console.WriteLine(linkdata.link);
-            //ВЫВОД НА форму
+            else
+            {
+                GetLink getLink = new GetLink(linkdata.link.ToString());
+                getLink.StartPosition = FormStartPosition.CenterParent;
+                getLink.ShowDialog();
+            }
         }
 
         private void bunifuButton5_Click(object sender, EventArgs e)
@@ -246,7 +250,6 @@ namespace CrimeaCloud
             {
                 fileId = numberFromServ
             };
-
             var response = await ConnectHttp.GetLink(data, token, "http://176.99.11.107:3000/api/file/", "deletelink");
             Console.WriteLine(response.Content.ReadAsStringAsync().Result);
             ErrorData deletelinkdata = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
