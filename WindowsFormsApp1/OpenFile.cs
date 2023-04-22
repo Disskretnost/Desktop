@@ -59,6 +59,7 @@ namespace CrimeaCloud
             bunifuButton2.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton3.TextAlign = ContentAlignment.MiddleCenter;
             bunifuButton4.TextAlign = ContentAlignment.MiddleCenter;
+            bunifuButton5.TextAlign = ContentAlignment.MiddleCenter;
             StartPosition = FormStartPosition.CenterScreen;
             flowL = flow;
         }
@@ -204,8 +205,8 @@ namespace CrimeaCloud
 
         private void bunifuButton4_Click(object sender, EventArgs e)
         {
+
             GetAlink();
-            
         }
 
         public async void GetAlink() //получение ссылки
@@ -228,6 +229,46 @@ namespace CrimeaCloud
                     return;
                 }
             }
+            Console.WriteLine(linkdata.link);
+            //ВЫВОД НА форму
+        }
+
+        private void bunifuButton5_Click(object sender, EventArgs e)
+        {
+            Close();
+            DeleteAlink();
+        }
+
+        public async void DeleteAlink() //получение ссылки
+        {
+            string token = UserData.ReadToken();
+            var data = new
+            {
+                fileId = numberFromServ
+            };
+
+            var response = await ConnectHttp.GetLink(data, token, "http://176.99.11.107:3000/api/file/", "deletelink");
+            Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+            ErrorData deletelinkdata = JsonSerializer.Deserialize<ErrorData>(response.Content.ReadAsStringAsync().Result);
+            if (response == null || response.StatusCode != HttpStatusCode.OK)
+            {
+                using (ErrorMessage errorMessage = new ErrorMessage())
+                {
+                    errorMessage.SetMessageText("Couldn't Delete a link to the file");
+                    errorMessage.ShowDialog();
+                    return;
+                }
+            }
+            else
+            {
+                using (ErrorMessage errorMessage = new ErrorMessage())
+                {
+                    errorMessage.SetMessageText(deletelinkdata.message.ToString());
+                    errorMessage.ShowDialog();
+                    return;
+                }
+            }
+            Console.WriteLine(deletelinkdata.message);
             //ВЫВОД НА форму
         }
     }
