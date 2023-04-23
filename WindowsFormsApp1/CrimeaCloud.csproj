@@ -314,6 +314,12 @@
     <Compile Include="FlowLayCust.Designer.cs">
       <DependentUpon>FlowLayCust.cs</DependentUpon>
     </Compile>
+    <Compile Include="GetLink.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetLink.Designer.cs">
+      <DependentUpon>GetLink.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImgPnl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -364,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FlowLayCust.resx">
       <DependentUpon>FlowLayCust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetLink.resx">
+      <DependentUpon>GetLink.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImgPnl.resx">
       <DependentUpon>ImgPnl.cs</DependentUpon>
@@ -417,6 +426,7 @@
     <None Include="img\email 3.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="img\copy.png" />
     <None Include="Resources\circle.gif" />
     <None Include="Resources\uploadCircle.gif" />
     <None Include="img\cloud 2.png" />

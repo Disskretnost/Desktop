@@ -32,6 +32,7 @@ namespace CrimeaCloud
                 error.ShowDialog();
                 return null;
             }
+            Console.WriteLine(response.Result.Content);
             FilesInfo files = JsonSerializer.Deserialize<FilesInfo>(response.Result.Content);
             MainForm.filesCount = files.count;
             return files;
